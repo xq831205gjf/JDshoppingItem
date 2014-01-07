@@ -7,17 +7,21 @@
 //
 
 #import "AppDelegate.h"
-
+#import "AllGoodsViewController.h"
 #import "ViewController.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    AllGoodsViewController *lAllGoodsViewController = [[AllGoodsViewController alloc]init];
+    UINavigationController *lNavigationVC = [[UINavigationController alloc]initWithRootViewController:lAllGoodsViewController];
+    UITabBarController *lTabBarController = [[UITabBarController alloc]init];
+    [lTabBarController setViewControllers:@[lNavigationVC]];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
-    self.window.rootViewController = self.viewController;
+    self.window.rootViewController = lTabBarController;
+    self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
 }
