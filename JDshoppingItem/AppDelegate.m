@@ -7,20 +7,22 @@
 //
 
 #import "AppDelegate.h"
-#import "AllGoodsViewController.h"
+//#import "AllGoodsViewController.h"
 #import "ViewController.h"
+#import "TabBarViewController.h"
+
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    AllGoodsViewController *lAllGoodsViewController = [[AllGoodsViewController alloc]init];
-    UINavigationController *lNavigationVC = [[UINavigationController alloc]initWithRootViewController:lAllGoodsViewController];
-    UITabBarController *lTabBarController = [[UITabBarController alloc]init];
-    [lTabBarController setViewControllers:@[lNavigationVC]];
-    
+//    AllGoodsViewController *lAllGoodsViewController = [[AllGoodsViewController alloc]init];
+//    UINavigationController *lNavigationVC = [[UINavigationController alloc]initWithRootViewController:lAllGoodsViewController];
+//    UITabBarController *lTabBarController = [[UITabBarController alloc]init];
+//    [lTabBarController setViewControllers:@[lNavigationVC]];
+    TabBarViewController *lTabbarVC = [[TabBarViewController alloc]init];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = lTabBarController;
+    self.window.rootViewController = lTabbarVC;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;

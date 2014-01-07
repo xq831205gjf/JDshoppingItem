@@ -38,7 +38,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     lQueue=[[NSOperationQueue alloc]init];
-
+    
     lGoodsBrandArray = [[NSMutableArray alloc]initWithObjects:@"三星",@"htc",@"华为",@"魅族",@"努比亚", nil];
     
     lMainScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, 320, 464)];
@@ -46,7 +46,7 @@
     
     [self RequestHotGoods];
     [self RequestSingleGoods];
-
+    
     UIBarButtonItem *lLeftButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"我的信息" style:UIBarButtonItemStyleDone target:self action:@selector(ClickLeftBarButton:)];
     self.navigationItem.leftBarButtonItem = lLeftButtonItem;
     
@@ -54,11 +54,11 @@
     self.navigationItem.rightBarButtonItem = lRightButtonItem;
     
     [self.view addSubview:lMainScrollView];
-  
+    
 }
 
 -(void)CreatSingleGoodsViewArray:(NSArray *)lSingleGoodsArray{
-  
+    
 }
 
 -(void)CreatHotGoodsScrollViewArray:(NSArray *)lHotGoodsArray{
@@ -99,7 +99,7 @@
                 if (lData == nil) {
                 }else{
                     [lBackGroundImageView SetBackGroundImage:[UIImage imageWithData:lData]];
-                    }
+                }
             });
         });
     }
@@ -112,7 +112,7 @@
 
 -(void)changPage:(id)sender{
     NSInteger page = _lPageControl.currentPage;
-    [_lScrollView setContentOffset:CGPointMake(320*page, 0) animated:YES];    
+    [_lScrollView setContentOffset:CGPointMake(320*page, 0) animated:YES];
 }
 
 -(void)CreatGoodsInfoScrollView{
@@ -138,22 +138,22 @@
 }
 -(void)RequestSingleGoods{
     for (int i = 0; i<lGoodsBrandArray.count; i++) {
-    NSString *lGoodsBrand = [lGoodsBrandArray objectAtIndex:i];
-    NSString *lStr = [NSString stringWithFormat:@"search=%@&type=0&order=0&owncount=0",lGoodsBrand];
-    NSURL *lUrl = [NSURL URLWithString:@"http://192.168.1.136/shop/searchgoods.php"];
-    NSMutableURLRequest *lRequest = [NSMutableURLRequest requestWithURL:lUrl];
-    [lRequest setHTTPMethod:@"post"];//设置请求名称
-    [lRequest setHTTPBody:[lStr dataUsingEncoding:NSUTF8StringEncoding]];//把设置的请求字符串转化为nsdata然后作为请求主体
-    NSURLConnection *lConnection = [NSURLConnection connectionWithRequest:lRequest delegate:self];
-    [lConnection start];
-    [NSURLConnection sendAsynchronousRequest:lRequest queue:lQueue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        NSDictionary *lHotGoodsDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-        NSArray *lArray = [lHotGoodsDic objectForKey:@"msg"];
-        NSMutableArray *lAllSingleGoodsArray = [[NSMutableArray alloc]init];
-        [lAllSingleGoodsArray addObject:lArray];
-        NSLog(@"%@",lArray);
-        [self CreatSingleGoodsViewArray:lAllSingleGoodsArray];
-    }];
+        NSString *lGoodsBrand = [lGoodsBrandArray objectAtIndex:i];
+        NSString *lStr = [NSString stringWithFormat:@"search=%@&type=0&order=0&owncount=0",lGoodsBrand];
+        NSURL *lUrl = [NSURL URLWithString:@"http://192.168.1.136/shop/searchgoods.php"];
+        NSMutableURLRequest *lRequest = [NSMutableURLRequest requestWithURL:lUrl];
+        [lRequest setHTTPMethod:@"post"];//设置请求名称
+        [lRequest setHTTPBody:[lStr dataUsingEncoding:NSUTF8StringEncoding]];//把设置的请求字符串转化为nsdata然后作为请求主体
+        NSURLConnection *lConnection = [NSURLConnection connectionWithRequest:lRequest delegate:self];
+        [lConnection start];
+        [NSURLConnection sendAsynchronousRequest:lRequest queue:lQueue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+            NSDictionary *lHotGoodsDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            NSArray *lArray = [lHotGoodsDic objectForKey:@"msg"];
+            NSMutableArray *lAllSingleGoodsArray = [[NSMutableArray alloc]init];
+            [lAllSingleGoodsArray addObject:lArray];
+            NSLog(@"%@",lArray);
+            [self CreatSingleGoodsViewArray:lAllSingleGoodsArray];
+        }];
     }
 }
 @end
