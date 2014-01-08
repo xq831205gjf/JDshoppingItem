@@ -38,7 +38,7 @@
     UINavigationController *lShopNVC = [[UINavigationController alloc]initWithRootViewController:lShopVC];
     
     
-    NSArray *Items = @[lAllGoodsNVC,lShopNVC];
+    NSArray *Items = @[lShopNVC];
     [self setViewControllers:Items animated:YES];
     
     
