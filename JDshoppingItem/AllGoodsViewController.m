@@ -91,7 +91,7 @@
         [lBackGroundImageView SetGoodsName:lName];
         
         NSString *lImageName = [lDic objectForKey:@"headerimage"];
-        NSString *lImagePath = [NSString stringWithFormat:@"http://192.168.1.136/shop/goodsimage/%@",lImageName];
+        NSString *lImagePath = [NSString stringWithFormat:@"http://192.168.1.137/shop/goodsimage/%@",lImageName];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             NSURL *lURL = [NSURL URLWithString:lImagePath];
             NSData *lData = [NSData dataWithContentsOfURL:lURL];
@@ -124,7 +124,7 @@
 
 -(void)RequestHotGoods{
     NSString *lStr = [NSString stringWithFormat:@"order=0"];
-    NSURL *lUrl = [NSURL URLWithString:@"http://192.168.1.136/shop/hotgoods.php "];
+    NSURL *lUrl = [NSURL URLWithString:@"http://192.168.1.137/shop/hotgoods.php "];
     NSMutableURLRequest *lRequest = [NSMutableURLRequest requestWithURL:lUrl];
     [lRequest setHTTPMethod:@"post"];//设置请求名称
     [lRequest setHTTPBody:[lStr dataUsingEncoding:NSUTF8StringEncoding]];//把设置的请求字符串转化为nsdata然后作为请求主体
@@ -140,7 +140,7 @@
     for (int i = 0; i<lGoodsBrandArray.count; i++) {
         NSString *lGoodsBrand = [lGoodsBrandArray objectAtIndex:i];
         NSString *lStr = [NSString stringWithFormat:@"search=%@&type=0&order=0&owncount=0",lGoodsBrand];
-        NSURL *lUrl = [NSURL URLWithString:@"http://192.168.1.136/shop/searchgoods.php"];
+        NSURL *lUrl = [NSURL URLWithString:@"http://192.168.1.137/shop/searchgoods.php"];
         NSMutableURLRequest *lRequest = [NSMutableURLRequest requestWithURL:lUrl];
         [lRequest setHTTPMethod:@"post"];//设置请求名称
         [lRequest setHTTPBody:[lStr dataUsingEncoding:NSUTF8StringEncoding]];//把设置的请求字符串转化为nsdata然后作为请求主体

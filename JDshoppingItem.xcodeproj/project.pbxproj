@@ -22,6 +22,11 @@
 		10139719187BEEF600594D3A /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10139718187BEEF600594D3A /* TabBarViewController.m */; };
 		10139722187BF18C00594D3A /* AllGoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10139720187BF18C00594D3A /* AllGoodsViewController.m */; };
 		10139723187BF18C00594D3A /* AllGoodsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10139721187BF18C00594D3A /* AllGoodsViewController.xib */; };
+		1076E39A187D37D600F296EB /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1076E398187D37D600F296EB /* RegisterViewController.m */; };
+		1076E39B187D37D600F296EB /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1076E399187D37D600F296EB /* RegisterViewController.xib */; };
+		1076E39F187D385200F296EB /* LogonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1076E39D187D385200F296EB /* LogonViewController.m */; };
+		1076E3A0187D385200F296EB /* LogonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1076E39E187D385200F296EB /* LogonViewController.xib */; };
+		1076E3A3187D3E5900F296EB /* ShoppingInfoClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 1076E3A2187D3E5900F296EB /* ShoppingInfoClass.m */; };
 		10DE8E26187BFC37006F444A /* shoppingcart.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DE8E1E187BFC37006F444A /* shoppingcart.m */; };
 		10DE8E27187BFC37006F444A /* shoppingcart.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10DE8E1F187BFC37006F444A /* shoppingcart.xib */; };
 		10DE8E28187BFC37006F444A /* orderInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DE8E21187BFC37006F444A /* orderInformationViewController.m */; };
@@ -59,6 +64,14 @@
 		1013971F187BF18C00594D3A /* AllGoodsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllGoodsViewController.h; sourceTree = "<group>"; };
 		10139720187BF18C00594D3A /* AllGoodsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllGoodsViewController.m; sourceTree = "<group>"; };
 		10139721187BF18C00594D3A /* AllGoodsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AllGoodsViewController.xib; sourceTree = "<group>"; };
+		1076E397187D37D600F296EB /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		1076E398187D37D600F296EB /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		1076E399187D37D600F296EB /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
+		1076E39C187D385200F296EB /* LogonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogonViewController.h; sourceTree = "<group>"; };
+		1076E39D187D385200F296EB /* LogonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogonViewController.m; sourceTree = "<group>"; };
+		1076E39E187D385200F296EB /* LogonViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogonViewController.xib; sourceTree = "<group>"; };
+		1076E3A1187D3E5900F296EB /* ShoppingInfoClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingInfoClass.h; sourceTree = "<group>"; };
+		1076E3A2187D3E5900F296EB /* ShoppingInfoClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingInfoClass.m; sourceTree = "<group>"; };
 		10DE8E1D187BFC37006F444A /* shoppingcart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = shoppingcart.h; path = ../shoppingcart.h; sourceTree = "<group>"; };
 		10DE8E1E187BFC37006F444A /* shoppingcart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = shoppingcart.m; path = ../shoppingcart.m; sourceTree = "<group>"; };
 		10DE8E1F187BFC37006F444A /* shoppingcart.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = shoppingcart.xib; path = ../shoppingcart.xib; sourceTree = "<group>"; };
@@ -158,6 +171,12 @@
 		10139712187BE74F00594D3A /* RegisterSystem */ = {
 			isa = PBXGroup;
 			children = (
+				1076E397187D37D600F296EB /* RegisterViewController.h */,
+				1076E398187D37D600F296EB /* RegisterViewController.m */,
+				1076E399187D37D600F296EB /* RegisterViewController.xib */,
+				1076E39C187D385200F296EB /* LogonViewController.h */,
+				1076E39D187D385200F296EB /* LogonViewController.m */,
+				1076E39E187D385200F296EB /* LogonViewController.xib */,
 			);
 			name = RegisterSystem;
 			sourceTree = "<group>";
@@ -207,6 +226,8 @@
 			children = (
 				10139717187BEEF600594D3A /* TabBarViewController.h */,
 				10139718187BEEF600594D3A /* TabBarViewController.m */,
+				1076E3A1187D3E5900F296EB /* ShoppingInfoClass.h */,
+				1076E3A2187D3E5900F296EB /* ShoppingInfoClass.m */,
 			);
 			name = CommonData;
 			sourceTree = "<group>";
@@ -284,6 +305,8 @@
 				10DE8E2B187BFC37006F444A /* newaddress.xib in Resources */,
 				10E4E60C187CED0D004E6774 /* UserInfoViewController.xib in Resources */,
 				10E4E60E187CED0D004E6774 /* addressInfoViewController.xib in Resources */,
+				1076E39B187D37D600F296EB /* RegisterViewController.xib in Resources */,
+				1076E3A0187D385200F296EB /* LogonViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +329,9 @@
 				10DE8E2A187BFC37006F444A /* newaddress.m in Sources */,
 				10E4E60B187CED0D004E6774 /* UserInfoViewController.m in Sources */,
 				10E4E60D187CED0D004E6774 /* addressInfoViewController.m in Sources */,
+				1076E39A187D37D600F296EB /* RegisterViewController.m in Sources */,
+				1076E39F187D385200F296EB /* LogonViewController.m in Sources */,
+				1076E3A3187D3E5900F296EB /* ShoppingInfoClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

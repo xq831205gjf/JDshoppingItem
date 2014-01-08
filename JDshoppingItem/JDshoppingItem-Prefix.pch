@@ -2,6 +2,9 @@
 // Prefix header for all source files of the 'JDshoppingItem' target in the 'JDshoppingItem' project
 //
 
+
+//每日的ip请在这里的宏定义改动
+
 #import <Availability.h>
 
 #ifndef __IPHONE_4_0
@@ -12,4 +15,5 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #import <QuartzCore/QuartzCore.h>
+#import <ShoppingInfoClass.h>
 #endif
