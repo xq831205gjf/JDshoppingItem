@@ -22,6 +22,12 @@
 		10139719187BEEF600594D3A /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10139718187BEEF600594D3A /* TabBarViewController.m */; };
 		10139722187BF18C00594D3A /* AllGoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10139720187BF18C00594D3A /* AllGoodsViewController.m */; };
 		10139723187BF18C00594D3A /* AllGoodsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10139721187BF18C00594D3A /* AllGoodsViewController.xib */; };
+		10DE8E26187BFC37006F444A /* shoppingcart.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DE8E1E187BFC37006F444A /* shoppingcart.m */; };
+		10DE8E27187BFC37006F444A /* shoppingcart.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10DE8E1F187BFC37006F444A /* shoppingcart.xib */; };
+		10DE8E28187BFC37006F444A /* orderInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DE8E21187BFC37006F444A /* orderInformationViewController.m */; };
+		10DE8E29187BFC37006F444A /* orderInformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10DE8E22187BFC37006F444A /* orderInformationViewController.xib */; };
+		10DE8E2A187BFC37006F444A /* newaddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DE8E24187BFC37006F444A /* newaddress.m */; };
+		10DE8E2B187BFC37006F444A /* newaddress.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10DE8E25187BFC37006F444A /* newaddress.xib */; };
 		99A35DE5187BEB6B00F7DEEA /* CustomImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A35DE0187BEB6B00F7DEEA /* CustomImageView.m */; };
 		99A35DE6187BEB6B00F7DEEA /* CustomSingleGoodsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A35DE2187BEB6B00F7DEEA /* CustomSingleGoodsView.m */; };
 /* End PBXBuildFile section */
@@ -49,6 +55,15 @@
 		1013971F187BF18C00594D3A /* AllGoodsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllGoodsViewController.h; sourceTree = "<group>"; };
 		10139720187BF18C00594D3A /* AllGoodsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllGoodsViewController.m; sourceTree = "<group>"; };
 		10139721187BF18C00594D3A /* AllGoodsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AllGoodsViewController.xib; sourceTree = "<group>"; };
+		10DE8E1D187BFC37006F444A /* shoppingcart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = shoppingcart.h; path = ../shoppingcart.h; sourceTree = "<group>"; };
+		10DE8E1E187BFC37006F444A /* shoppingcart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = shoppingcart.m; path = ../shoppingcart.m; sourceTree = "<group>"; };
+		10DE8E1F187BFC37006F444A /* shoppingcart.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = shoppingcart.xib; path = ../shoppingcart.xib; sourceTree = "<group>"; };
+		10DE8E20187BFC37006F444A /* orderInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = orderInformationViewController.h; path = ../orderInformationViewController.h; sourceTree = "<group>"; };
+		10DE8E21187BFC37006F444A /* orderInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = orderInformationViewController.m; path = ../orderInformationViewController.m; sourceTree = "<group>"; };
+		10DE8E22187BFC37006F444A /* orderInformationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = orderInformationViewController.xib; path = ../orderInformationViewController.xib; sourceTree = "<group>"; };
+		10DE8E23187BFC37006F444A /* newaddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = newaddress.h; path = ../newaddress.h; sourceTree = "<group>"; };
+		10DE8E24187BFC37006F444A /* newaddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = newaddress.m; path = ../newaddress.m; sourceTree = "<group>"; };
+		10DE8E25187BFC37006F444A /* newaddress.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = newaddress.xib; path = ../newaddress.xib; sourceTree = "<group>"; };
 		99A35DDF187BEB6B00F7DEEA /* CustomImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomImageView.h; sourceTree = "<group>"; };
 		99A35DE0187BEB6B00F7DEEA /* CustomImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomImageView.m; sourceTree = "<group>"; };
 		99A35DE1187BEB6B00F7DEEA /* CustomSingleGoodsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSingleGoodsView.h; sourceTree = "<group>"; };
@@ -151,6 +166,15 @@
 		10139714187BE91800594D3A /* ShoppingCarSystem */ = {
 			isa = PBXGroup;
 			children = (
+				10DE8E1D187BFC37006F444A /* shoppingcart.h */,
+				10DE8E1E187BFC37006F444A /* shoppingcart.m */,
+				10DE8E1F187BFC37006F444A /* shoppingcart.xib */,
+				10DE8E20187BFC37006F444A /* orderInformationViewController.h */,
+				10DE8E21187BFC37006F444A /* orderInformationViewController.m */,
+				10DE8E22187BFC37006F444A /* orderInformationViewController.xib */,
+				10DE8E23187BFC37006F444A /* newaddress.h */,
+				10DE8E24187BFC37006F444A /* newaddress.m */,
+				10DE8E25187BFC37006F444A /* newaddress.xib */,
 			);
 			name = ShoppingCarSystem;
 			sourceTree = "<group>";
@@ -239,6 +263,9 @@
 				10139704187BE6E200594D3A /* Default-568h@2x.png in Resources */,
 				1013970A187BE6E200594D3A /* ViewController.xib in Resources */,
 				10139723187BF18C00594D3A /* AllGoodsViewController.xib in Resources */,
+				10DE8E27187BFC37006F444A /* shoppingcart.xib in Resources */,
+				10DE8E29187BFC37006F444A /* orderInformationViewController.xib in Resources */,
+				10DE8E2B187BFC37006F444A /* newaddress.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +283,9 @@
 				10139707187BE6E200594D3A /* ViewController.m in Sources */,
 				10139719187BEEF600594D3A /* TabBarViewController.m in Sources */,
 				10139722187BF18C00594D3A /* AllGoodsViewController.m in Sources */,
+				10DE8E26187BFC37006F444A /* shoppingcart.m in Sources */,
+				10DE8E28187BFC37006F444A /* orderInformationViewController.m in Sources */,
+				10DE8E2A187BFC37006F444A /* newaddress.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
