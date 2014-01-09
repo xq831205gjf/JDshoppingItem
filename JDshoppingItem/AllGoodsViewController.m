@@ -10,6 +10,7 @@
 #import "CustomImageView.h"
 #import "CustomCell.h"
 #import "ParticularGoodsViewController.h"
+#import "UserInfoViewController.h"
 @interface AllGoodsViewController ()
 
 @end
@@ -64,6 +65,10 @@
 }
 -(void)ClickLeftBarButton:(UIBarButtonItem *)sender{
 //点击我的信息
+    UserInfoViewController *users=[[UserInfoViewController alloc]init];
+    UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:users];
+    [self presentViewController:nav animated:YES completion:nil];
+    
 }
 -(void)ClickRightBarButton:(UIBarButtonItem *)sender{
 //点击登陆

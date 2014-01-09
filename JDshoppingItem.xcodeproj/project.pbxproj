@@ -31,10 +31,11 @@
 		10DE8E29187BFC37006F444A /* orderInformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10DE8E22187BFC37006F444A /* orderInformationViewController.xib */; };
 		10DE8E2A187BFC37006F444A /* newaddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DE8E24187BFC37006F444A /* newaddress.m */; };
 		10DE8E2B187BFC37006F444A /* newaddress.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10DE8E25187BFC37006F444A /* newaddress.xib */; };
-		10E4E60B187CED0D004E6774 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E4E606187CED0D004E6774 /* UserInfoViewController.m */; };
-		10E4E60C187CED0D004E6774 /* UserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10E4E607187CED0D004E6774 /* UserInfoViewController.xib */; };
-		10E4E60D187CED0D004E6774 /* addressInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E4E609187CED0D004E6774 /* addressInfoViewController.m */; };
-		10E4E60E187CED0D004E6774 /* addressInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10E4E60A187CED0D004E6774 /* addressInfoViewController.xib */; };
+		10E3FF23187E485B00BCE8AD /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3FF1C187E485B00BCE8AD /* UserInfoViewController.m */; };
+		10E3FF24187E485B00BCE8AD /* UserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10E3FF1D187E485B00BCE8AD /* UserInfoViewController.xib */; };
+		10E3FF25187E485B00BCE8AD /* addressInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3FF1F187E485B00BCE8AD /* addressInfoViewController.m */; };
+		10E3FF26187E485B00BCE8AD /* addressInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10E3FF20187E485B00BCE8AD /* addressInfoViewController.xib */; };
+		10E3FF27187E485B00BCE8AD /* addressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3FF22187E485B00BCE8AD /* addressCell.m */; };
 		99D4977A187E459400BB86AB /* ParticularGoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99D49775187E459400BB86AB /* ParticularGoodsViewController.m */; };
 		99D4977B187E459400BB86AB /* ParticularGoodsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99D49776187E459400BB86AB /* ParticularGoodsViewController.xib */; };
 		99D4977C187E459400BB86AB /* AllGoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99D49778187E459400BB86AB /* AllGoodsViewController.m */; };
@@ -81,12 +82,14 @@
 		10DE8E23187BFC37006F444A /* newaddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = newaddress.h; path = ../newaddress.h; sourceTree = "<group>"; };
 		10DE8E24187BFC37006F444A /* newaddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = newaddress.m; path = ../newaddress.m; sourceTree = "<group>"; };
 		10DE8E25187BFC37006F444A /* newaddress.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = newaddress.xib; path = ../newaddress.xib; sourceTree = "<group>"; };
-		10E4E605187CED0D004E6774 /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
-		10E4E606187CED0D004E6774 /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
-		10E4E607187CED0D004E6774 /* UserInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoViewController.xib; sourceTree = "<group>"; };
-		10E4E608187CED0D004E6774 /* addressInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addressInfoViewController.h; sourceTree = "<group>"; };
-		10E4E609187CED0D004E6774 /* addressInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addressInfoViewController.m; sourceTree = "<group>"; };
-		10E4E60A187CED0D004E6774 /* addressInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = addressInfoViewController.xib; sourceTree = "<group>"; };
+		10E3FF1B187E485B00BCE8AD /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
+		10E3FF1C187E485B00BCE8AD /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
+		10E3FF1D187E485B00BCE8AD /* UserInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoViewController.xib; sourceTree = "<group>"; };
+		10E3FF1E187E485B00BCE8AD /* addressInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addressInfoViewController.h; sourceTree = "<group>"; };
+		10E3FF1F187E485B00BCE8AD /* addressInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addressInfoViewController.m; sourceTree = "<group>"; };
+		10E3FF20187E485B00BCE8AD /* addressInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = addressInfoViewController.xib; sourceTree = "<group>"; };
+		10E3FF21187E485B00BCE8AD /* addressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addressCell.h; sourceTree = "<group>"; };
+		10E3FF22187E485B00BCE8AD /* addressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addressCell.m; sourceTree = "<group>"; };
 		99D49774187E459400BB86AB /* ParticularGoodsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticularGoodsViewController.h; sourceTree = "<group>"; };
 		99D49775187E459400BB86AB /* ParticularGoodsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticularGoodsViewController.m; sourceTree = "<group>"; };
 		99D49776187E459400BB86AB /* ParticularGoodsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParticularGoodsViewController.xib; sourceTree = "<group>"; };
@@ -221,12 +224,14 @@
 		10139715187BE93F00594D3A /* ListOperateSystem */ = {
 			isa = PBXGroup;
 			children = (
-				10E4E605187CED0D004E6774 /* UserInfoViewController.h */,
-				10E4E606187CED0D004E6774 /* UserInfoViewController.m */,
-				10E4E607187CED0D004E6774 /* UserInfoViewController.xib */,
-				10E4E608187CED0D004E6774 /* addressInfoViewController.h */,
-				10E4E609187CED0D004E6774 /* addressInfoViewController.m */,
-				10E4E60A187CED0D004E6774 /* addressInfoViewController.xib */,
+				10E3FF1B187E485B00BCE8AD /* UserInfoViewController.h */,
+				10E3FF1C187E485B00BCE8AD /* UserInfoViewController.m */,
+				10E3FF1D187E485B00BCE8AD /* UserInfoViewController.xib */,
+				10E3FF1E187E485B00BCE8AD /* addressInfoViewController.h */,
+				10E3FF1F187E485B00BCE8AD /* addressInfoViewController.m */,
+				10E3FF20187E485B00BCE8AD /* addressInfoViewController.xib */,
+				10E3FF21187E485B00BCE8AD /* addressCell.h */,
+				10E3FF22187E485B00BCE8AD /* addressCell.m */,
 			);
 			name = ListOperateSystem;
 			sourceTree = "<group>";
@@ -313,13 +318,13 @@
 				10DE8E27187BFC37006F444A /* shoppingcart.xib in Resources */,
 				10DE8E29187BFC37006F444A /* orderInformationViewController.xib in Resources */,
 				10DE8E2B187BFC37006F444A /* newaddress.xib in Resources */,
-				10E4E60C187CED0D004E6774 /* UserInfoViewController.xib in Resources */,
-				10E4E60E187CED0D004E6774 /* addressInfoViewController.xib in Resources */,
 				1076E39B187D37D600F296EB /* RegisterViewController.xib in Resources */,
 				1076E3A0187D385200F296EB /* LogonViewController.xib in Resources */,
 				99D4977B187E459400BB86AB /* ParticularGoodsViewController.xib in Resources */,
 				99D4977D187E459400BB86AB /* AllGoodsViewController.xib in Resources */,
 				99D49785187E45A100BB86AB /* u=2966281458,1284875278&fm=21&gp=0.jpg in Resources */,
+				10E3FF24187E485B00BCE8AD /* UserInfoViewController.xib in Resources */,
+				10E3FF26187E485B00BCE8AD /* addressInfoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,8 +342,6 @@
 				10DE8E26187BFC37006F444A /* shoppingcart.m in Sources */,
 				10DE8E28187BFC37006F444A /* orderInformationViewController.m in Sources */,
 				10DE8E2A187BFC37006F444A /* newaddress.m in Sources */,
-				10E4E60B187CED0D004E6774 /* UserInfoViewController.m in Sources */,
-				10E4E60D187CED0D004E6774 /* addressInfoViewController.m in Sources */,
 				1076E39A187D37D600F296EB /* RegisterViewController.m in Sources */,
 				1076E39F187D385200F296EB /* LogonViewController.m in Sources */,
 				1076E3A3187D3E5900F296EB /* ShoppingInfoClass.m in Sources */,
@@ -346,6 +349,9 @@
 				99D4977C187E459400BB86AB /* AllGoodsViewController.m in Sources */,
 				99D49783187E45A100BB86AB /* CustomImageView.m in Sources */,
 				99D49784187E45A100BB86AB /* CustomCell.m in Sources */,
+				10E3FF23187E485B00BCE8AD /* UserInfoViewController.m in Sources */,
+				10E3FF25187E485B00BCE8AD /* addressInfoViewController.m in Sources */,
+				10E3FF27187E485B00BCE8AD /* addressCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
