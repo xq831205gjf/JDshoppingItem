@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CustomImageView : UIView
--(void)SetBackGroundImage:(UIImage *)image;
--(void)SetPriceLabel:(NSString *)price;
--(void)SetGoodsName:(NSString *)goodsName;
+@interface CustomImageView : UIView{
+    UILabel *lLabel1;
+}
+-(void)SetBackGroundImage1:(UIImage *)image;
+-(void)SetBackGroundImage2:(UIImage *)image;
+-(void)SetPriceLabel1:(NSString *)price;
+-(void)SetPriceLabel2:(NSString *)price;
+-(void)SetGoodsName1:(NSString *)goodsName;
+-(void)SetGoodsName2:(NSString *)goodsName;
 @end
