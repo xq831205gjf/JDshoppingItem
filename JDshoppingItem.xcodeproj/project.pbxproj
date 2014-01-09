@@ -36,11 +36,17 @@
 		10E3FF25187E485B00BCE8AD /* addressInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3FF1F187E485B00BCE8AD /* addressInfoViewController.m */; };
 		10E3FF26187E485B00BCE8AD /* addressInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10E3FF20187E485B00BCE8AD /* addressInfoViewController.xib */; };
 		10E3FF27187E485B00BCE8AD /* addressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3FF22187E485B00BCE8AD /* addressCell.m */; };
+<<<<<<< HEAD
 		10F1BA7D187E539D008F12E6 /* iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 10F1BA78187E539D008F12E6 /* iphone.png */; };
 		10F1BA7E187E539D008F12E6 /* iphone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10F1BA79187E539D008F12E6 /* iphone@2x.png */; };
 		10F1BA7F187E539D008F12E6 /* city.json in Resources */ = {isa = PBXBuildFile; fileRef = 10F1BA7A187E539D008F12E6 /* city.json */; };
 		10F1BA80187E539D008F12E6 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 10F1BA7B187E539D008F12E6 /* check.png */; };
 		10F1BA81187E539D008F12E6 /* check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10F1BA7C187E539D008F12E6 /* check@2x.png */; };
+=======
+		10E3FF2B187E520F00BCE8AD /* DingDanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3FF29187E520F00BCE8AD /* DingDanViewController.m */; };
+		10E3FF2C187E520F00BCE8AD /* DingDanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10E3FF2A187E520F00BCE8AD /* DingDanViewController.xib */; };
+		10E3FF2F187E54AF00BCE8AD /* DingdanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3FF2E187E54AF00BCE8AD /* DingdanCell.m */; };
+>>>>>>> 02d972596e887d86639f843a6e0c50e0be16bf44
 		99D4977A187E459400BB86AB /* ParticularGoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99D49775187E459400BB86AB /* ParticularGoodsViewController.m */; };
 		99D4977B187E459400BB86AB /* ParticularGoodsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99D49776187E459400BB86AB /* ParticularGoodsViewController.xib */; };
 		99D4977C187E459400BB86AB /* AllGoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99D49778187E459400BB86AB /* AllGoodsViewController.m */; };
@@ -95,11 +101,19 @@
 		10E3FF20187E485B00BCE8AD /* addressInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = addressInfoViewController.xib; sourceTree = "<group>"; };
 		10E3FF21187E485B00BCE8AD /* addressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addressCell.h; sourceTree = "<group>"; };
 		10E3FF22187E485B00BCE8AD /* addressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addressCell.m; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		10F1BA78187E539D008F12E6 /* iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphone.png; sourceTree = "<group>"; };
 		10F1BA79187E539D008F12E6 /* iphone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone@2x.png"; sourceTree = "<group>"; };
 		10F1BA7A187E539D008F12E6 /* city.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = city.json; sourceTree = "<group>"; };
 		10F1BA7B187E539D008F12E6 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
 		10F1BA7C187E539D008F12E6 /* check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check@2x.png"; sourceTree = "<group>"; };
+=======
+		10E3FF28187E520F00BCE8AD /* DingDanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DingDanViewController.h; sourceTree = "<group>"; };
+		10E3FF29187E520F00BCE8AD /* DingDanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DingDanViewController.m; sourceTree = "<group>"; };
+		10E3FF2A187E520F00BCE8AD /* DingDanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DingDanViewController.xib; sourceTree = "<group>"; };
+		10E3FF2D187E54AF00BCE8AD /* DingdanCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DingdanCell.h; sourceTree = "<group>"; };
+		10E3FF2E187E54AF00BCE8AD /* DingdanCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DingdanCell.m; sourceTree = "<group>"; };
+>>>>>>> 02d972596e887d86639f843a6e0c50e0be16bf44
 		99D49774187E459400BB86AB /* ParticularGoodsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticularGoodsViewController.h; sourceTree = "<group>"; };
 		99D49775187E459400BB86AB /* ParticularGoodsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticularGoodsViewController.m; sourceTree = "<group>"; };
 		99D49776187E459400BB86AB /* ParticularGoodsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParticularGoodsViewController.xib; sourceTree = "<group>"; };
@@ -241,8 +255,13 @@
 				10E3FF1E187E485B00BCE8AD /* addressInfoViewController.h */,
 				10E3FF1F187E485B00BCE8AD /* addressInfoViewController.m */,
 				10E3FF20187E485B00BCE8AD /* addressInfoViewController.xib */,
+				10E3FF28187E520F00BCE8AD /* DingDanViewController.h */,
+				10E3FF29187E520F00BCE8AD /* DingDanViewController.m */,
+				10E3FF2A187E520F00BCE8AD /* DingDanViewController.xib */,
 				10E3FF21187E485B00BCE8AD /* addressCell.h */,
 				10E3FF22187E485B00BCE8AD /* addressCell.m */,
+				10E3FF2D187E54AF00BCE8AD /* DingdanCell.h */,
+				10E3FF2E187E54AF00BCE8AD /* DingdanCell.m */,
 			);
 			name = ListOperateSystem;
 			sourceTree = "<group>";
@@ -348,11 +367,15 @@
 				99D49785187E45A100BB86AB /* u=2966281458,1284875278&fm=21&gp=0.jpg in Resources */,
 				10E3FF24187E485B00BCE8AD /* UserInfoViewController.xib in Resources */,
 				10E3FF26187E485B00BCE8AD /* addressInfoViewController.xib in Resources */,
+<<<<<<< HEAD
 				10F1BA7D187E539D008F12E6 /* iphone.png in Resources */,
 				10F1BA7E187E539D008F12E6 /* iphone@2x.png in Resources */,
 				10F1BA7F187E539D008F12E6 /* city.json in Resources */,
 				10F1BA80187E539D008F12E6 /* check.png in Resources */,
 				10F1BA81187E539D008F12E6 /* check@2x.png in Resources */,
+=======
+				10E3FF2C187E520F00BCE8AD /* DingDanViewController.xib in Resources */,
+>>>>>>> 02d972596e887d86639f843a6e0c50e0be16bf44
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,6 +403,8 @@
 				10E3FF23187E485B00BCE8AD /* UserInfoViewController.m in Sources */,
 				10E3FF25187E485B00BCE8AD /* addressInfoViewController.m in Sources */,
 				10E3FF27187E485B00BCE8AD /* addressCell.m in Sources */,
+				10E3FF2B187E520F00BCE8AD /* DingDanViewController.m in Sources */,
+				10E3FF2F187E54AF00BCE8AD /* DingdanCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
