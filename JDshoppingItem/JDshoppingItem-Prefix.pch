@@ -17,5 +17,5 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #import <QuartzCore/QuartzCore.h>
-#import <ShoppingInfoClass.h>
+#import "ShoppingInfoClass.h"
 #endif

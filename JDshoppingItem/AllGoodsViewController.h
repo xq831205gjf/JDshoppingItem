@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AllGoodsViewController : UIViewController<UIScrollViewDelegate>{
+@interface AllGoodsViewController : UIViewController<UIScrollViewDelegate,UITableViewDataSource,UITableViewDelegate>{
     UIScrollView *lMainScrollView;
-    NSMutableArray *lGoodsBrandArray;
     NSMutableData *lHotGoodsData;
     NSOperationQueue *lQueue;
+    NSArray *lAllGoodsArray1;
+    UITableView *lMainTableView;
 }
 
 @property(nonatomic,retain)UIScrollView *lScrollView;
