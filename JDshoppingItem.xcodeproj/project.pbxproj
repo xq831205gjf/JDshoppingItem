@@ -36,6 +36,9 @@
 		10E3FF25187E485B00BCE8AD /* addressInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3FF1F187E485B00BCE8AD /* addressInfoViewController.m */; };
 		10E3FF26187E485B00BCE8AD /* addressInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10E3FF20187E485B00BCE8AD /* addressInfoViewController.xib */; };
 		10E3FF27187E485B00BCE8AD /* addressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3FF22187E485B00BCE8AD /* addressCell.m */; };
+		10E3FF2B187E520F00BCE8AD /* DingDanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3FF29187E520F00BCE8AD /* DingDanViewController.m */; };
+		10E3FF2C187E520F00BCE8AD /* DingDanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10E3FF2A187E520F00BCE8AD /* DingDanViewController.xib */; };
+		10E3FF2F187E54AF00BCE8AD /* DingdanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3FF2E187E54AF00BCE8AD /* DingdanCell.m */; };
 		99D4977A187E459400BB86AB /* ParticularGoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99D49775187E459400BB86AB /* ParticularGoodsViewController.m */; };
 		99D4977B187E459400BB86AB /* ParticularGoodsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99D49776187E459400BB86AB /* ParticularGoodsViewController.xib */; };
 		99D4977C187E459400BB86AB /* AllGoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99D49778187E459400BB86AB /* AllGoodsViewController.m */; };
@@ -90,6 +93,11 @@
 		10E3FF20187E485B00BCE8AD /* addressInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = addressInfoViewController.xib; sourceTree = "<group>"; };
 		10E3FF21187E485B00BCE8AD /* addressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addressCell.h; sourceTree = "<group>"; };
 		10E3FF22187E485B00BCE8AD /* addressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addressCell.m; sourceTree = "<group>"; };
+		10E3FF28187E520F00BCE8AD /* DingDanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DingDanViewController.h; sourceTree = "<group>"; };
+		10E3FF29187E520F00BCE8AD /* DingDanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DingDanViewController.m; sourceTree = "<group>"; };
+		10E3FF2A187E520F00BCE8AD /* DingDanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DingDanViewController.xib; sourceTree = "<group>"; };
+		10E3FF2D187E54AF00BCE8AD /* DingdanCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DingdanCell.h; sourceTree = "<group>"; };
+		10E3FF2E187E54AF00BCE8AD /* DingdanCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DingdanCell.m; sourceTree = "<group>"; };
 		99D49774187E459400BB86AB /* ParticularGoodsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticularGoodsViewController.h; sourceTree = "<group>"; };
 		99D49775187E459400BB86AB /* ParticularGoodsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticularGoodsViewController.m; sourceTree = "<group>"; };
 		99D49776187E459400BB86AB /* ParticularGoodsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParticularGoodsViewController.xib; sourceTree = "<group>"; };
@@ -230,8 +238,13 @@
 				10E3FF1E187E485B00BCE8AD /* addressInfoViewController.h */,
 				10E3FF1F187E485B00BCE8AD /* addressInfoViewController.m */,
 				10E3FF20187E485B00BCE8AD /* addressInfoViewController.xib */,
+				10E3FF28187E520F00BCE8AD /* DingDanViewController.h */,
+				10E3FF29187E520F00BCE8AD /* DingDanViewController.m */,
+				10E3FF2A187E520F00BCE8AD /* DingDanViewController.xib */,
 				10E3FF21187E485B00BCE8AD /* addressCell.h */,
 				10E3FF22187E485B00BCE8AD /* addressCell.m */,
+				10E3FF2D187E54AF00BCE8AD /* DingdanCell.h */,
+				10E3FF2E187E54AF00BCE8AD /* DingdanCell.m */,
 			);
 			name = ListOperateSystem;
 			sourceTree = "<group>";
@@ -325,6 +338,7 @@
 				99D49785187E45A100BB86AB /* u=2966281458,1284875278&fm=21&gp=0.jpg in Resources */,
 				10E3FF24187E485B00BCE8AD /* UserInfoViewController.xib in Resources */,
 				10E3FF26187E485B00BCE8AD /* addressInfoViewController.xib in Resources */,
+				10E3FF2C187E520F00BCE8AD /* DingDanViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,6 +366,8 @@
 				10E3FF23187E485B00BCE8AD /* UserInfoViewController.m in Sources */,
 				10E3FF25187E485B00BCE8AD /* addressInfoViewController.m in Sources */,
 				10E3FF27187E485B00BCE8AD /* addressCell.m in Sources */,
+				10E3FF2B187E520F00BCE8AD /* DingDanViewController.m in Sources */,
+				10E3FF2F187E54AF00BCE8AD /* DingdanCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
