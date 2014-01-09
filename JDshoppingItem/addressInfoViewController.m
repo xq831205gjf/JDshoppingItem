@@ -7,6 +7,7 @@
 //
 
 #import "addressInfoViewController.h"
+#import "addressCell.h"
 
 @interface addressInfoViewController ()
 
@@ -19,6 +20,11 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title=@"地址管理";
+        dataarray=[[NSMutableArray alloc]init];
+        dic=[[NSDictionary alloc]initWithObjectsAndKeys:@"刘东",@"name",@"18523983105",@"telephone",@"519000",@"code",@"重庆 南岸 茶园——————————h;kllkhlkhl;kh;",@"address", nil];
+        NSDictionary *dd=[[NSDictionary alloc]initWithObjectsAndKeys:@"潇湘",@"name",@"18523983105",@"telephone",@"519000",@"code",@"重庆 南岸 茶园——————————信臻哥，考本科",@"address", nil];
+        [dataarray addObject:dd];
+        [dataarray addObject:dic];
         // Custom initialization
     }
     return self;
@@ -30,6 +36,7 @@
     self.MyTableView.dataSource=self;
     self.MyTableView.delegate=self;
     self.MyTableView.bounces=NO;
+    self.MyTableView.backgroundColor=[UIColor lightGrayColor];
     UIBarButtonItem *barr=[[UIBarButtonItem alloc]initWithTitle:@"添加" style:UIBarButtonItemStyleBordered target:self action:@selector(addressClick:)];
     self.navigationItem.rightBarButtonItem=barr;
     // Do any additional setup after loading the view from its nib.
@@ -51,6 +58,10 @@
     
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 111.0;
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     return dataarray.count;
@@ -58,11 +69,17 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    addressCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        NSDictionary *dic1=[dataarray objectAtIndex:[indexPath row]];
+        cell = [[addressCell alloc]initWithDictionary:dic1];
     }
-    cell.textLabel.text=@"a";
+    cell.selectionStyle=NO;
+    cell.accessoryType=UITableViewCellAccessoryDetailDisclosureButton;
+    tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
+
+    
+    
     return cell;
 }
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -75,7 +92,6 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [dataarray removeObjectAtIndex:[indexPath row]];
-        //        [_MyTabeleView reloadData];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath ] withRowAnimation:UITableViewRowAnimationAutomatic];
         
     }
@@ -84,13 +100,14 @@
     }
 }
 
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *oneCell = [tableView cellForRowAtIndexPath: indexPath];
-    if (oneCell.accessoryType == UITableViewCellAccessoryNone) {
-        oneCell.accessoryType = UITableViewCellAccessoryCheckmark;
-    } else
-        oneCell.accessoryType = UITableViewCellAccessoryNone;
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    UITableViewCell *oneCell = [tableView cellForRowAtIndexPath: indexPath];
+//    if (oneCell.accessoryType == UITableViewCellAccessoryNone) {
+//        oneCell.accessoryType = UITableViewCellAccessoryCheckmark;
+//    } else
+//        oneCell.accessoryType = UITableViewCellAccessoryNone;
+      [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 

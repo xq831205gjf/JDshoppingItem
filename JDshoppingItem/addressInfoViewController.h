@@ -10,6 +10,7 @@
 
 @interface addressInfoViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
     NSMutableArray *dataarray;
+    NSDictionary *dic;
 }
 @property (retain, nonatomic) IBOutlet UITableView *MyTableView;
 

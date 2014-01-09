@@ -8,6 +8,8 @@
 
 #import "UserInfoViewController.h"
 #import "addressInfoViewController.h"
+#import "TabBarViewController.h"
+#import "shoppingcart.h"
 
 @interface UserInfoViewController ()
 
@@ -30,10 +32,21 @@
     [super viewDidLoad];
     UIBarButtonItem *bb=[[UIBarButtonItem alloc]initWithTitle:@"切换账号" style:UIBarButtonItemStyleBordered target:self action:@selector(qieHuanZhangHaoClick:)];
     self.navigationItem.rightBarButtonItem=bb;
+    UIBarButtonItem *lLeftButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"首页" style:UIBarButtonItemStyleDone target:self action:@selector(ClickLeftBarButton:)];
+    self.navigationItem.leftBarButtonItem = lLeftButtonItem;
+    
+    self.redView1.layer.cornerRadius=12.0;
+    self.redView2.layer.cornerRadius=12.0;
+    self.redView3.layer.cornerRadius=12.0;
 // Do any additional setup after loading the view from its nib.
 }
 -(void)qieHuanZhangHaoClick:(UIBarButtonItem *) sender{
     NSLog(@"账号切换");
+}
+
+-(void)ClickLeftBarButton:(UIBarButtonItem *)sender{
+    TabBarViewController *allgood=[[TabBarViewController alloc]init];
+    [self presentViewController:allgood animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,6 +64,14 @@
 - (IBAction)myAddress:(UIButton *)sender {
     addressInfoViewController *add=[[addressInfoViewController alloc]init];
     [self.navigationController pushViewController:add animated:YES];
+}
+
+- (IBAction)goGoodsCar:(UIButton *)sender {
+    TabBarViewController *allgood=[[TabBarViewController alloc]init];
+    //shoppingcart *lShopVC = [[shoppingcart alloc]init];
+    [self presentViewController:allgood animated:YES completion:^{
+        allgood.tabBarController.selectedIndex=1;
+    }];
 }
 - (void)dealloc {
    
