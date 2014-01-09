@@ -10,6 +10,7 @@
 #import "addressInfoViewController.h"
 #import "TabBarViewController.h"
 #import "shoppingcart.h"
+#import "DingDanViewController.h"
 
 @interface UserInfoViewController ()
 
@@ -59,6 +60,8 @@
 }
 
 - (IBAction)myDingDan:(UIButton *)sender {
+    DingDanViewController *ding=[[DingDanViewController alloc]init];
+    [self.navigationController pushViewController:ding animated:YES];
 }
 
 - (IBAction)myAddress:(UIButton *)sender {
