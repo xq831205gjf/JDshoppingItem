@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ParticularGoodsViewController : UIViewController
+@interface ParticularGoodsViewController : UIViewController{
+    UIColor *lightBlue;
+    UIColor *lightOrange;
+    UIColor *paleGreen;
+    UIColor *hotPink;
+    UIWebView *lWebView;
+}
 @property(nonatomic ,retain)NSString *Goodsid;
 @end
