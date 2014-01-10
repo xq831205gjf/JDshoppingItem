@@ -10,6 +10,8 @@
 #import "CustomImageView.h"
 #import "CustomCell.h"
 #import "ParticularGoodsViewController.h"
+#import "UserInfoViewController.h"
+#import "LogonViewController.h"
 @interface AllGoodsViewController ()
 
 @end
@@ -64,9 +66,15 @@
 }
 -(void)ClickLeftBarButton:(UIBarButtonItem *)sender{
 //点击我的信息
+    UserInfoViewController *lUserInfoVC = [[UserInfoViewController alloc]init];
+    UINavigationController *lUserInfoNVC = [[UINavigationController alloc]initWithRootViewController:lUserInfoVC];
+    [self presentViewController:lUserInfoNVC animated:YES completion:nil];
 }
 -(void)ClickRightBarButton:(UIBarButtonItem *)sender{
 //点击登陆
+    LogonViewController *lLogonInfoVC = [[LogonViewController alloc]init];
+    UINavigationController *lLogonInfoNVC = [[UINavigationController alloc]initWithRootViewController:lLogonInfoVC];
+    [self presentViewController:lLogonInfoNVC animated:YES completion:nil];
 }
 -(void)CreatAllGoodsViewArray:(NSArray *)lAllGoodsArray{
     lAllGoodsArray1 = [NSArray arrayWithArray:lAllGoodsArray];

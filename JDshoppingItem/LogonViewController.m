@@ -7,6 +7,8 @@
 //
 
 #import "LogonViewController.h"
+#import "TabBarViewController.h"
+
 
 @interface LogonViewController ()
 
@@ -26,7 +28,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UIBarButtonItem *lLeftButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"首页" style:UIBarButtonItemStyleDone target:self action:@selector(ClickLeftBarButton:)];
+    self.navigationItem.leftBarButtonItem = lLeftButtonItem;
+
     // Do any additional setup after loading the view from its nib.
+}
+
+-(void)ClickLeftBarButton:(UIBarButtonItem *)sender{
+    TabBarViewController *allgood=[[TabBarViewController alloc]init];
+    [self presentViewController:allgood animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning
