@@ -25,6 +25,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    lightBlue = [UIColor colorWithRed:0 green:1 blue:1 alpha:1];
+    lightOrange = [UIColor colorWithRed:255/255 green:140/255 blue:0 alpha:1];
+    paleGreen = [UIColor colorWithRed:152/255 green:251/255 blue:152/255 alpha:1];
+    hotPink = [UIColor colorWithRed:1 green:105/255 blue:180/255 alpha:1];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -37,7 +41,11 @@
     [super viewWillAppear:animated];
     UIBarButtonItem *lRightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"去购物车结算" style:UIBarButtonItemStyleDone target:self action:@selector(ClickRightBarButton:)];
     self.navigationItem.rightBarButtonItem = lRightBarButtonItem;
+    [self CreatPurchaseView];
+    [self CreatWebViewButtonView];
+    [self CreatWebView];
     [self RequestSingleGoods];
+    
 }
 -(void)ClickRightBarButton:(UIBarButtonItem *)sender{
 //点击去购物车结算
@@ -62,7 +70,6 @@
         [self CreatDetailLabel:lDic];
         [self CreatPriceLabel:lDic];
         [self CreatGoodsImageView:lDic];
-        [self CreatPurchaseView];
     }];
 }
 -(void)CreatGoodsImageView:(NSDictionary *)lDic{
@@ -137,27 +144,85 @@
     [self.view addSubview:lLabel];
 }
 -(void)CreatPurchaseView{
+    
     UIView *lPurchaseView = [[UIView alloc]initWithFrame:CGRectMake(0, 160, 320, 100)];
-    [lPurchaseView setBackgroundColor:[UIColor orangeColor]];
+    [lPurchaseView setBackgroundColor:[UIColor colorWithRed:0 green:1 blue:1 alpha:1]];
     [self.view addSubview:lPurchaseView];
     
-    UILabel *lCountNumber = [[UILabel alloc]initWithFrame:CGRectMake(10, 25, 65, 50)];
+    UILabel *lCountNumber = [[UILabel alloc]initWithFrame:CGRectMake(10, 25, 80, 50)];
     [lCountNumber setText:@"购买数量:"];
     [lPurchaseView addSubview:lCountNumber];
     
-    UIButton *lSaleButton = [[UIButton alloc]initWithFrame:CGRectMake(80, 30, 55, 40)];
+    UIButton *lSaleButton = [[UIButton alloc]initWithFrame:CGRectMake(90, 40, 30, 20)];
     [lSaleButton setTitle:@"-" forState:UIControlStateNormal];
     [lPurchaseView addSubview:lSaleButton];
     
-    UILabel *lNumberLabel = [[UILabel alloc]initWithFrame:CGRectMake(140, 37.5, 30, 25)];
+    UILabel *lNumberLabel = [[UILabel alloc]initWithFrame:CGRectMake(120, 37.5, 30, 25)];
     [lNumberLabel setText:@"0"];
     [lPurchaseView addSubview:lNumberLabel];
     
-    UIButton *lPlusButton = [[UIButton alloc]initWithFrame:CGRectMake(175, 30, 55, 40)];
+    UIButton *lPlusButton = [[UIButton alloc]initWithFrame:CGRectMake(150, 40, 30, 20)];
     [lPlusButton setTitle:@"+" forState:UIControlStateNormal];
     [lPurchaseView addSubview:lPlusButton];
     
+    UIButton *lShoppingCarButton = [[UIButton alloc]initWithFrame:CGRectMake(195, 5, 120, 40)];
+    [lShoppingCarButton setTitle:@"添加到购物车" forState:UIControlStateNormal];
+    [lPurchaseView addSubview:lShoppingCarButton];
     
+    UIButton *lCollectButton = [[UIButton alloc]initWithFrame:CGRectMake(195, 55, 120, 40)];
+    [lCollectButton setTitle:@"添加到收藏夹" forState:UIControlStateNormal];
+    [lPurchaseView addSubview:lCollectButton];
 }
 
+-(void)CreatWebViewButtonView{
+    UIView *lWebViewButtonView = [[UIView alloc]initWithFrame:CGRectMake(0, 260, 320, 60)];
+    [lWebViewButtonView setBackgroundColor:[UIColor whiteColor]];
+    [self.view addSubview:lWebViewButtonView];
+    
+    NSArray *lArray = [[NSArray alloc]initWithObjects:@"商品介绍",@"详细参数",@"包装清单",@"售后服务", nil];
+    for (int i = 0; i<lArray.count; i++) {
+        UIButton *lButton = [[UIButton alloc]initWithFrame:CGRectMake(5+80*i, 5, 70, 50)];
+        lButton.layer.cornerRadius = 10;
+        lButton.tag = i+100;
+        [lButton setBackgroundColor:lightOrange];
+        [lButton setTitle:[lArray objectAtIndex:i] forState:UIControlStateNormal];
+        lButton.titleLabel.font = [UIFont systemFontOfSize:13];
+        [lButton addTarget:self action:@selector(ClickWebViewButton:) forControlEvents:UIControlEventTouchUpInside];
+        [lWebViewButtonView addSubview:lButton];
+    }
+}
+
+-(void)CreatWebView{
+    lWebView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 320, 320, self.view.frame.size.height-320)];
+    NSString *lStr = [NSString stringWithFormat:@"http://192.168.1.136/shop/html/%@/introduction.php",_Goodsid];
+    NSURL *lUrl = [[NSURL alloc]initWithString:lStr];
+    [self.view addSubview:lWebView];
+    [lWebView loadRequest:[NSURLRequest requestWithURL:lUrl]];
+
+}
+
+-(void)ClickWebViewButton:(UIButton *)sender{
+    switch (sender.tag) {
+        case 100:{
+            NSString *lStr = @"introduction.php";
+            NSString *lStr1 = [NSString stringWithFormat:@"http://%@/shop/html/%@/%@",GoodsIP,_Goodsid,lStr];
+            [lWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:lStr1]]];
+        }break;
+        case 101:{
+            NSString *lStr = @"specifications.php";
+            NSString *lStr1 = [NSString stringWithFormat:@"http://%@/shop/html/%@/%@",GoodsIP,_Goodsid,lStr];
+            [lWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:lStr1]]];
+        }break;
+        case 102:{
+            NSString *lStr = @"packinglist.php";
+            NSString *lStr1 = [NSString stringWithFormat:@"http://%@/shop/html/%@/%@",GoodsIP,_Goodsid,lStr];
+            [lWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:lStr1]]];
+        }break;
+        case 103:{
+            NSString *lStr = @"service.php";
+            NSString *lStr1 = [NSString stringWithFormat:@"http://%@/shop/html/%@/%@",GoodsIP,_Goodsid,lStr];
+            [lWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:lStr1]]];
+        }break;
+        }
+}
 @end
