@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface newaddress : UIViewController
+@interface newaddress : UIViewController<UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *shouhuoren;
+@property (weak, nonatomic) IBOutlet UITextField *address;
+@property (weak, nonatomic) IBOutlet UITextField *email;
+@property (weak, nonatomic) IBOutlet UITextField *tele;
+- (IBAction)defaultaddress:(UIButton *)sender;
+- (IBAction)save:(UIButton *)sender;
+- (IBAction)view:(UIControl *)sender;
 
 @end

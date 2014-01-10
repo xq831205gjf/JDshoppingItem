@@ -8,7 +8,7 @@
 
 #import "AllGoodsViewController.h"
 #import "CustomImageView.h"
-#import "CustomCell.h"
+
 #import "ParticularGoodsViewController.h"
 #import "UserInfoViewController.h"
 #import "LogonViewController.h"

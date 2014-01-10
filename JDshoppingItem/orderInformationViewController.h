@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface orderInformationViewController : UIViewController
+@interface orderInformationViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *userInfo;
 @property (weak, nonatomic) IBOutlet UIView *consigneeView;
 @property (weak, nonatomic) IBOutlet UIView *distributionView;

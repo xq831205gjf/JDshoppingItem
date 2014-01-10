@@ -8,6 +8,8 @@
 
 #import "shoppingcart.h"
 #import "orderInformationViewController.h"
+#import "shoppingcartcustomCell.h"
+
 @interface shoppingcart ()
 
 @end
@@ -16,6 +18,18 @@
     NSMutableArray *dataarray;
     UIView *lCustomView;
     
+}
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+        self.title=@"我的购物车";
+        //        UITabBarItem *lTabBarItem=[[UITabBarItem alloc]initWithTitle:@"我的购物车" image:nil tag:0];
+        //        [self setTabBarItem:lTabBarItem];
+        
+    }
+    return self;
 }
 
 - (void)viewDidLoad
@@ -77,7 +91,7 @@
     
     NSLog(@"结算");
     orderInformationViewController *orderInfo=[[orderInformationViewController alloc]init];
-    [self.tabBarController.navigationController pushViewController:orderInfo animated:YES];
+    [self.navigationController pushViewController:orderInfo animated:YES];
     
     
 }
@@ -105,12 +119,12 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    shoppingcartcustomCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell = [[shoppingcartcustomCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    cell.textLabel.text=[dataarray objectAtIndex:[indexPath row]];
-    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    //    cell.textLabel.text=[dataarray objectAtIndex:[indexPath row]];
+    //    cell.accessoryType = UITableViewCellAccessoryCheckmark;
     return cell;
 }
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -133,21 +147,22 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *oneCell = [tableView cellForRowAtIndexPath: indexPath];
-    if (oneCell.accessoryType == UITableViewCellAccessoryNone) {
-        
-        oneCell.accessoryType = UITableViewCellAccessoryCheckmark;
-        
-    } else{
-        
-        oneCell.accessoryType = UITableViewCellAccessoryNone;
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        //        [dataarray removeObjectAtIndex:[indexPath row]];
-        //        NSLog(@"%d",[indexPath row]);
-        //        [_MyTabeleView reloadData];
-        _lnumlabel.text=[NSString stringWithFormat:@"数量:%d",dataarray.count];
-        
-        
-    }
+    //    UITableViewCell *oneCell = [tableView cellForRowAtIndexPath: indexPath];
+    //    if (oneCell.accessoryType == UITableViewCellAccessoryNone) {
+    //
+    //        oneCell.accessoryType = UITableViewCellAccessoryCheckmark;
+    //
+    //    } else{
+    //
+    //        oneCell.accessoryType = UITableViewCellAccessoryNone;
+    //        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    //        //        [dataarray removeObjectAtIndex:[indexPath row]];
+    //        //        NSLog(@"%d",[indexPath row]);
+    //        //        [_MyTabeleView reloadData];
+    //        _lnumlabel.text=[NSString stringWithFormat:@"数量:%d",dataarray.count];
+    //
+    //        
+    //    }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 @end
