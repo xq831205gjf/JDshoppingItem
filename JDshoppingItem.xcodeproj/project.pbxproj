@@ -52,6 +52,8 @@
 		99A6EADD187F836A006A56D2 /* AllGoodsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99A6EAD9187F836A006A56D2 /* AllGoodsViewController.xib */; };
 		99A6EAE3187F8373006A56D2 /* CustomImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A6EADF187F8373006A56D2 /* CustomImageView.m */; };
 		99A6EAE5187F8373006A56D2 /* u=2966281458,1284875278&fm=21&gp=0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 99A6EAE2187F8373006A56D2 /* u=2966281458,1284875278&fm=21&gp=0.jpg */; };
+		99D810C5187F988F00A69205 /* SearchGoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99D810C3187F988F00A69205 /* SearchGoodsViewController.m */; };
+		99D810C6187F988F00A69205 /* SearchGoodsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99D810C4187F988F00A69205 /* SearchGoodsViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -122,6 +124,9 @@
 		99A6EADE187F8373006A56D2 /* CustomImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomImageView.h; sourceTree = "<group>"; };
 		99A6EADF187F8373006A56D2 /* CustomImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomImageView.m; sourceTree = "<group>"; };
 		99A6EAE2187F8373006A56D2 /* u=2966281458,1284875278&fm=21&gp=0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "u=2966281458,1284875278&fm=21&gp=0.jpg"; sourceTree = "<group>"; };
+		99D810C2187F988F00A69205 /* SearchGoodsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchGoodsViewController.h; sourceTree = "<group>"; };
+		99D810C3187F988F00A69205 /* SearchGoodsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchGoodsViewController.m; sourceTree = "<group>"; };
+		99D810C4187F988F00A69205 /* SearchGoodsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchGoodsViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +220,9 @@
 		10139713187BE8F200594D3A /* GoodsShowSystem */ = {
 			isa = PBXGroup;
 			children = (
+				99D810C2187F988F00A69205 /* SearchGoodsViewController.h */,
+				99D810C3187F988F00A69205 /* SearchGoodsViewController.m */,
+				99D810C4187F988F00A69205 /* SearchGoodsViewController.xib */,
 				99A6EAD4187F836A006A56D2 /* ParticularGoodsViewController.h */,
 				99A6EAD5187F836A006A56D2 /* ParticularGoodsViewController.m */,
 				99A6EAD6187F836A006A56D2 /* ParticularGoodsViewController.xib */,
@@ -372,6 +380,7 @@
 				10DCAA6B187F9698003E25B3 /* city.json in Resources */,
 				10DCAA6C187F9698003E25B3 /* check.png in Resources */,
 				10DCAA6D187F9698003E25B3 /* check@2x.png in Resources */,
+				99D810C6187F988F00A69205 /* SearchGoodsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,6 +411,7 @@
 				10DCAA5E187F9676003E25B3 /* orderInformationViewController.m in Sources */,
 				10DCAA60187F9676003E25B3 /* newaddress.m in Sources */,
 				10DCAA61187F9676003E25B3 /* CustomPickerView.m in Sources */,
+				99D810C5187F988F00A69205 /* SearchGoodsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
