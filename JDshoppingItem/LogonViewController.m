@@ -38,7 +38,6 @@
     TabBarViewController *allgood=[[TabBarViewController alloc]init];
     [self presentViewController:allgood animated:YES completion:nil];
 }
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

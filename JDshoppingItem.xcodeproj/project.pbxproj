@@ -189,12 +189,12 @@
 		10139712187BE74F00594D3A /* RegisterSystem */ = {
 			isa = PBXGroup;
 			children = (
-				1076E397187D37D600F296EB /* RegisterViewController.h */,
-				1076E398187D37D600F296EB /* RegisterViewController.m */,
-				1076E399187D37D600F296EB /* RegisterViewController.xib */,
 				1076E39C187D385200F296EB /* LogonViewController.h */,
 				1076E39D187D385200F296EB /* LogonViewController.m */,
 				1076E39E187D385200F296EB /* LogonViewController.xib */,
+				1076E397187D37D600F296EB /* RegisterViewController.h */,
+				1076E398187D37D600F296EB /* RegisterViewController.m */,
+				1076E399187D37D600F296EB /* RegisterViewController.xib */,
 			);
 			name = RegisterSystem;
 			sourceTree = "<group>";
