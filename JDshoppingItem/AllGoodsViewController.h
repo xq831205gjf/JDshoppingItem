@@ -14,6 +14,11 @@
     NSOperationQueue *lQueue;
     NSArray *lAllGoodsArray1;
     UITableView *lMainTableView;
+    
+    UIColor *lightBlue;
+    UIColor *lightOrange;
+    UIColor *paleGreen;
+    UIColor *hotPink;
 }
 
 @property(nonatomic,retain)UIScrollView *lScrollView;
