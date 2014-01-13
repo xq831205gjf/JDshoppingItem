@@ -14,6 +14,8 @@
     UIColor *paleGreen;
     UIColor *hotPink;
     UIWebView *lWebView;
+    
+    UIScrollView *lMainScrollView;
 }
 @property(nonatomic ,retain)NSString *Goodsid;
 @end

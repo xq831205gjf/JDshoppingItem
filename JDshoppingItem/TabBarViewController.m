@@ -9,7 +9,7 @@
 #import "TabBarViewController.h"
 #import "AllGoodsViewController.h"
 #import "shoppingcart.h"
-
+#import "SearchGoodsViewController.h"
 
 @interface TabBarViewController ()
 
@@ -33,12 +33,12 @@
     UINavigationController *lAllGoodsNVC = [[UINavigationController alloc]initWithRootViewController:lAllGoodsVC];
     
     shoppingcart *lShopVC = [[shoppingcart alloc]init];
-//    UITabBarItem *lTabBarItem=[[UITabBarItem alloc]initWithTabBarSystemItem:UITabBarSystemItemBookmarks tag:0];
-//    [lShopVC setTabBarItem:lTabBarItem];
     UINavigationController *lShopNVC = [[UINavigationController alloc]initWithRootViewController:lShopVC];
     
+    SearchGoodsViewController *lSearchGoodsView = [[SearchGoodsViewController alloc]init];
+    UINavigationController *lSearchGoodsNVC = [[UINavigationController alloc]initWithRootViewController:lSearchGoodsView];
     
-    NSArray *Items = @[lAllGoodsNVC,lShopNVC];
+    NSArray *Items = @[lAllGoodsNVC,lSearchGoodsNVC,lShopNVC,];
     [self setViewControllers:Items animated:YES];
     
     
