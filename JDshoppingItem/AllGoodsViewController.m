@@ -66,7 +66,6 @@
     self.navigationItem.rightBarButtonItem = lRightButtonItem;
     
     [self.view addSubview:lMainScrollView];
-    self.tabBarController.navigationController.title = @"首页";
 }
 -(void)ClickLeftBarButton:(UIBarButtonItem *)sender{
 //点击我的信息
@@ -77,11 +76,11 @@
 -(void)ClickRightBarButton:(UIBarButtonItem *)sender{
 //点击登陆
     LogonViewController *lLogonInfoVC = [[LogonViewController alloc]init];
-//    UINavigationController *lLogonInfoNVC = [[UINavigationController alloc]initWithRootViewController:lLogonInfoVC];
-//    [self presentViewController:lLogonInfoNVC animated:YES completion:nil];
     [self presentViewController:lLogonInfoVC animated:YES completion:nil];
 }
-
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    return @"所有商品";
+}
 -(void)CreatHotGoodsView{
     _lScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, 320, 200)];
     _lScrollView.backgroundColor = [UIColor whiteColor];
@@ -127,6 +126,7 @@
         lMainScrollView.contentSize = CGSizeMake(320, 220+100*lAllGoodsArray.count);
         lMainTableView.frame = CGRectMake(0, 220, 320, 100*lAllGoodsArray.count);
     }
+    [lMainTableView reloadData];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 100.00;
@@ -155,11 +155,13 @@
     return lCell;
 }
 
--(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSInteger row = [indexPath row];
     NSDictionary *lDic = [lAllGoodsArray1 objectAtIndex:row];
     NSString *lStr = [lDic objectForKey:@"goodsid"];
     ParticularGoodsViewController *lParticularGoodsViewController = [[ParticularGoodsViewController alloc]init];
+    
     lParticularGoodsViewController.Goodsid = lStr;
     [self.navigationController pushViewController:lParticularGoodsViewController animated:YES];
 }
@@ -229,7 +231,9 @@
     [NSURLConnection sendAsynchronousRequest:lRequest queue:lQueue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         NSDictionary *lHotGoodsDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSArray *lArray = [lHotGoodsDic objectForKey:@"msg"];
-        [self SetHotGoodsView:lArray];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [self SetHotGoodsView:lArray];
+        });
     }];
 }
 
@@ -268,7 +272,9 @@
             NSDictionary *lHotGoodsDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             NSDictionary *lDic = [lHotGoodsDic objectForKey:@"msg"];
             NSArray *lArray = [lDic objectForKey:@"infos"];
-            [self CreatAllGoodsViewArray:lArray];
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                [self CreatAllGoodsViewArray:lArray];
+            });
         }];
 }
 

@@ -39,6 +39,11 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
+    lMainScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, 320, 464)];
+    lMainScrollView.contentSize = CGSizeMake(320, 784);
+    [self.view addSubview:lMainScrollView];
+    
     UIBarButtonItem *lRightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"去购物车结算" style:UIBarButtonItemStyleDone target:self action:@selector(ClickRightBarButton:)];
     self.navigationItem.rightBarButtonItem = lRightBarButtonItem;
     [self CreatPurchaseView];
@@ -62,14 +67,15 @@
     [lConnection start];
     [NSURLConnection sendAsynchronousRequest:lRequest queue:lQueue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         NSDictionary *lHotGoodsDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-        NSLog(@"%@",lHotGoodsDic);
         NSDictionary *lDic = [lHotGoodsDic objectForKey:@"msg"];
-        [self CreatEvaluateLbael:lDic];
-        [self CreatSellLabel:lDic];
-        [self CreatSizeLabel:lDic];
-        [self CreatDetailLabel:lDic];
-        [self CreatPriceLabel:lDic];
-        [self CreatGoodsImageView:lDic];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [self CreatEvaluateLbael:lDic];
+            [self CreatSellLabel:lDic];
+            [self CreatSizeLabel:lDic];
+            [self CreatDetailLabel:lDic];
+            [self CreatPriceLabel:lDic];
+            [self CreatGoodsImageView:lDic];
+        });
     }];
 }
 -(void)CreatGoodsImageView:(NSDictionary *)lDic{
@@ -77,7 +83,7 @@
     lImageView.layer.borderColor = [UIColor blackColor].CGColor;
     lImageView.layer.borderWidth = 1;
     lImageView.layer.cornerRadius = 15;
-    [self.view addSubview:lImageView];
+    [lMainScrollView addSubview:lImageView];
     [self loadImage:lDic andImageView:lImageView];
 }
 
@@ -102,7 +108,7 @@
     [lLabel setText:lStr];
     lLabel.font = [UIFont systemFontOfSize:11];
     lLabel.numberOfLines = 0;
-    [self.view addSubview:lLabel];
+    [lMainScrollView addSubview:lLabel];
 }
 
 -(void)CreatSizeLabel:(NSDictionary *)lDic{
@@ -112,7 +118,7 @@
     [lLabel setText:lStr];
     lLabel.font = [UIFont systemFontOfSize:11];
     lLabel.numberOfLines = 0;
-    [self.view addSubview:lLabel];
+    [lMainScrollView addSubview:lLabel];
 }
 
 -(void)CreatPriceLabel:(NSDictionary *)lDic{
@@ -122,7 +128,7 @@
     [lLabel setText:lStr];
     lLabel.font = [UIFont systemFontOfSize:11];
     lLabel.numberOfLines = 0;
-    [self.view addSubview:lLabel];
+    [lMainScrollView addSubview:lLabel];
 }
 
 -(void)CreatSellLabel:(NSDictionary *)lDic{
@@ -132,52 +138,66 @@
     [lLabel setText:lStr];
     lLabel.font = [UIFont systemFontOfSize:11];
     lLabel.numberOfLines = 0;
-    [self.view addSubview:lLabel];
+    [lMainScrollView addSubview:lLabel];
 }
 -(void)CreatEvaluateLbael:(NSDictionary *)lDic{
     UILabel *lLabel = [[UILabel alloc]initWithFrame:CGRectMake(230, 130, 50, 25)];
     [lLabel setTextColor:[UIColor greenColor]];
-    NSString *lStr = [NSString stringWithFormat:@"评论数量:%@",[lDic objectForKey:@"reviewcount"]];
+    NSString *lStr = [NSString stringWithFormat:@"评论数量:%@",[lDic objectForKey:@"star"]];
     [lLabel setText:lStr];
     lLabel.font = [UIFont systemFontOfSize:11];
     lLabel.numberOfLines = 0;
-    [self.view addSubview:lLabel];
+    [lMainScrollView addSubview:lLabel];
 }
 -(void)CreatPurchaseView{
     
-    UIView *lPurchaseView = [[UIView alloc]initWithFrame:CGRectMake(0, 160, 320, 100)];
+    UIView *lPurchaseView = [[UIView alloc]initWithFrame:CGRectMake(0, 210, 320, 50)];
     [lPurchaseView setBackgroundColor:[UIColor colorWithRed:0 green:1 blue:1 alpha:1]];
-    [self.view addSubview:lPurchaseView];
+    [lMainScrollView addSubview:lPurchaseView];
     
-    UILabel *lCountNumber = [[UILabel alloc]initWithFrame:CGRectMake(10, 25, 80, 50)];
+    UILabel *lCountNumber = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 80, 50)];
     [lCountNumber setText:@"购买数量:"];
+    lCountNumber.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
     [lPurchaseView addSubview:lCountNumber];
     
-    UIButton *lSaleButton = [[UIButton alloc]initWithFrame:CGRectMake(90, 40, 30, 20)];
+    UIButton *lSaleButton = [[UIButton alloc]initWithFrame:CGRectMake(90, 15, 30, 20)];
     [lSaleButton setTitle:@"-" forState:UIControlStateNormal];
+    [lSaleButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [lPurchaseView addSubview:lSaleButton];
     
-    UILabel *lNumberLabel = [[UILabel alloc]initWithFrame:CGRectMake(120, 37.5, 30, 25)];
-    [lNumberLabel setText:@"0"];
+    UILabel *lNumberLabel = [[UILabel alloc]initWithFrame:CGRectMake(125, 12.5, 30, 25)];
+    [lNumberLabel setText:@"1"];
+    lNumberLabel.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
     [lPurchaseView addSubview:lNumberLabel];
     
-    UIButton *lPlusButton = [[UIButton alloc]initWithFrame:CGRectMake(150, 40, 30, 20)];
+    UIButton *lPlusButton = [[UIButton alloc]initWithFrame:CGRectMake(150, 15, 30, 20)];
     [lPlusButton setTitle:@"+" forState:UIControlStateNormal];
+    [lPlusButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [lPurchaseView addSubview:lPlusButton];
     
     UIButton *lShoppingCarButton = [[UIButton alloc]initWithFrame:CGRectMake(195, 5, 120, 40)];
     [lShoppingCarButton setTitle:@"添加到购物车" forState:UIControlStateNormal];
+    [lShoppingCarButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [lShoppingCarButton addTarget:self action:@selector(ClickShoppingCarButton:) forControlEvents:UIControlEventTouchUpInside];
     [lPurchaseView addSubview:lShoppingCarButton];
-    
-    UIButton *lCollectButton = [[UIButton alloc]initWithFrame:CGRectMake(195, 55, 120, 40)];
-    [lCollectButton setTitle:@"添加到收藏夹" forState:UIControlStateNormal];
-    [lPurchaseView addSubview:lCollectButton];
+}
+-(void)ClickSaleButton:(UIButton *)sender{
+
 }
 
+-(void)ClickPlusButton:(UIButton *)sender{
+
+}
+-(void)ClickShoppingCarButton:(UIButton *)sender{
+//点击添加到购物车
+}
+-(void)ClickCollectButton:(UIButton *)sender{
+//点击添加到收藏夹
+}
 -(void)CreatWebViewButtonView{
     UIView *lWebViewButtonView = [[UIView alloc]initWithFrame:CGRectMake(0, 260, 320, 60)];
     [lWebViewButtonView setBackgroundColor:[UIColor whiteColor]];
-    [self.view addSubview:lWebViewButtonView];
+    [lMainScrollView addSubview:lWebViewButtonView];
     
     NSArray *lArray = [[NSArray alloc]initWithObjects:@"商品介绍",@"详细参数",@"包装清单",@"售后服务", nil];
     for (int i = 0; i<lArray.count; i++) {
@@ -193,12 +213,11 @@
 }
 
 -(void)CreatWebView{
-    lWebView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 320, 320, self.view.frame.size.height-320)];
-    NSString *lStr = [NSString stringWithFormat:@"http://192.168.1.136/shop/html/%@/introduction.php",_Goodsid];
+    lWebView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 320, 320, 464)];
+    NSString *lStr = [NSString stringWithFormat:@"http://%@/shop/html/%@/introduction.php",GoodsIP,_Goodsid];
     NSURL *lUrl = [[NSURL alloc]initWithString:lStr];
-    [self.view addSubview:lWebView];
     [lWebView loadRequest:[NSURLRequest requestWithURL:lUrl]];
-
+    [lMainScrollView addSubview:lWebView];
 }
 
 -(void)ClickWebViewButton:(UIButton *)sender{
