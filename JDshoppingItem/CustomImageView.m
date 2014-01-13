@@ -15,30 +15,34 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        lLabel1 = [[UILabel alloc]initWithFrame:CGRectMake(150, 0, 40, 130)];
-        [lLabel1 setText:@"热门商品"];
-        lLabel1.numberOfLines = 0;
-        lLabel1.font = [UIFont systemFontOfSize:25];
-        [self addSubview:lLabel1];
+        UIView *lView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 20)];
+        [lView setBackgroundColor:[UIColor blueColor]];
+        lView.layer.cornerRadius = 3;
+        [self addSubview:lView];
+        
+        UILabel *lLabel2 = [[UILabel alloc]initWithFrame:CGRectMake(133, 0, 200, 20)];
+        [lLabel2 setText:@"热销商品"];
+        lLabel2.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+        lLabel2.font = [UIFont systemFontOfSize:12];
+        [lLabel2 setTextColor:[UIColor whiteColor]];
+        [lView addSubview:lLabel2];
     }
     return self;
 }
 
 -(void)SetBackGroundImage1:(UIImage *)image{
     UIImageView *lImageView = [[UIImageView alloc]initWithImage:image];
-    [lImageView setFrame:CGRectMake(0, 0, 160, 140)];
+    [lImageView setFrame:CGRectMake(0, 20, 160, 120)];
     [lImageView setClipsToBounds:YES];
     [lImageView setContentMode:UIViewContentModeScaleAspectFit];
     [self addSubview:lImageView];
-    [self bringSubviewToFront:lLabel1];
 }
 -(void)SetBackGroundImage2:(UIImage *)image{
     UIImageView *lImageView = [[UIImageView alloc]initWithImage:image];
-    [lImageView setFrame:CGRectMake(160, 0, 160, 140)];
+    [lImageView setFrame:CGRectMake(160, 20, 160, 120)];
     [lImageView setClipsToBounds:YES];
     [lImageView setContentMode:UIViewContentModeScaleAspectFit];
     [self addSubview:lImageView];
-    [self bringSubviewToFront:lLabel1];
 }
 
 -(void)SetPriceLabel1:(NSString *)price{
@@ -47,7 +51,6 @@
     [lLabel setText:lStr];
     [lLabel setTextColor:[UIColor redColor]];
     [self addSubview:lLabel];
-    [self bringSubviewToFront:lLabel1];
 }
 
 -(void)SetPriceLabel2:(NSString *)price{
@@ -56,7 +59,6 @@
     [lLabel setText:lStr];
     [lLabel setTextColor:[UIColor redColor]];
     [self addSubview:lLabel];
-    [self bringSubviewToFront:lLabel1];
 }
 
 -(void)SetGoodsName1:(NSString *)goodsName{
@@ -65,7 +67,6 @@
     lLabel.numberOfLines = 0;
     [lLabel setText:goodsName];
     [self addSubview:lLabel];
-    [self bringSubviewToFront:lLabel1];
 }
 
 -(void)SetGoodsName2:(NSString *)goodsName{
@@ -74,6 +75,5 @@
     lLabel.numberOfLines = 0;
     [lLabel setText:goodsName];
     [self addSubview:lLabel];
-    [self bringSubviewToFront:lLabel1];
 }
 @end

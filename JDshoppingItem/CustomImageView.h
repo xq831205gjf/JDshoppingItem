@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface CustomImageView : UIView{
-    UILabel *lLabel1;
 }
 -(void)SetBackGroundImage1:(UIImage *)image;
 -(void)SetBackGroundImage2:(UIImage *)image;
