@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UIView *distributionView;
 @property (weak, nonatomic) IBOutlet UIView *goodsViews;
 @property (weak, nonatomic) IBOutlet UIView *payView;
+@property (weak, nonatomic) IBOutlet UILabel *zongjine;
 
 @end

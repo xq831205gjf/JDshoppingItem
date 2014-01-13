@@ -20,6 +20,8 @@
 		1013970A187BE6E200594D3A /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10139708187BE6E200594D3A /* ViewController.xib */; };
 		10139711187BE71200594D3A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10139710187BE71200594D3A /* QuartzCore.framework */; };
 		10139719187BEEF600594D3A /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10139718187BEEF600594D3A /* TabBarViewController.m */; };
+		103FA59D1883872B00F02E78 /* submitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 103FA59B1883872B00F02E78 /* submitViewController.m */; };
+		103FA59E1883872B00F02E78 /* submitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 103FA59C1883872B00F02E78 /* submitViewController.xib */; };
 		1076E39A187D37D600F296EB /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1076E398187D37D600F296EB /* RegisterViewController.m */; };
 		1076E39B187D37D600F296EB /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1076E399187D37D600F296EB /* RegisterViewController.xib */; };
 		1076E39F187D385200F296EB /* LogonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1076E39D187D385200F296EB /* LogonViewController.m */; };
@@ -76,6 +78,9 @@
 		10139710187BE71200594D3A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		10139717187BEEF600594D3A /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
 		10139718187BEEF600594D3A /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
+		103FA59A1883872B00F02E78 /* submitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = submitViewController.h; sourceTree = "<group>"; };
+		103FA59B1883872B00F02E78 /* submitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = submitViewController.m; sourceTree = "<group>"; };
+		103FA59C1883872B00F02E78 /* submitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = submitViewController.xib; sourceTree = "<group>"; };
 		1076E397187D37D600F296EB /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		1076E398187D37D600F296EB /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		1076E399187D37D600F296EB /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
@@ -237,20 +242,23 @@
 		10139714187BE91800594D3A /* ShoppingCarSystem */ = {
 			isa = PBXGroup;
 			children = (
-				10DCAA63187F9683003E25B3 /* ShoppingCarResource */,
-				10DCAA4E187F9676003E25B3 /* shoppingcartcustomCell.h */,
-				10DCAA4F187F9676003E25B3 /* shoppingcartcustomCell.m */,
 				10DCAA50187F9676003E25B3 /* shoppingcart.h */,
 				10DCAA51187F9676003E25B3 /* shoppingcart.m */,
+				10DCAA4E187F9676003E25B3 /* shoppingcartcustomCell.h */,
+				10DCAA4F187F9676003E25B3 /* shoppingcartcustomCell.m */,
 				10DCAA52187F9676003E25B3 /* shoppingcart.xib */,
 				10DCAA53187F9676003E25B3 /* orderInformationViewController.h */,
 				10DCAA54187F9676003E25B3 /* orderInformationViewController.m */,
 				10DCAA55187F9676003E25B3 /* orderInformationViewController.xib */,
+				103FA59A1883872B00F02E78 /* submitViewController.h */,
+				103FA59B1883872B00F02E78 /* submitViewController.m */,
+				103FA59C1883872B00F02E78 /* submitViewController.xib */,
 				10DCAA56187F9676003E25B3 /* newaddress.h */,
 				10DCAA57187F9676003E25B3 /* newaddress.m */,
 				10DCAA58187F9676003E25B3 /* CustomPickerView.h */,
 				10DCAA59187F9676003E25B3 /* CustomPickerView.m */,
 				10DCAA5A187F9676003E25B3 /* newaddress.xib */,
+				10DCAA63187F9683003E25B3 /* ShoppingCarResource */,
 			);
 			name = ShoppingCarSystem;
 			sourceTree = "<group>";
@@ -381,6 +389,7 @@
 				10DCAA6C187F9698003E25B3 /* check.png in Resources */,
 				10DCAA6D187F9698003E25B3 /* check@2x.png in Resources */,
 				99D810C6187F988F00A69205 /* SearchGoodsViewController.xib in Resources */,
+				103FA59E1883872B00F02E78 /* submitViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +421,7 @@
 				10DCAA60187F9676003E25B3 /* newaddress.m in Sources */,
 				10DCAA61187F9676003E25B3 /* CustomPickerView.m in Sources */,
 				99D810C5187F988F00A69205 /* SearchGoodsViewController.m in Sources */,
+				103FA59D1883872B00F02E78 /* submitViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

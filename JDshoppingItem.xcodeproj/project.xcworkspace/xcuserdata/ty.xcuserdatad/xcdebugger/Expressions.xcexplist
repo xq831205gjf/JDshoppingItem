@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[newaddress settext1:]:newaddress.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.lString">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[newaddress viewDidLoad]:newaddress.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.lString">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[newaddress lbutton:]:newaddress.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.lString">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

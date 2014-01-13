@@ -15,8 +15,10 @@
 @end
 
 @implementation shoppingcart{
+    NSDictionary *dataDic1;
     NSMutableArray *dataarray;
     UIView *lCustomView;
+    NSString *cartID;
     
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -35,45 +37,67 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    dataarray=[[NSMutableArray alloc]init];
+    dataDic1=[[NSDictionary alloc]init];
+    [self setdata];
+    [self customViewLoad];
     self.MyTabeleView.dataSource=self;
     self.MyTabeleView.delegate=self;
     self.tabBarController.title=@"我的购物车";
-    dataarray=[[NSMutableArray alloc]initWithObjects:@"信臻哥考本科",@"七月的尾巴你也是狮子座",@"八月份的前凑你是狮子座", nil];
-    [self customViewLoad];
-    
-	// Do any additional setup after loading the view, typically from a nib.
+        // Do any additional setup after loading the view, typically from a nib.
 }
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-#pragma mark - userInfo
--(void)userinfoView{
-    
-    
+-(void)viewDidAppear:(BOOL)animated{
+    [dataarray removeAllObjects];
+    animated=YES;
+    [self setdata];
+    [self customViewLoad];
+    self.MyTabeleView.dataSource=self;
+    self.MyTabeleView.delegate=self;
+
+}
+#pragma mark - userdata
+-(void)setdata{
+ //同步
+    NSURL *lURL=[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/shop/getcart.php",GoodsIP]];
+    NSString *userInfo=[NSString stringWithFormat:@"customerid=%d",20];
+    NSMutableURLRequest *lRequest=[NSMutableURLRequest requestWithURL:lURL];
+    [lRequest setHTTPMethod:@"post"];
+    [lRequest setHTTPBody:[userInfo dataUsingEncoding:NSUTF8StringEncoding]];
+    NSData*data=  [NSURLConnection sendSynchronousRequest:lRequest returningResponse:nil error:nil];
+    NSDictionary *lDic=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+//    NSLog(@"%@",lDic);
+    NSDictionary *lDic1=[lDic objectForKey:@"msg"];
+    NSArray *arr=[lDic1 objectForKey:@"info"];
+    for (int i=0; i<arr.count; i++) {
+    NSDictionary *ldic=[arr objectAtIndex:i];
+    [dataarray addObject:ldic];
+//    NSLog(@"ldi%@",ldic);
+      
+        
+}
+//    NSLog(@"dataarray:%@",dataarray);
+    dataDic1=[lDic1 objectForKey:@"count"];
+//    NSLog(@"datadic:%@",dataDic1);
 }
 #pragma mark - customView
 -(void)customViewLoad{
     lCustomView=[[UIView alloc]initWithFrame:CGRectMake(0, 90, 320,50)];
     [lCustomView setBackgroundColor:[UIColor whiteColor]];
-    //    [lCustomView setAlpha:0.5];
     [self.view addSubview:lCustomView];
-    //    UIImageView *lImageView=[[UIImageView alloc]initWithFrame:CGRectMake(20, 5, 50, 40)];
-    //    lImageView.userInteractionEnabled=YES;
-    //    [lImageView setImage:[UIImage imageNamed:@"title_back.png"]];
-    //    UITapGestureRecognizer *lTap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(lTap:)];
-    //    [lImageView addGestureRecognizer:lTap];
-    //    [lCustomView addSubview:lImageView];
-    _lnumlabel=[[UILabel alloc]initWithFrame:CGRectMake(100, 2.5, 100, 20)];
+        _lnumlabel=[[UILabel alloc]initWithFrame:CGRectMake(100, 2.5, 100, 20)];
     [lCustomView addSubview:_lnumlabel];
-    _lnumlabel1=[[UILabel alloc]initWithFrame:CGRectMake(100, 22.5, 100, 20)];
+    _lnumlabel1=[[UILabel alloc]initWithFrame:CGRectMake(50, 22.5, 200, 20)];
     [lCustomView addSubview:_lnumlabel1];
     _lnumlabel.text=[NSString stringWithFormat:@"数量:%d",dataarray.count];
     [_lnumlabel setBackgroundColor:[UIColor clearColor]];
     _lnumlabel.textAlignment=NSTextAlignmentCenter;
     
-    _lnumlabel1.text=[NSString stringWithFormat:@"总价:%d",5];
+    _lnumlabel1.text=[NSString stringWithFormat:@"总价:%@",[[dataarray lastObject]objectForKey:@"amount"]];
     [_lnumlabel1 setBackgroundColor:[UIColor clearColor]];
     _lnumlabel1.textAlignment=NSTextAlignmentCenter;
     
@@ -91,6 +115,7 @@
     
     NSLog(@"结算");
     orderInformationViewController *orderInfo=[[orderInformationViewController alloc]init];
+    orderInfo.title=@"核对订单";
     [self.navigationController pushViewController:orderInfo animated:YES];
     
     
@@ -113,8 +138,9 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
+//     NSLog(@"aa:%d",dataarray.count);
     return dataarray.count;
+   
     
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -123,46 +149,65 @@
     if (cell == nil) {
         cell = [[shoppingcartcustomCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    //    cell.textLabel.text=[dataarray objectAtIndex:[indexPath row]];
-    //    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    NSDictionary *lDic=[dataarray objectAtIndex:[indexPath row]];
+//    NSLog(@"asdasd:%@",lDic);
+    
+    NSURL *lURL=[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/shop/goodsimage/%@",GoodsIP,[lDic objectForKey:@"headerimage"]]];
+    NSString *userInfo=[NSString stringWithFormat:@"customerid=%d",20];
+    NSMutableURLRequest *lRequest=[NSMutableURLRequest requestWithURL:lURL];
+    [lRequest setHTTPMethod:@"post"];
+    [lRequest setHTTPBody:[userInfo dataUsingEncoding:NSUTF8StringEncoding]];
+    NSOperationQueue *asd=[[NSOperationQueue alloc]init];
+    [NSURLConnection sendAsynchronousRequest:lRequest queue:asd completionHandler:^(NSURLResponse *response,NSData *data, NSError *error){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            cell.goodsHeadImage.image=[UIImage imageWithData:data];
+        });
+        
+    }
+     ];
+    
+    cell.goodsName.text=[lDic objectForKey:@"name"];
+    cell.goodsPrice.text=[lDic objectForKey:@"price"];
+    cell.goodsSzie.text=[lDic objectForKey:@"size"];
+    cell.goodsColor.text=[lDic objectForKey:@"color"];
+    
     return cell;
 }
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"%D",[indexPath row]);
+    NSDictionary *ldic= [dataarray objectAtIndex:[indexPath row]];
+    cartID=[[NSString alloc]initWithString:[ldic objectForKey:@"cartid"]];
     return @"删除";
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [dataarray removeObjectAtIndex:[indexPath row]];
-        //        [_MyTabeleView reloadData];
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath ] withRowAnimation:UITableViewRowAnimationAutomatic];
+//        [_MyTabeleView reloadData];
+//        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath ] withRowAnimation:UITableViewRowAnimationAutomatic];
         
+        [self deletedata];
+       
     }
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         
     }
 }
-
+-(void)deletedata{
+    NSURL *lURL=[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/shop/deletecart.php",GoodsIP]];
+    NSString *userInfo=[NSString stringWithFormat:@"cartid=%@",cartID];
+    NSMutableURLRequest *lRequest=[NSMutableURLRequest requestWithURL:lURL];
+    [lRequest setHTTPMethod:@"post"];
+    [lRequest setHTTPBody:[userInfo dataUsingEncoding:NSUTF8StringEncoding]];
+//    NSData*data=  [NSURLConnection sendSynchronousRequest:lRequest returningResponse:nil error:nil];
+//    NSLog(@"aa%@",data);
+    [self setdata];
+    [_MyTabeleView reloadData];
+}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    //    UITableViewCell *oneCell = [tableView cellForRowAtIndexPath: indexPath];
-    //    if (oneCell.accessoryType == UITableViewCellAccessoryNone) {
-    //
-    //        oneCell.accessoryType = UITableViewCellAccessoryCheckmark;
-    //
-    //    } else{
-    //
-    //        oneCell.accessoryType = UITableViewCellAccessoryNone;
-    //        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    //        //        [dataarray removeObjectAtIndex:[indexPath row]];
-    //        //        NSLog(@"%d",[indexPath row]);
-    //        //        [_MyTabeleView reloadData];
-    //        _lnumlabel.text=[NSString stringWithFormat:@"数量:%d",dataarray.count];
-    //
-    //        
-    //    }
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 @end
