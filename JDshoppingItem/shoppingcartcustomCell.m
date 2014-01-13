@@ -37,16 +37,19 @@
 
         _goodsName =[[UILabel alloc]initWithFrame:CGRectMake(80, 0, 80, 50)];
         _goodsName.text=@"商品名字";
-//        _goodsName.font=[UIFont fontWithName:@"Arial" size:15];
+        _goodsName.font=[UIFont fontWithName:@"Arial" size:12];
         [self.contentView addSubview:_goodsName];
         _goodsPrice =[[UILabel alloc]initWithFrame:CGRectMake(165, 0, 45, 50)];
+        _goodsPrice.font=[UIFont fontWithName:@"Arial" size:12];
         _goodsPrice.text=@"价格";
         [self.contentView addSubview:_goodsPrice];
         _goodsColor =[[UILabel alloc]initWithFrame:CGRectMake(215, 0, 40, 50)];
         _goodsColor.text=@"颜色";
+         _goodsColor.font=[UIFont fontWithName:@"Arial" size:12];
         [self.contentView addSubview:_goodsColor];
         _goodsSzie =[[UILabel alloc]initWithFrame:CGRectMake(260, 0, 50, 50)];
         _goodsSzie.text=@"型号";
+         _goodsSzie.font=[UIFont fontWithName:@"Arial" size:12];
         [self.contentView addSubview:_goodsSzie];
         
     }

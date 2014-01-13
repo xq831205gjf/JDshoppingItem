@@ -1,5 +1,6 @@
 #import "orderInformationViewController.h"
 #import "newaddress.h"
+#import "submitViewController.h"
 
 @interface orderInformationViewController ()
 
@@ -25,21 +26,40 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setdata];
     [self viewLoad];
-    
+    _zongjine.text=[NSString stringWithFormat:@"总金额：%d",5];
     // Do any additional setup after loading the view from its nib.
     self.payView.layer.borderWidth=1.0;
     self.goodsViews.layer.borderWidth=1.0;
     //    self.consigneeView.layer.borderWidth=1.0;
     self.distributionView.layer.borderWidth=1.0;
-    dataarray=[[NSMutableArray alloc]initWithObjects:@"添加新地址",@"重庆市渝中区", nil];
-    
+    dataarray=[[NSMutableArray alloc]initWithObjects:@"添加新地址", nil];
+        
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+-(void)setdata{
+    NSURL *lURL=[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/shop/getaddress.php",GoodsIP]];
+    NSString *checkemail=[NSString stringWithFormat:@"customerid=%d",3];
+    NSMutableURLRequest *lRequest=[NSMutableURLRequest requestWithURL:lURL];
+    [lRequest setHTTPMethod:@"post"];
+    [lRequest setHTTPBody:[checkemail dataUsingEncoding:NSUTF8StringEncoding]];
+//    NSOperationQueue *aa=[[NSOperationQueue alloc]init];
+    NSData*data=  [NSURLConnection sendSynchronousRequest:lRequest returningResponse:nil error:nil];
+    NSDictionary *lDic=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+    NSLog(@"%@",lDic);
+//    NSDictionary *lDic1=[lDic objectForKey:@"msg"];
+//    NSArray *arr=[lDic1 objectForKey:@"info"];
+//    for (int i=0; i<arr.count; i++) {
+//        NSDictionary *ldic=[arr objectAtIndex:i];
+//        [dataarray addObject:ldic];
+//}
+//    NSLog(@"%@",dataarray);
 }
 -(void)viewLoad{
     
@@ -84,8 +104,29 @@
 }
 #pragma mark - Button
 -(void)lButton:(UIButton *)sender{
+    [self addoder];
     NSLog(@"提交订单");
+    submitViewController *lSub=[[submitViewController alloc]init];
+    [self.navigationController pushViewController:lSub animated:YES];
     
+}
+-(void)addoder{
+    NSURL *lURL=[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/shop/addorder.php",GoodsIP]];
+    NSString *userInfo=[NSString stringWithFormat:@"customerid=%d&addressid=%d&cartids[0]=%@",3,3,dataarray];
+    NSMutableURLRequest *lRequest=[NSMutableURLRequest requestWithURL:lURL];
+    [lRequest setHTTPMethod:@"post"];
+    [lRequest setHTTPBody:[userInfo dataUsingEncoding:NSUTF8StringEncoding]];
+    NSOperationQueue *aa=[[NSOperationQueue alloc]init];
+    [NSURLConnection sendAsynchronousRequest:lRequest queue:aa completionHandler:^(NSURLResponse *response,NSData *data, NSError *error){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            NSString *aaa=[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+            NSLog(@"adas:%@",aaa);
+                        
+        });
+        
+    }
+     ];
 }
 -(void)lBtuuon:(UIButton *)sender{
     switch (sender.tag) {
@@ -140,7 +181,12 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
+//    if ([indexPath row]==0) {
+//        cell.textLabel.text=@"添加新地址";
+//    }else{
     cell.textLabel.text=[dataarray objectAtIndex:[indexPath row]];
+    
+//    }
     
     return cell;
     
@@ -160,6 +206,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [dataarray removeObjectAtIndex:[indexPath row]];
+        [self deleteaddress];
         //        [_MyTabeleView reloadData];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath ] withRowAnimation:UITableViewRowAnimationAutomatic];
         
@@ -168,12 +215,27 @@
         
     }
 }
+-(void)deleteaddress{
+    NSURL *lURL=[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/shop/deleteaddress.php",GoodsIP]];
+    NSString *userInfo=[NSString stringWithFormat:@"addressed=%d",3];
+    NSMutableURLRequest *lRequest=[NSMutableURLRequest requestWithURL:lURL];
+    [lRequest setHTTPMethod:@"post"];
+    [lRequest setHTTPBody:[userInfo dataUsingEncoding:NSUTF8StringEncoding]];
+    NSData*data=[NSURLConnection sendSynchronousRequest:lRequest returningResponse:nil error:nil];
+    
+
+}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    newaddress *lNewaddress=[[newaddress alloc]init];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if ([indexPath row]==0) {
-        
-        newaddress *lNewaddress=[[newaddress alloc]init];
+        lNewaddress.title=@"添加新地址";
         [self.navigationController pushViewController:lNewaddress animated:YES];
+    }else{
+    
+    lNewaddress.title=@"修改地址";
+    [self.navigationController pushViewController:lNewaddress animated:YES];
+    
     }
     
     

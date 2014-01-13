@@ -98,7 +98,7 @@
     return myView;
 }
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
-    newaddress *lNewAddress=[[newaddress alloc]init];
+//    newaddress *lNewAddress=[[newaddress alloc]init];
     if (component == 0) {
          NSLog(@"%d",row);
         NSDictionary* Dic=[[NSDictionary alloc]initWithDictionary:[CityCount objectAtIndex:row]];
@@ -114,17 +114,21 @@
          }
         [self reloadAllComponents];
 //        [lNewAddress settext1:[[CityCount objectAtIndex:row] objectForKey:@"省"]];
-        lNewAddress.lString=[[CityCount objectAtIndex:row] objectForKey:@"省"];
+        _lString=[[CityCount objectAtIndex:row] objectForKey:@"省"];
+         [_ldelegate customViewByDelete:_lString ];
+//        lNewAddress.lString=[[CityCount objectAtIndex:row] objectForKey:@"省"];
     }else{
         if(cityarr) {
-            [lNewAddress settext2:[cityarr objectAtIndex:row] ];
+//            [lNewAddress settext2:[cityarr objectAtIndex:row] ];
+            _lString1=[cityarr objectAtIndex:row];
+            [_ldelegate customViewByString:_lString1 ];
+
            }
        
 }
     
 
 }
-
 
 
 @end

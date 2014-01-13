@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface newaddress : UIViewController<UITextFieldDelegate>
+#import "CustomImageView.h"
+@interface newaddress : UIViewController<UITextFieldDelegate,UIPickerViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *shouhuoren;
 @property (weak, nonatomic) IBOutlet UITextField *address;
 @property (weak, nonatomic) IBOutlet UITextField *email;
@@ -16,10 +16,10 @@
 - (IBAction)defaultaddress:(UIButton *)sender;
 - (IBAction)save:(UIButton *)sender;
 - (IBAction)view:(UIControl *)sender;
--(void)settext1:(NSString *)text1 ;
--(void)settext2:(NSString *)text2 ;
-@property(nonatomic ,strong)NSString *lString;
-@property(nonatomic ,strong)NSString *lString1;
+//-(void)settext1:(NSString *)text1 ;
+//-(void)settext2:(NSString *)text2 ;
+@property(nonatomic ,retain)NSString *lString;
+@property(nonatomic ,retain)NSString *lString1;
 
 
 @end
