@@ -229,7 +229,6 @@
 		10139714187BE91800594D3A /* ShoppingCarSystem */ = {
 			isa = PBXGroup;
 			children = (
-				10DCAA63187F9683003E25B3 /* ShoppingCarResource */,
 				10DCAA4E187F9676003E25B3 /* shoppingcartcustomCell.h */,
 				10DCAA4F187F9676003E25B3 /* shoppingcartcustomCell.m */,
 				10DCAA50187F9676003E25B3 /* shoppingcart.h */,
@@ -243,6 +242,7 @@
 				10DCAA58187F9676003E25B3 /* CustomPickerView.h */,
 				10DCAA59187F9676003E25B3 /* CustomPickerView.m */,
 				10DCAA5A187F9676003E25B3 /* newaddress.xib */,
+				10DCAA63187F9683003E25B3 /* ShoppingCarResource */,
 			);
 			name = ShoppingCarSystem;
 			sourceTree = "<group>";

@@ -13,7 +13,11 @@
 
 @end
 
-@implementation newaddress
+@implementation newaddress{
+
+//    NSString *lString;
+//    NSString *lString1;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+//    self.lString=@"1111";
     // Do any additional setup after loading the view from its nib.
     _shouhuoren.delegate=self;
     _address.delegate=self;
@@ -35,8 +40,18 @@
     _address.autocapitalizationType=UITextAutocorrectionTypeYes;
 //    _email.autocapitalizationType=UITextAutocorrectionTypeYes;
     _shouhuoren.autocapitalizationType=UITextAutocorrectionTypeYes;
-    CustomPickerView *lPickerView=[[CustomPickerView alloc]initWithFrame:CGRectMake(0, 0, 320, 200)];
-    _address.inputView=lPickerView;
+    
+    UIView *lView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 220)];
+    
+    CustomPickerView *lPickerView=[[CustomPickerView alloc]initWithFrame:CGRectMake(0, 40, 320, 200)];
+    UIButton *lButton=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [lButton setFrame:CGRectMake(260, 0, 60, 40)];
+    [lButton setTitle:@"完成" forState:UIControlStateNormal];
+    [lButton addTarget:self action:@selector(lbutton:) forControlEvents:UIControlEventTouchUpInside];
+    [lView addSubview:lButton];
+    [lView addSubview:lPickerView];
+    _address.inputView=lView;
+
     
 }
 
@@ -46,6 +61,14 @@
     // Dispose of any resources that can be recreated.
 }
 #pragma mark - Button
+-(void)lbutton:(UIButton *)sender{
+    
+    NSLog(@"完成");
+//    _address.text=;
+    NSLog(@"1%@",self.lString);
+      [_address resignFirstResponder];
+}
+
 - (IBAction)defaultaddress:(UIButton *)sender {
  NSLog(@"defaultaddress");
 }
@@ -94,5 +117,19 @@
         
     }];
     return YES;
+}
+-(void)settext2:(NSString *)text2{
+    self.lString1 =[[NSString alloc]initWithString:text2];
+//      NSLog(@"2%@",lString1);
+
+
+}
+-(void)settext1:(NSString *)text1{
+//    NSString *lstingText = text1;
+//    NSLog(@"%@",lstingText);
+//    _address.text = @"hello";
+     self.lString = @"hello";
+    NSLog(@"11%@",self.lString);
+    
 }
 @end

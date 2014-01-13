@@ -16,5 +16,10 @@
 - (IBAction)defaultaddress:(UIButton *)sender;
 - (IBAction)save:(UIButton *)sender;
 - (IBAction)view:(UIControl *)sender;
+-(void)settext1:(NSString *)text1 ;
+-(void)settext2:(NSString *)text2 ;
+@property(nonatomic ,strong)NSString *lString;
+@property(nonatomic ,strong)NSString *lString1;
+
 
 @end
