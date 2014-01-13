@@ -77,8 +77,9 @@
 -(void)ClickRightBarButton:(UIBarButtonItem *)sender{
 //点击登陆
     LogonViewController *lLogonInfoVC = [[LogonViewController alloc]init];
-    UINavigationController *lLogonInfoNVC = [[UINavigationController alloc]initWithRootViewController:lLogonInfoVC];
-    [self presentViewController:lLogonInfoNVC animated:YES completion:nil];
+//    UINavigationController *lLogonInfoNVC = [[UINavigationController alloc]initWithRootViewController:lLogonInfoVC];
+//    [self presentViewController:lLogonInfoNVC animated:YES completion:nil];
+    [self presentViewController:lLogonInfoVC animated:YES completion:nil];
 }
 
 -(void)CreatHotGoodsView{
