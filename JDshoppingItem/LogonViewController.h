@@ -8,6 +8,10 @@
 
 #import "ViewController.h"
 
-@interface LogonViewController : ViewController
+@interface LogonViewController : ViewController<NSURLConnectionDataDelegate>{
+    NSMutableData *ldata;
+}
 
+@property(nonatomic,copy) UITextField *lUserTextFied;
+@property(nonatomic,copy) UITextField *lPassWordTextFied;
 @end

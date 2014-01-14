@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SearchGoodsViewController : UIViewController
+@interface SearchGoodsViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,UISearchDisplayDelegate>{
+    UIColor *lightBlue;
+    UIColor *lightOrange;
+    UIColor *paleGreen;
+    UIColor *hotPink;
+    
+    NSArray *lInfoArray;
+}
 
 @end
