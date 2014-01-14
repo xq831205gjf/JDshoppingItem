@@ -16,6 +16,10 @@
 
 @implementation RegisterViewController{
     BOOL markForUser;
+    NSArray *lCheckArray;
+    NSArray *lnameOfTextfield;
+    BOOL IsCheckTextfield;
+    int remenmberTag;
 }
 
 
@@ -32,6 +36,13 @@
 {
     [super viewDidLoad];
     ldata = [[NSMutableData alloc]init];
+    _nameText.delegate=self;
+    _passwordText.delegate=self;
+    _endPassWordText.delegate = self;
+    _emailText.delegate=self;
+    _telephoneText.delegate=self;
+    lCheckArray = @[@"checkname",@"checkpassword",@"checkemail",@"checktelephone"];
+    lnameOfTextfield = @[@"name",@"password",@"email",@"telephone"];
     UILabel *lTishiText = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 40)];
     lTishiText.backgroundColor = [UIColor grayColor];
     lTishiText.text = @" 请填写您的个人信息";
@@ -121,7 +132,6 @@
     NSLog(@"hello");
 }
 -(void)registerButtonClick:(UIButton *)sender{
-    NSLog(@"hello");
     NSString *lstr = [NSString stringWithFormat:@"name=%@&password=%@&email=%@&telephone=%@",_nameText.text,_passwordText.text,_emailText.text,_telephoneText.text];
     NSString *string = [NSString stringWithFormat:@"http://%@/shop/register.php",GoodsIP];
     NSURL *lurl = [NSURL URLWithString:string];
@@ -142,8 +152,25 @@
     NSLog(@"begin");
 }
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{
-    NSString *lstr = [[NSString alloc]initWithData:ldata encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",lstr);
+//    NSString *lstr = [[NSString alloc]initWithData:ldata encoding:NSUTF8StringEncoding];
+//    NSLog(@"%@",lstr);
+    NSDictionary *ldicionary = [NSJSONSerialization JSONObjectWithData:ldata options:NSJSONReadingAllowFragments error:nil];
+    NSLog(@"54556%@",ldicionary);
+    if (IsCheckTextfield) {
+        
+        if ([[ldicionary objectForKey:@"msg"] intValue]) {
+            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(295, 110+(remenmberTag-1001)*45, 20, 20)];
+            label.text = @"√";
+            label.textColor = [UIColor blueColor];
+            [self.view addSubview:label];
+        }else{
+            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(295, 110+(remenmberTag-1001)*45, 20, 20)];
+            label.text = @"x";
+            label.textColor = [UIColor redColor];
+            [self.view addSubview:label];
+        }
+        IsCheckTextfield = false;
+    }
     NSLog(@"finish");
 }
 
@@ -159,5 +186,49 @@
         [lAlertView show];
         _endPassWordText.text = nil;
     }
+    
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    if (textField.tag == 1005) {
+        if ([_passwordText.text isEqualToString:_endPassWordText.text]) {
+            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(295, 110+2*45, 20, 20)];
+            label.text = @"√";
+            label.textColor = [UIColor blueColor];
+            [self.view addSubview:label];
+        }else{
+            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(295, 110+2*45, 20, 20)];
+            label.text = @"x";
+            label.textColor = [UIColor redColor];
+            [self.view addSubview:label];
+        }
+        return;
+    }
+    for (int i = 0; i<4; i++) {
+        if (textField.tag == 1001+i) {
+            if (i>1) {
+                remenmberTag = textField.tag+1;
+            }else{
+            remenmberTag = textField.tag;            
+            }
+            IsCheckTextfield = true;
+            NSString *lstr = [NSString stringWithFormat:@"%@=%@",[lnameOfTextfield objectAtIndex:i],textField.text];
+            NSString *lString = [NSString stringWithFormat:@"http://%@/shop/%@.php?%@",GoodsIP,[lCheckArray objectAtIndex:i],lstr];
+            NSURL *lURL = [NSURL URLWithString:lString];
+            NSMutableURLRequest *lmutableURLRequest = [NSMutableURLRequest requestWithURL:lURL];
+            [lmutableURLRequest setHTTPMethod:@"get"];
+            NSURLConnection *lURLConnection = [NSURLConnection connectionWithRequest:lmutableURLRequest delegate:self];
+            [lURLConnection start];
+            return;
+        }
+    }
+//    NSString *lstr = [NSString stringWithFormat:@"name=%@",textField.text];
+//    NSString *lString = [NSString stringWithFormat:@"http://%@/shop/checkname.php?%@",GoodsIP,lstr];
+//    NSURL *lURL = [NSURL URLWithString:lString];
+//    NSMutableURLRequest *lmutableURLRequest = [NSMutableURLRequest requestWithURL:lURL];
+//    [lmutableURLRequest setHTTPMethod:@"get"];
+//    NSURLConnection *lURLConnection = [NSURLConnection connectionWithRequest:lmutableURLRequest delegate:self];
+//    [lURLConnection start];
+    
 }
 @end

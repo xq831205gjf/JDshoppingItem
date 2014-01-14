@@ -33,7 +33,7 @@
     [super viewDidLoad];
 //    UIBarButtonItem *lLeftButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"首页" style:UIBarButtonItemStyleDone target:self action:@selector(ClickLeftBarButton:)];
 //    self.navigationItem.leftBarButtonItem = lLeftButtonItem;
-    
+    ldata = [[NSMutableData alloc]init];
     UILabel *lTishiText = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 40)];
     lTishiText.backgroundColor = [UIColor grayColor];
     lTishiText.text = @" 您尚未登录";
@@ -50,7 +50,7 @@
     UILabel *lGreetLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 45, 260, 40)];
     lGreetLabel.backgroundColor = [UIColor clearColor];
     lGreetLabel.text = @"欢迎您体验此款购物软件";
-    lGreetLabel.textColor = [UIColor cyanColor];
+    lGreetLabel.textColor = [UIColor blueColor];
     lGreetLabel.shadowColor = [UIColor redColor];
     lGreetLabel.shadowOffset = CGSizeMake(1, 1.5);
     lGreetLabel.font = [UIFont systemFontOfSize:20];
@@ -179,15 +179,18 @@
 #pragma mark daili
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
     [ldata setLength:0];
-    NSLog(@"delay");
 }
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
     [ldata appendData:data];
-    NSLog(@"begin");
 }
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{
-    NSString *lstr = [[NSString alloc]initWithData:ldata encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",lstr);
+//    NSString *lstr = [[NSString alloc]initWithData:ldata encoding:NSUTF8StringEncoding];
+//    NSLog(@"%@",lstr);
+
+    NSDictionary *ldicionary = [NSJSONSerialization JSONObjectWithData:ldata options:NSJSONReadingAllowFragments error:nil];
+//    NSLog(@"54556%@",ldicionary);
+    [ShoppingInfoClass SharCommonInfo].lDictionaryOfUserInfo = [ldicionary objectForKey:@"msg"];
+    NSLog(@"%@",[ShoppingInfoClass SharCommonInfo].lDictionaryOfUserInfo);
     NSLog(@"finish");
 }
 
