@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface shoppingcart : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface shoppingcart : UIViewController<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *MyTabeleView;
 @property (weak, nonatomic) IBOutlet UIView *UserInfo;
 @property(nonatomic,retain) UILabel *lnumlabel;

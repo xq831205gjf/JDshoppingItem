@@ -20,6 +20,11 @@
 //-(void)settext2:(NSString *)text2 ;
 @property(nonatomic ,retain)NSString *lString;
 @property(nonatomic ,retain)NSString *lString1;
+@property (weak, nonatomic) IBOutlet UITextField *youbian;
+@property (weak, nonatomic) IBOutlet UILabel *gougou;
+@property (weak, nonatomic) IBOutlet UILabel *gougou1;
+@property (weak, nonatomic) IBOutlet UITextField *xiangxi;
+
 
 
 @end
