@@ -27,6 +27,9 @@
 		1076E39F187D385200F296EB /* LogonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1076E39D187D385200F296EB /* LogonViewController.m */; };
 		1076E3A0187D385200F296EB /* LogonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1076E39E187D385200F296EB /* LogonViewController.xib */; };
 		1076E3A3187D3E5900F296EB /* ShoppingInfoClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 1076E3A2187D3E5900F296EB /* ShoppingInfoClass.m */; };
+		1090D1EB1884CB7B005BD354 /* 073.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1090D1EA1884CB7B005BD354 /* 073.jpg */; };
+		1090D1EE1884CD34005BD354 /* singleShopcart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1090D1ED1884CD34005BD354 /* singleShopcart.m */; };
+		1090D1F11884D16F005BD354 /* goodsInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1090D1F01884D16F005BD354 /* goodsInfoView.m */; };
 		10DCAA5B187F9676003E25B3 /* shoppingcartcustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DCAA4F187F9676003E25B3 /* shoppingcartcustomCell.m */; };
 		10DCAA5C187F9676003E25B3 /* shoppingcart.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DCAA51187F9676003E25B3 /* shoppingcart.m */; };
 		10DCAA5D187F9676003E25B3 /* shoppingcart.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10DCAA52187F9676003E25B3 /* shoppingcart.xib */; };
@@ -89,6 +92,11 @@
 		1076E39E187D385200F296EB /* LogonViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogonViewController.xib; sourceTree = "<group>"; };
 		1076E3A1187D3E5900F296EB /* ShoppingInfoClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingInfoClass.h; sourceTree = "<group>"; };
 		1076E3A2187D3E5900F296EB /* ShoppingInfoClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingInfoClass.m; sourceTree = "<group>"; };
+		1090D1EA1884CB7B005BD354 /* 073.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 073.jpg; sourceTree = "<group>"; };
+		1090D1EC1884CD34005BD354 /* singleShopcart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = singleShopcart.h; sourceTree = "<group>"; };
+		1090D1ED1884CD34005BD354 /* singleShopcart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = singleShopcart.m; sourceTree = "<group>"; };
+		1090D1EF1884D16F005BD354 /* goodsInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = goodsInfoView.h; sourceTree = "<group>"; };
+		1090D1F01884D16F005BD354 /* goodsInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = goodsInfoView.m; sourceTree = "<group>"; };
 		10DCAA4E187F9676003E25B3 /* shoppingcartcustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shoppingcartcustomCell.h; sourceTree = "<group>"; };
 		10DCAA4F187F9676003E25B3 /* shoppingcartcustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shoppingcartcustomCell.m; sourceTree = "<group>"; };
 		10DCAA50187F9676003E25B3 /* shoppingcart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shoppingcart.h; sourceTree = "<group>"; };
@@ -249,6 +257,8 @@
 				10DCAA52187F9676003E25B3 /* shoppingcart.xib */,
 				10DCAA53187F9676003E25B3 /* orderInformationViewController.h */,
 				10DCAA54187F9676003E25B3 /* orderInformationViewController.m */,
+				1090D1EF1884D16F005BD354 /* goodsInfoView.h */,
+				1090D1F01884D16F005BD354 /* goodsInfoView.m */,
 				10DCAA55187F9676003E25B3 /* orderInformationViewController.xib */,
 				103FA59A1883872B00F02E78 /* submitViewController.h */,
 				103FA59B1883872B00F02E78 /* submitViewController.m */,
@@ -297,6 +307,9 @@
 		10DCAA63187F9683003E25B3 /* ShoppingCarResource */ = {
 			isa = PBXGroup;
 			children = (
+				1090D1EC1884CD34005BD354 /* singleShopcart.h */,
+				1090D1ED1884CD34005BD354 /* singleShopcart.m */,
+				1090D1EA1884CB7B005BD354 /* 073.jpg */,
 				10DCAA64187F9698003E25B3 /* iphone.png */,
 				10DCAA65187F9698003E25B3 /* iphone@2x.png */,
 				10DCAA66187F9698003E25B3 /* city.json */,
@@ -390,6 +403,7 @@
 				10DCAA6D187F9698003E25B3 /* check@2x.png in Resources */,
 				99D810C6187F988F00A69205 /* SearchGoodsViewController.xib in Resources */,
 				103FA59E1883872B00F02E78 /* submitViewController.xib in Resources */,
+				1090D1EB1884CB7B005BD354 /* 073.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +436,8 @@
 				10DCAA61187F9676003E25B3 /* CustomPickerView.m in Sources */,
 				99D810C5187F988F00A69205 /* SearchGoodsViewController.m in Sources */,
 				103FA59D1883872B00F02E78 /* submitViewController.m in Sources */,
+				1090D1EE1884CD34005BD354 /* singleShopcart.m in Sources */,
+				1090D1F11884D16F005BD354 /* goodsInfoView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

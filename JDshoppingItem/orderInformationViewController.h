@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@protocol OrdViewDelegate;
 @interface orderInformationViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *userInfo;
 @property (weak, nonatomic) IBOutlet UIView *consigneeView;
@@ -15,5 +15,9 @@
 @property (weak, nonatomic) IBOutlet UIView *goodsViews;
 @property (weak, nonatomic) IBOutlet UIView *payView;
 @property (weak, nonatomic) IBOutlet UILabel *zongjine;
-
+@property(nonatomic,assign)id<OrdViewDelegate> ldelegate;
+@property (retain, nonatomic)UITableView *consigneeTabView;
+@end
+@protocol OrdViewDelegate        <NSObject>
+-(void)send:(orderInformationViewController *)sender;
 @end

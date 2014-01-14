@@ -9,7 +9,9 @@
 #import "shoppingcart.h"
 #import "orderInformationViewController.h"
 #import "shoppingcartcustomCell.h"
-
+#import "singleShopcart.h"
+#import "ParticularGoodsViewController.h"
+#import "TabBarViewController.h"
 @interface shoppingcart ()
 
 @end
@@ -36,7 +38,8 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+    
+    
     dataarray=[[NSMutableArray alloc]init];
     dataDic1=[[NSDictionary alloc]init];
     [self setdata];
@@ -72,17 +75,19 @@
     NSDictionary *lDic=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
 //    NSLog(@"%@",lDic);
     NSDictionary *lDic1=[lDic objectForKey:@"msg"];
+//单例
+    [singleShopcart setSingleSopCart].shareshopcart=[lDic objectForKey:@"msg"];
+//    if ([lDic1 objectForKey:@"info"]==nil) {
+//        NSLog(<#NSString *format, ...#>)
+//    }else{
     NSArray *arr=[lDic1 objectForKey:@"info"];
     for (int i=0; i<arr.count; i++) {
     NSDictionary *ldic=[arr objectAtIndex:i];
     [dataarray addObject:ldic];
-//    NSLog(@"ldi%@",ldic);
-      
-        
-}
-//    NSLog(@"dataarray:%@",dataarray);
+      }
+
     dataDic1=[lDic1 objectForKey:@"count"];
-//    NSLog(@"datadic:%@",dataDic1);
+//    }
 }
 #pragma mark - customView
 -(void)customViewLoad{
@@ -94,15 +99,16 @@
     _lnumlabel1=[[UILabel alloc]initWithFrame:CGRectMake(50, 22.5, 200, 20)];
     [lCustomView addSubview:_lnumlabel1];
     _lnumlabel.text=[NSString stringWithFormat:@"数量:%d",dataarray.count];
+    
     [_lnumlabel setBackgroundColor:[UIColor clearColor]];
     _lnumlabel.textAlignment=NSTextAlignmentCenter;
-    
     _lnumlabel1.text=[NSString stringWithFormat:@"总价:%@",[[dataarray lastObject]objectForKey:@"amount"]];
-    [_lnumlabel1 setBackgroundColor:[UIColor clearColor]];
+   [_lnumlabel1 setBackgroundColor:[UIColor clearColor]];
     _lnumlabel1.textAlignment=NSTextAlignmentCenter;
     
     UIButton *lButton=[UIButton buttonWithType:UIButtonTypeCustom];
-    [lButton setBackgroundColor:[UIColor redColor]];
+    [lButton setTag:147];
+    [[self.view viewWithTag:147] setBackgroundColor:[UIColor redColor]];
     [lButton setTitle:@"去结算" forState:UIControlStateNormal];
     lButton.frame=CGRectMake(250, 5, 60, 40);
     [lButton addTarget:self action:@selector(lButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -114,13 +120,23 @@
 -(void)lButton:(UIButton *)sender{
     
     NSLog(@"结算");
+//    if (dataarray==nil) {
+//        UIAlertView *lAlertView=[[UIAlertView alloc]initWithTitle:@"提示" message:@"购物车没有商品" delegate:self cancelButtonTitle:@"返回商城继续购物" otherButtonTitles:nil, nil];
+//        [lAlertView show];
+//    }else{
     orderInformationViewController *orderInfo=[[orderInformationViewController alloc]init];
     orderInfo.title=@"核对订单";
     [self.navigationController pushViewController:orderInfo animated:YES];
-    
+//}
     
 }
-
+#pragma mark -  AlertViewdelegate
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex==0) {
+        TabBarViewController *ltabbar=[[TabBarViewController alloc]init];
+        [self presentViewController:ltabbar animated:YES completion:nil];
+    }
+}
 #pragma mark - Table view delegate
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -139,8 +155,11 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 //     NSLog(@"aa:%d",dataarray.count);
+//    if (dataarray==nil) {
+//    return 1;
+//    }else{
     return dataarray.count;
-   
+//    }
     
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -149,6 +168,10 @@
     if (cell == nil) {
         cell = [[shoppingcartcustomCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+    if (dataarray==nil) {
+    cell.textLabel.text=@"购物车没有商品";
+    }else{
+    
     NSDictionary *lDic=[dataarray objectAtIndex:[indexPath row]];
 //    NSLog(@"asdasd:%@",lDic);
     
@@ -170,16 +193,22 @@
     cell.goodsPrice.text=[lDic objectForKey:@"price"];
     cell.goodsSzie.text=[lDic objectForKey:@"size"];
     cell.goodsColor.text=[lDic objectForKey:@"color"];
-    
+}
     return cell;
+
 }
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+//    if (dataarray==nil) {
+//        return NO;
+//    }else{
     return YES;
+//    }
 }
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"%D",[indexPath row]);
+//    NSLog(@"%D",[indexPath row]);
     NSDictionary *ldic= [dataarray objectAtIndex:[indexPath row]];
     cartID=[[NSString alloc]initWithString:[ldic objectForKey:@"cartid"]];
+    NSLog(@"%@",cartID);
     return @"删除";
 }
 
@@ -190,6 +219,11 @@
 //        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath ] withRowAnimation:UITableViewRowAnimationAutomatic];
         
         [self deletedata];
+        [self setdata];
+//        [self customViewLoad];
+        _lnumlabel.text=[NSString stringWithFormat:@"数量:%d",dataarray.count];
+        _lnumlabel1.text=[NSString stringWithFormat:@"总价:%@",[[dataarray lastObject]objectForKey:@"amount"]];
+        [_MyTabeleView reloadData];
        
     }
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
@@ -198,16 +232,21 @@
 }
 -(void)deletedata{
     NSURL *lURL=[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/shop/deletecart.php",GoodsIP]];
-    NSString *userInfo=[NSString stringWithFormat:@"cartid=%@",cartID];
+    NSString *userInfo=[NSString stringWithFormat:@"cartid=%@&customerid=%@",cartID,@"20"];
     NSMutableURLRequest *lRequest=[NSMutableURLRequest requestWithURL:lURL];
     [lRequest setHTTPMethod:@"post"];
     [lRequest setHTTPBody:[userInfo dataUsingEncoding:NSUTF8StringEncoding]];
-//    NSData*data=  [NSURLConnection sendSynchronousRequest:lRequest returningResponse:nil error:nil];
-//    NSLog(@"aa%@",data);
-    [self setdata];
-    [_MyTabeleView reloadData];
+    NSData*data=  [NSURLConnection sendSynchronousRequest:lRequest returningResponse:nil error:nil];
+    NSDictionary *lDic=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+    NSLog(@"%@",lDic);
+    
+    
+
+    
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+//    [self.navigationController pushViewController:<#(UIViewController *)#> animated:<#(BOOL)#>]
 }
 @end
