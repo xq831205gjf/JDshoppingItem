@@ -30,52 +30,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    NSLog(@"%@",[singleShopcart setSingleSopCart].shareshopcart);
-    NSDictionary *ldRR=[[[singleShopcart setSingleSopCart].shareshopcart objectForKey:@"info"]lastObject];
-    NSString *zongjie=[ldRR objectForKey:@"amount"];
-   _zongjine.text=[NSString stringWithFormat:@"总金额：%@",zongjie];
-    shopcar=[[singleShopcart setSingleSopCart].shareshopcart objectForKey:@"info"];
-
-    // Do any additional setup after loading the view from its nib.
+   
+   
+// Do any additional setup after loading the view from its nib.
+    dataarray=[[NSMutableArray alloc]init];
+   
+}
+-(void)viewDidAppear:(BOOL)animated{
+//       NSLog(@"%@",[singleShopcart setSingleSopCart].shareshopcart);
     self.payView.layer.borderWidth=1.0;
     self.goodsViews.layer.borderWidth=1.0;
     //    self.consigneeView.layer.borderWidth=1.0;
     self.distributionView.layer.borderWidth=1.0;
-    dataarray=[[NSMutableArray alloc]init];
-//    [dataarray addObject:@"添加新地址"];
-    [self setdata];
-    [self viewLoad];
-    [_ldelegate send:self];
-
-        
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
--(void)setdata{
-    NSURL *lURL=[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/shop/getaddress.php",GoodsIP]];
-    NSString *checkemail=[NSString stringWithFormat:@"customerid=%d",3];
-    NSMutableURLRequest *lRequest=[NSMutableURLRequest requestWithURL:lURL];
-    [lRequest setHTTPMethod:@"post"];
-    [lRequest setHTTPBody:[checkemail dataUsingEncoding:NSUTF8StringEncoding]];
-//    NSOperationQueue *aa=[[NSOperationQueue alloc]init];
-    NSData*data=  [NSURLConnection sendSynchronousRequest:lRequest returningResponse:nil error:nil];
-    NSDictionary *lDic=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-//    NSLog(@"%@",lDic);
-    NSDictionary *lDic1=[lDic objectForKey:@"msg"];
-    NSArray *arr=[lDic1 objectForKey:@"info"];
-    for (int i=0; i<arr.count; i++) {
-        NSDictionary *ldic=[arr objectAtIndex:i];
-        [dataarray addObject:ldic];
-       }
-//    NSLog(@"aaaaa%@",dataarray);
-
-    
-}
--(void)viewLoad{
     
     UIButton *lButton=[UIButton buttonWithType:UIButtonTypeCustom];
     [lButton setBackgroundColor:[UIColor redColor]];
@@ -83,6 +49,83 @@
     lButton.frame=CGRectMake(220, 5, 100, 50);
     [lButton addTarget:self action:@selector(lButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.payView addSubview:lButton];
+    [self.view addSubview:_payView];
+    
+    [self peisong];
+    
+    if (![[[singleShopcart setSingleSopCart].shareshopcart objectForKey:@"count"] intValue] == 0) {
+        NSDictionary *ldRR=[[[singleShopcart setSingleSopCart].shareshopcart objectForKey:@"info"]lastObject];
+        NSString *zongjie=[ldRR objectForKey:@"amount"];
+        _zongjine.text=[NSString stringWithFormat:@"总金额：%@",zongjie];
+        shopcar=[[singleShopcart setSingleSopCart].shareshopcart objectForKey:@"info"];
+        [self lscollview];
+    }else{
+    _zongjine.text=@"0";
+    }
+    
+    [self setdata];
+//    NSLog(@"%@",[singleShopcart setSingleSopCart].shareadress);
+    if ([[[singleShopcart setSingleSopCart].shareadress objectForKey:@"count"] intValue] == 0) {
+        NSLog(@"没有地址");
+//        [dataarray addObject:@"没有地址 请添加新地址"];
+//        [self TABviewLoad];
+    }else{
+//    [dataarray removeAllObjects];
+//        [self setdata];
+//        [self data];
+//        [self TABviewLoad];
+//      [_ldelegate send:self];
+//        NSLog(@"aaaaa");
+    }
+}
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+-(void)setdata{
+    NSURL *lURL=[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/shop/getaddress.php",GoodsIP]];
+    NSString *checkemail=[NSString stringWithFormat:@"customerid=%d",37];
+    NSMutableURLRequest *lRequest=[NSMutableURLRequest requestWithURL:lURL];
+    [lRequest setHTTPMethod:@"post"];
+    [lRequest setHTTPBody:[checkemail dataUsingEncoding:NSUTF8StringEncoding]];
+    NSData*data=  [NSURLConnection sendSynchronousRequest:lRequest returningResponse:nil error:nil];
+    NSDictionary *lDic=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+    [singleShopcart setSingleSopCart].shareadress=[lDic objectForKey:@"msg"];
+   
+}
+-(void)data{
+
+    NSArray *arr=[ [singleShopcart setSingleSopCart].shareadress objectForKey:@"info"];
+    for (int i=0; i<arr.count; i++) {
+        NSDictionary *ldic=[arr objectAtIndex:i];
+        [dataarray addObject:ldic];
+    }
+}
+-(void)addoder{
+    
+    //    NSURL *lURL=[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/shop/addorder.php",GoodsIP]];
+    //    NSString *userInfo=[NSString stringWithFormat:@"customerid=%@&addressid=%@&cartids[0]=3",3];
+    //    NSMutableURLRequest *lRequest=[NSMutableURLRequest requestWithURL:lURL];
+    //    [lRequest setHTTPMethod:@"post"];
+    //    [lRequest setHTTPBody:[userInfo dataUsingEncoding:NSUTF8StringEncoding]];
+    //    NSData*data=  [NSURLConnection sendSynchronousRequest:lRequest returningResponse:nil error:nil];
+    //    NSDictionary *lDic=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+    //    NSLog(@"%@",lDic);
+}
+-(void)deleteaddress{
+    NSURL *lURL=[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/shop/deleteaddress.php",GoodsIP]];
+    NSString *userInfo=[NSString stringWithFormat:@"addressid=%@",adressID];
+    NSMutableURLRequest *lRequest=[NSMutableURLRequest requestWithURL:lURL];
+    [lRequest setHTTPMethod:@"post"];
+    [lRequest setHTTPBody:[userInfo dataUsingEncoding:NSUTF8StringEncoding]];
+    NSData*data=  [NSURLConnection sendSynchronousRequest:lRequest returningResponse:nil error:nil];
+    NSDictionary *lDic=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+    NSLog(@"%@",lDic);
+    
+}
+
+-(void)TABviewLoad{
     
     _consigneeTabView=[[UITableView alloc]initWithFrame:CGRectMake(10, 0, 320, 135)];
 //    [consigneeTabView setTag:111];
@@ -90,8 +133,11 @@
     _consigneeTabView.dataSource=self;
     _consigneeTabView.bounces=NO;
     [_consigneeView addSubview:_consigneeTabView];
+    [self.view addSubview:_consigneeView];
     
-    //配送方式
+    
+}
+-(void)peisong{
     lbool=YES;
     NSArray *lArray=[NSArray arrayWithObjects:@"顺丰",@"圆通",@"ems",@"申通", nil];
     for (_i=0; _i<lArray.count; _i++) {
@@ -102,24 +148,29 @@
         [lBtuuon setFrame:CGRectMake(10+_i*80, 0, 40, 40)];
         [lBtuuon addTarget:self action:@selector(lBtuuon:) forControlEvents:UIControlEventTouchUpInside];
         [_distributionView addSubview:lBtuuon];
-      
+        
+        
     }
     
     for (_i=0; _i<lArray.count; _i++) {
         
-    UIImageView *lImage=[[UIImageView alloc]initWithFrame:CGRectMake(20+_i*80, 40, 20, 20)];
+        UIImageView *lImage=[[UIImageView alloc]initWithFrame:CGRectMake(20+_i*80, 40, 20, 20)];
         [lImage setTag:10+_i];
         lImage.image=[UIImage imageNamed:@"check.png"];
         [lImage setHidden:YES];
         [_distributionView addSubview:lImage];
-
+        
     }
     [[self.view viewWithTag:10]setHidden:NO];
     
-    NSArray *lShopCar=[[singleShopcart setSingleSopCart].shareshopcart objectForKey:@"info"];
+    [self.view addSubview:_distributionView];
+}
+-(void)lscollview{
+
+    //    NSArray *lShopCar=[[singleShopcart setSingleSopCart].shareshopcart objectForKey:@"info"];
     UIScrollView *lScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, 330, 111)];
-//    [lScrollView setBackgroundColor:[UIColor brownColor]];
-    for (int i=0; i<lShopCar.count; i++) {
+    //    [lScrollView setBackgroundColor:[UIColor brownColor]];
+    for (int i=0; i<shopcar.count; i++) {
         int x=i%3;
         int y=i/3;
         goodsInfoView *lGoodsInfo=[[goodsInfoView alloc]initWithFrame:CGRectMake(0, 0, 80, 50)];
@@ -137,19 +188,15 @@
             
         }
          ];
-
-//        [lGoodsInfo setBackgroundColor:[UIColor redColor]];
+        //        [lGoodsInfo setBackgroundColor:[UIColor redColor]];
         lGoodsInfo.goodsName.text=[[shopcar objectAtIndex:i]objectForKey:@"name"];
         lGoodsInfo.goodsconut.text=[[shopcar objectAtIndex:i]objectForKey:@"goodscount"];
         lGoodsInfo.goodsPrice.text=[[shopcar objectAtIndex:i]objectForKey:@"price"];
         [lScrollView addSubview:lGoodsInfo];
         
     }
-    lScrollView.contentSize=CGSizeMake(320, 32+lShopCar.count/3*128);
+    lScrollView.contentSize=CGSizeMake(320, 32+shopcar.count/3*128);
     [_goodsViews addSubview:lScrollView];
-   
-
-    
 }
 #pragma mark - Button
 -(void)lButton:(UIButton *)sender{
@@ -158,17 +205,6 @@
     submitViewController *lSub=[[submitViewController alloc]init];
     [self.navigationController pushViewController:lSub animated:YES];
     
-}
--(void)addoder{
-    
-//    NSURL *lURL=[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/shop/addorder.php",GoodsIP]];
-//    NSString *userInfo=[NSString stringWithFormat:@"customerid=%@&addressid=%@&cartids[0]=3",3];
-//    NSMutableURLRequest *lRequest=[NSMutableURLRequest requestWithURL:lURL];
-//    [lRequest setHTTPMethod:@"post"];
-//    [lRequest setHTTPBody:[userInfo dataUsingEncoding:NSUTF8StringEncoding]];
-//    NSData*data=  [NSURLConnection sendSynchronousRequest:lRequest returningResponse:nil error:nil];
-//    NSDictionary *lDic=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-    //    NSLog(@"%@",lDic);
 }
 -(void)lBtuuon:(UIButton *)sender{
     switch (sender.tag) {
@@ -262,21 +298,6 @@
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         
     }
-}
--(void)deleteaddress{
-    NSURL *lURL=[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/shop/deleteaddress.php",GoodsIP]];
-    NSString *userInfo=[NSString stringWithFormat:@"addressid=%@",adressID];
-    NSMutableURLRequest *lRequest=[NSMutableURLRequest requestWithURL:lURL];
-    [lRequest setHTTPMethod:@"post"];
-    [lRequest setHTTPBody:[userInfo dataUsingEncoding:NSUTF8StringEncoding]];
-    NSData*data=  [NSURLConnection sendSynchronousRequest:lRequest returningResponse:nil error:nil];
-    NSDictionary *lDic=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-    NSLog(@"%@",lDic);
-
-    
-    
-    
-
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     newaddress *lNewaddress=[[newaddress alloc]init];

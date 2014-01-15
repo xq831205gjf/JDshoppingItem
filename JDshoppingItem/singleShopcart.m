@@ -23,7 +23,7 @@ static singleShopcart *setSingleSopCart=nil;
     self=[super init];
     if (self) {
        
-        _shareadress=[[NSArray alloc]init];
+        _shareadress=[[NSDictionary alloc]init];
         _shareshopcart=[[NSDictionary alloc]init];
         
         
