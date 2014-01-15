@@ -10,5 +10,5 @@
 
 @interface ShoppingInfoClass : NSObject
 +(ShoppingInfoClass *) SharCommonInfo;
-@property(nonatomic,retain)NSString *UserID;
+@property(nonatomic,retain) NSDictionary *lDictionaryOfUserInfo;
 @end

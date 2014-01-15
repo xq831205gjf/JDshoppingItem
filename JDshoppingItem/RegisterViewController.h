@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 
-@interface RegisterViewController : ViewController<NSURLConnectionDataDelegate>{
+@interface RegisterViewController : ViewController<NSURLConnectionDataDelegate,UITextFieldDelegate>{
     NSMutableData *ldata;
 }
 @property (weak, nonatomic) IBOutlet UITextField *nameText;
