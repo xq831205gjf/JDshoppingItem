@@ -26,14 +26,15 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     if ([ShoppingInfoClass SharCommonInfo].lDictionaryOfUserInfo == nil) {
-        [ShoppingInfoClass SharCommonInfo].lDictionaryOfUserInfo = [[NSDictionary alloc]init];
+        [ShoppingInfoClass SharCommonInfo].lDictionaryOfUserInfo = [[NSMutableDictionary alloc]init];
     }
     NSArray *larray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *lstr = [larray lastObject];
     NSString *lpath = [lstr stringByAppendingPathComponent:@"ShoppingOfUserInfo.txt"];
-//    NSDictionary *ldic = [ShoppingInfoClass SharCommonInfo].lDictionaryOfUserInfo;
     if ([[NSFileManager defaultManager] fileExistsAtPath:lpath]) {
-        NSString *lstr = [NSString stringWithFormat:@"name=%@&password=%@",[[ShoppingInfoClass SharCommonInfo].lDictionaryOfUserInfo objectForKey:@"name"],@"123456"];
+        NSDictionary *lDictionary = [NSDictionary dictionaryWithContentsOfFile:lpath];
+        [[ShoppingInfoClass SharCommonInfo].lDictionaryOfUserInfo setDictionary:lDictionary];
+        NSString *lstr = [NSString stringWithFormat:@"name=%@&password=%@",[[ShoppingInfoClass SharCommonInfo].lDictionaryOfUserInfo objectForKey:@"name"],[[ShoppingInfoClass SharCommonInfo].lDictionaryOfUserInfo objectForKey:@"password"]];
         NSString *string = [NSString stringWithFormat:@"http://%@/shop/login.php",GoodsIP];
         NSURL *lurl = [NSURL URLWithString:string];
         NSMutableURLRequest *lmutableURLRequest = [NSMutableURLRequest requestWithURL:lurl];
@@ -54,7 +55,8 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    [self writeToPath];
+//    [self writeToPath];
+    
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
