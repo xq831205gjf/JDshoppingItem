@@ -7,8 +7,8 @@
 //
 
 #import "ViewController.h"
-
-@interface LogonViewController : ViewController<NSURLConnectionDataDelegate>{
+#import "RegisterViewController.h"
+@interface LogonViewController : ViewController<NSURLConnectionDataDelegate,registerInfoDelegate>{
     NSMutableData *ldata;
 }
 

@@ -8,7 +8,7 @@
 
 #import "LogonViewController.h"
 #import "TabBarViewController.h"
-#import "RegisterViewController.h"
+//#import "RegisterViewController.h"
 
 
 @interface LogonViewController ()
@@ -173,6 +173,7 @@
 }
 -(void)registerButtonClick:(UIButton *)sender{
     RegisterViewController *lRegistreVC = [[RegisterViewController alloc]init];
+    lRegistreVC.delegate = self;
     [self presentViewController:lRegistreVC animated:YES completion:nil];
 }
 
@@ -184,20 +185,46 @@
     [ldata appendData:data];
 }
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{
-//    NSString *lstr = [[NSString alloc]initWithData:ldata encoding:NSUTF8StringEncoding];
-//    NSLog(@"%@",lstr);
-
     NSDictionary *ldicionary = [NSJSONSerialization JSONObjectWithData:ldata options:NSJSONReadingAllowFragments error:nil];
 //    NSLog(@"54556%@",ldicionary);
-    [ShoppingInfoClass SharCommonInfo].lDictionaryOfUserInfo = [ldicionary objectForKey:@"msg"];
+    [[ShoppingInfoClass SharCommonInfo].lDictionaryOfUserInfo setDictionary:[ldicionary objectForKey:@"msg"]];
+    [[ShoppingInfoClass SharCommonInfo].lDictionaryOfUserInfo setObject:_lPassWordTextFied.text forKey:@"password"];
     NSLog(@"%@",[ShoppingInfoClass SharCommonInfo].lDictionaryOfUserInfo);
-    NSLog(@"finish");
+    if (markForUser) {
+        [self writeToPath];
+    }else{
+        NSArray *larray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *lstr = [larray lastObject];
+        NSString *lpath = [lstr stringByAppendingPathComponent:@"ShoppingOfUserInfo.txt"];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:lpath]){
+          bool ret = [[NSFileManager defaultManager] removeItemAtPath:lpath error:nil];
+            if (!ret) {
+                NSLog(@"deleta is faulse");
+            }
+            
+        }
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning]; 
     // Dispose of any resources that can be recreated.
+}
+
+-(void)registerInfoOfname:(NSString *)nameString andPassword:(NSString *)passwordString{
+    _lUserTextFied.text = nameString;
+    _lPassWordTextFied.text = passwordString;
+}
+
+#pragma mark - writeToFile
+-(void)writeToPath{
+    NSArray *larray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
+    NSString *lstring = [larray lastObject];
+    NSString *lPath = [lstring stringByAppendingPathComponent:@"ShoppingOfUserInfo.txt"];
+    [[ShoppingInfoClass SharCommonInfo].lDictionaryOfUserInfo writeToFile:lPath atomically:YES];
+    
 }
 
 @end

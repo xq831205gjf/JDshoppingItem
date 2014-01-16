@@ -15,10 +15,10 @@
 @end
 
 @implementation RegisterViewController{
-    BOOL markForUser;
+    BOOL markForUser ;//纪录是否接受注册协议的状态
     NSArray *lCheckArray;
     NSArray *lnameOfTextfield;
-    BOOL IsCheckTextfield;
+    BOOL IsCheckTextfield;//检查是否通过textfield发送的网络请求
     int remenmberTag;
 }
 
@@ -132,6 +132,12 @@
     NSLog(@"hello");
 }
 -(void)registerButtonClick:(UIButton *)sender{
+    if (markForUser == true) {
+        UIAlertView *lAlertView = [[UIAlertView alloc]initWithTitle:@"您好!" message:@"注册之前，希望您接受LD用户注册协议" delegate:self cancelButtonTitle:@"确 定" otherButtonTitles:nil];
+        [lAlertView show];
+        return;
+    }
+
     NSString *lstr = [NSString stringWithFormat:@"name=%@&password=%@&email=%@&telephone=%@",_nameText.text,_passwordText.text,_emailText.text,_telephoneText.text];
     NSString *string = [NSString stringWithFormat:@"http://%@/shop/register.php",GoodsIP];
     NSURL *lurl = [NSURL URLWithString:string];
@@ -145,19 +151,18 @@
 
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
     [ldata setLength:0];
-    NSLog(@"delay");
 }
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
     [ldata appendData:data];
-    NSLog(@"begin");
 }
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{
-//    NSString *lstr = [[NSString alloc]initWithData:ldata encoding:NSUTF8StringEncoding];
-//    NSLog(@"%@",lstr);
     NSDictionary *ldicionary = [NSJSONSerialization JSONObjectWithData:ldata options:NSJSONReadingAllowFragments error:nil];
     NSLog(@"54556%@",ldicionary);
     if (IsCheckTextfield) {
-        
+        if ([[ldicionary objectForKey:@"error"] intValue]) {
+            IsCheckTextfield = NO;
+            return;
+        }
         if ([[ldicionary objectForKey:@"msg"] intValue]) {
             UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(295, 110+(remenmberTag-1001)*45, 20, 20)];
             label.text = @"√";
@@ -170,10 +175,23 @@
             [self.view addSubview:label];
         }
         IsCheckTextfield = false;
+        return;
     }
-    NSLog(@"finish");
+    if (![[ldicionary objectForKey:@"error"] intValue]) {
+        UIAlertView *lAlertView = [[UIAlertView alloc]initWithTitle:@"您好!" message:@"注册成功，欢迎登录使用" delegate:self cancelButtonTitle:@"返 回" otherButtonTitles:@"登 录",nil];
+        [lAlertView show];
+    }else{
+        UIAlertView *lAlertView = [[UIAlertView alloc]initWithTitle:@"对不起!" message:@"注册失败，请仔细填写信息" delegate:self cancelButtonTitle:@"退 出" otherButtonTitles:nil];
+        [lAlertView show];
+    }
 }
-
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+//    NSLog(@"%i",buttonIndex);
+    if (buttonIndex == 1) {
+        [self.delegate registerInfoOfname:_nameText.text andPassword:_passwordText.text];
+        [self dismissViewControllerAnimated:NO completion:nil];
+    }
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -222,13 +240,6 @@
             return;
         }
     }
-//    NSString *lstr = [NSString stringWithFormat:@"name=%@",textField.text];
-//    NSString *lString = [NSString stringWithFormat:@"http://%@/shop/checkname.php?%@",GoodsIP,lstr];
-//    NSURL *lURL = [NSURL URLWithString:lString];
-//    NSMutableURLRequest *lmutableURLRequest = [NSMutableURLRequest requestWithURL:lURL];
-//    [lmutableURLRequest setHTTPMethod:@"get"];
-//    NSURLConnection *lURLConnection = [NSURLConnection connectionWithRequest:lmutableURLRequest delegate:self];
-//    [lURLConnection start];
     
 }
 @end
