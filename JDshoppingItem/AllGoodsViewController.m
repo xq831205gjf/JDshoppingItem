@@ -119,12 +119,12 @@
 
 -(void)CreatAllGoodsViewArray:(NSArray *)lAllGoodsArray{
     lAllGoodsArray1 = [NSArray arrayWithArray:lAllGoodsArray];
-    if (lAllGoodsArray.count == 0) {
+    if (lAllGoodsArray1.count == 0) {
         lMainScrollView.contentSize = CGSizeMake(320, 464);
-        lMainTableView.frame = CGRectMake(0, 200, 320, 500);
+        lMainTableView.frame = CGRectMake(0, 200, 320, 240);
     }else{
-        lMainScrollView.contentSize = CGSizeMake(320, 220+100*lAllGoodsArray.count);
-        lMainTableView.frame = CGRectMake(0, 220, 320, 100*lAllGoodsArray.count);
+        lMainScrollView.contentSize = CGSizeMake(320, 464);
+        lMainTableView.frame = CGRectMake(0, 220, 320, 240);
     }
     [lMainTableView reloadData];
 }
@@ -143,15 +143,15 @@
     UITableViewCell *lCell = [tableView dequeueReusableCellWithIdentifier:Cell];
     if (lCell == nil) {
         lCell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:Cell];
-        NSInteger row = [indexPath row];
-        NSDictionary *lDic = [lAllGoodsArray1 objectAtIndex:row];
-        lCell.imageView.image = [UIImage imageNamed:@"u=2966281458,1284875278&fm=21&gp=0.jpg"];
-        [self ShowTabelViewCellImage:lCell and:lDic];
-        lCell.textLabel.text = [lDic objectForKey:@"name"];
-        lCell.textLabel.font = [UIFont systemFontOfSize:13];
-        NSString *lStr = [NSString stringWithFormat:@"¥:%@",[lDic objectForKey:@"price"]];
-        lCell.detailTextLabel.text = lStr;
     }
+    NSInteger row = [indexPath row];
+    NSDictionary *lDic = [lAllGoodsArray1 objectAtIndex:row];
+    lCell.imageView.image = [UIImage imageNamed:@"u=2966281458,1284875278&fm=21&gp=0.jpg"];
+    [self ShowTabelViewCellImage:lCell and:lDic];
+    lCell.textLabel.text = [lDic objectForKey:@"name"];
+    lCell.textLabel.font = [UIFont systemFontOfSize:13];
+    NSString *lStr = [NSString stringWithFormat:@"¥:%@",[lDic objectForKey:@"price"]];
+    lCell.detailTextLabel.text = lStr;
     return lCell;
 }
 

@@ -15,6 +15,9 @@
     UIColor *hotPink;
     
     NSArray *lInfoArray;
+//    NSArray *lAllInfoArray;
+    int k;
+    int j;
 }
 
 @end
