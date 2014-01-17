@@ -230,15 +230,19 @@
 
 
 -(void)saveaddress{
+    
+    NSString *lString=_address.text;
+    NSString *lString1=_xiangxi.text;
     NSURL *lURL=[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/shop/addaddress.php",GoodsIP]];
-    NSString *checketele=[NSString stringWithFormat:@"customerid=%@&name=%@&telephone=%@&code=%@&address=%@",@"3",_shouhuoren,_tele.text,_youbian.text,_address.text];
+    NSString *userinfo=[NSString stringWithFormat:@"customerid=%@&name=%@&telephone=%@&code=%@&address=%@",@"50",_shouhuoren.text,_tele.text,_youbian.text,[lString stringByAppendingString:lString1]];
     NSMutableURLRequest *lRequest=[NSMutableURLRequest requestWithURL:lURL];
     [lRequest setHTTPMethod:@"post"];
-    [lRequest setHTTPBody:[checketele dataUsingEncoding:NSUTF8StringEncoding]];
+    [lRequest setHTTPBody:[userinfo dataUsingEncoding:NSUTF8StringEncoding]];
        NSData*data=  [NSURLConnection sendSynchronousRequest:lRequest returningResponse:nil error:nil];
     NSDictionary *lDic=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
     NSLog(@"%@",lDic);
     
 }
+
 
 @end

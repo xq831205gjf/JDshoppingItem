@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol shopCartDelegate;
 @interface shoppingcartcustomCell : UITableViewCell
 @property(retain,nonatomic)UILabel *goodsName;
 @property(retain,nonatomic)UILabel *goodsPrice;
@@ -15,6 +16,9 @@
 @property(retain,nonatomic)UILabel *goodsSzie;
 @property(retain,nonatomic)UIImageView *goodsChick;
 @property(retain,nonatomic)UIImageView *goodsHeadImage;
-
-
+@property(retain,nonatomic)UIView *lView;
+@property(nonatomic,assign)id<shopCartDelegate> ldelegate;
+@end
+@protocol shopCartDelegate      <NSObject>
+-(void)send;
 @end

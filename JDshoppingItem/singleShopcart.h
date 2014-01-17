@@ -11,5 +11,7 @@
 @interface singleShopcart : NSObject
 +(singleShopcart *)setSingleSopCart;
 @property(nonatomic,retain)NSDictionary *shareshopcart;
-@property(nonatomic,retain)NSArray *shareadress;
+@property(nonatomic,retain)NSDictionary *shareadress;
+@property(retain,nonatomic)UIImageView *goodsChick;
+@property(assign,nonatomic)bool Chick;
 @end
