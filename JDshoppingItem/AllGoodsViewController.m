@@ -107,6 +107,7 @@
     
     [_lScrollView addSubview:lImageView];
     [self RequestHotGoods];
+    _lScrollView.scrollEnabled = YES;
 }
 
 -(void)CreatAllGoodsView{
@@ -145,6 +146,8 @@
         lCell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:Cell];
     }
     NSInteger row = [indexPath row];
+    lCell.textLabel.numberOfLines = 0;
+    lCell.detailTextLabel.textColor = [UIColor redColor];
     NSDictionary *lDic = [lAllGoodsArray1 objectAtIndex:row];
     lCell.imageView.image = [UIImage imageNamed:@"u=2966281458,1284875278&fm=21&gp=0.jpg"];
     [self ShowTabelViewCellImage:lCell and:lDic];

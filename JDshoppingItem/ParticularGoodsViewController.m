@@ -9,6 +9,9 @@
 #import "ParticularGoodsViewController.h"
 #import "CommentView.h"
 #import "CustomReview.h"
+#import "shoppingcart.h"
+#import "ShoppingInfoClass.h"
+#import "LogonViewController.h"
 @interface ParticularGoodsViewController ()
 
 @end
@@ -91,7 +94,6 @@
 -(void)RequestSingleGoodsReview{
     NSOperationQueue *lQueue = [[NSOperationQueue alloc]init];
     NSString *lStr = [NSString stringWithFormat:@"goodsid=15&owncount=0"];
-    NSLog(@"%@",_Goodsid);
     NSString *lStr1 = [NSString stringWithFormat:@"http://%@/shop/getreview.php",GoodsIP];
     NSURL *lUrl = [NSURL URLWithString:lStr1];
     NSMutableURLRequest *lRequest = [NSMutableURLRequest requestWithURL:lUrl];
@@ -102,7 +104,7 @@
     [NSURLConnection sendAsynchronousRequest:lRequest queue:lQueue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         NSDictionary *lHotGoodsDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSDictionary *lDic = [lHotGoodsDic objectForKey:@"msg"];
-        NSLog(@"%@",lDic);
+        
         dispatch_sync(dispatch_get_main_queue(), ^{
             lReview = [[CustomReview alloc]initWithFrame:CGRectMake(0, 464, 320, 250) andWithDictionary:lDic];
             lReview.backgroundColor = [UIColor redColor];
@@ -243,6 +245,7 @@
     
     UIButton *lShoppingCarButton = [[UIButton alloc]initWithFrame:CGRectMake(195, 5, 120, 40)];
     [lShoppingCarButton setTitle:@"添加到购物车" forState:UIControlStateNormal];
+    [lShoppingCarButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
     [lShoppingCarButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [lShoppingCarButton addTarget:self action:@selector(ClickShoppingCarButton:) forControlEvents:UIControlEventTouchUpInside];
     [lPurchaseView addSubview:lShoppingCarButton];
@@ -264,9 +267,42 @@
     [lNumberLabel setText:lStr];
 }
 -(void)ClickShoppingCarButton:(UIButton *)sender{
-//点击添加到购物车
-    
+    if ([ShoppingInfoClass SharCommonInfo].lDictionaryOfUserInfo.count == 0 ) {
+        NSLog(@"%@",[ShoppingInfoClass SharCommonInfo].lDictionaryOfUserInfo);
+        LogonViewController *login = [[LogonViewController alloc]init];
+        [self.navigationController pushViewController:login animated:YES];
+        return;
+    }
+    [self upDataShopCar];
 }
+-(void)upDataShopCar{
+    NSString *lUserID = [[ShoppingInfoClass SharCommonInfo].lDictionaryOfUserInfo objectForKey:@"customerid"];
+    NSOperationQueue *lQueue = [[NSOperationQueue alloc]init];
+    NSString *lStr = [NSString stringWithFormat:@"goodsid=%@&customerid=%@&goodscount=%i",_Goodsid,lUserID,a];
+    NSString *lStr1 = [NSString stringWithFormat:@"http://%@/shop/addcart.php",GoodsIP];
+    NSLog(@"%@",[ShoppingInfoClass SharCommonInfo].lDictionaryOfUserInfo);
+    NSURL *lUrl = [NSURL URLWithString:lStr1];
+    NSMutableURLRequest *lRequest = [NSMutableURLRequest requestWithURL:lUrl];
+    [lRequest setHTTPMethod:@"post"];//设置请求名称
+    [lRequest setHTTPBody:[lStr dataUsingEncoding:NSUTF8StringEncoding]];//把设置的请求字符串转化为nsdata然后作为请求主体
+//    NSURLConnection *lConnection = [NSURLConnection connectionWithRequest:lRequest delegate:self];
+//    [lConnection start];
+    [NSURLConnection sendAsynchronousRequest:lRequest queue:lQueue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        NSDictionary *lHotGoodsDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        NSDictionary *lDic = [lHotGoodsDic objectForKey:@"msg"];
+        NSLog(@"%@",lDic);
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            if (lDic == nil) {
+                return ;
+            }else{
+                UIAlertView *lAlertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"已添加至购物车" delegate:self cancelButtonTitle:@"好" otherButtonTitles:nil, nil];
+                [lAlertView show];
+            }
+        });
+     }];
+}
+
+
 -(void)CreatWebViewButtonView{
     UIView *lWebViewButtonView = [[UIView alloc]initWithFrame:CGRectMake(0, 260, 320, 60)];
     [lWebViewButtonView setBackgroundColor:[UIColor whiteColor]];

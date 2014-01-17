@@ -8,7 +8,7 @@
 
 #import "RegisterViewController.h"
 #import "TabBarViewController.h"
-
+#import "ZCxieyiViewController.h"
 
 @interface RegisterViewController ()
 
@@ -129,7 +129,23 @@
     }
 }
 -(void)xieyiButtonClick:(UIButton *)sender{
-    NSLog(@"hello");
+    ZCxieyiViewController *lzcVC = [[ZCxieyiViewController alloc]init];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(notificationOfButton:) name:@"post" object:nil];
+    [self presentViewController:lzcVC animated:YES completion:nil];
+}
+-(void)notificationOfButton:(NSNotification *)sender{
+    BOOL lBool=[[sender object]boolValue];
+    UIButton *lbutton = (UIButton *)[self.view viewWithTag:102];
+    if (lBool) {
+        [lbutton setTitle:@"√" forState:UIControlStateNormal];
+        [lbutton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        lbutton.titleLabel.font = [UIFont systemFontOfSize:14];
+        lbutton.titleLabel.textAlignment = NSTextAlignmentCenter;
+        markForUser = false;
+    }else{
+        [lbutton setTitle:@" " forState:UIControlStateNormal];
+        markForUser = true;
+    }
 }
 -(void)registerButtonClick:(UIButton *)sender{
     if (markForUser == true) {
