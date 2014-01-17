@@ -67,15 +67,16 @@
 //    NSLog(@"%@",[singleShopcart setSingleSopCart].shareadress);
     if ([[[singleShopcart setSingleSopCart].shareadress objectForKey:@"count"] intValue] == 0) {
         NSLog(@"没有地址");
-//        [dataarray addObject:@"没有地址 请添加新地址"];
-//        [self TABviewLoad];
+        [dataarray addObject:@[@"没有地址 请添加新地址"]];
+        [self TABviewLoad];
     }else{
-//    [dataarray removeAllObjects];
-//        [self setdata];
-//        [self data];
-//        [self TABviewLoad];
-//      [_ldelegate send:self];
-//        NSLog(@"aaaaa");
+    [dataarray removeAllObjects];
+        [self setdata];
+        [self data];
+        [self TABviewLoad];
+        [_consigneeTabView reloadData];
+      [_ldelegate send:self];
+        NSLog(@"aaaaa");
     }
 }
 - (void)didReceiveMemoryWarning
@@ -85,12 +86,13 @@
 }
 -(void)setdata{
     NSURL *lURL=[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/shop/getaddress.php",GoodsIP]];
-    NSString *checkemail=[NSString stringWithFormat:@"customerid=%d",37];
+    NSString *checkemail=[NSString stringWithFormat:@"customerid=%d",50];
     NSMutableURLRequest *lRequest=[NSMutableURLRequest requestWithURL:lURL];
     [lRequest setHTTPMethod:@"post"];
     [lRequest setHTTPBody:[checkemail dataUsingEncoding:NSUTF8StringEncoding]];
     NSData*data=  [NSURLConnection sendSynchronousRequest:lRequest returningResponse:nil error:nil];
     NSDictionary *lDic=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+    NSLog(@"%@",lDic);
     [singleShopcart setSingleSopCart].shareadress=[lDic objectForKey:@"msg"];
    
 }
@@ -103,15 +105,21 @@
     }
 }
 -(void)addoder{
-    
-    //    NSURL *lURL=[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/shop/addorder.php",GoodsIP]];
-    //    NSString *userInfo=[NSString stringWithFormat:@"customerid=%@&addressid=%@&cartids[0]=3",3];
-    //    NSMutableURLRequest *lRequest=[NSMutableURLRequest requestWithURL:lURL];
-    //    [lRequest setHTTPMethod:@"post"];
-    //    [lRequest setHTTPBody:[userInfo dataUsingEncoding:NSUTF8StringEncoding]];
-    //    NSData*data=  [NSURLConnection sendSynchronousRequest:lRequest returningResponse:nil error:nil];
-    //    NSDictionary *lDic=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-    //    NSLog(@"%@",lDic);
+//
+    NSArray *arr=[[singleShopcart setSingleSopCart].shareshopcart objectForKey:@"info"];
+    NSMutableArray *array=[[NSMutableArray alloc]init];
+    for (NSDictionary *lDic in arr) {
+        NSString *lString=[lDic objectForKey:@"cartid"];
+        [array addObject:lString];
+        }
+    NSURL *lURL=[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/shop/addorder.php",GoodsIP]];
+    NSString *userInfo=[NSString stringWithFormat:@"customerid=%@&addressid=%@&cartids[0]=%i",@"50",adressID,3];
+   NSMutableURLRequest *lRequest=[NSMutableURLRequest requestWithURL:lURL];
+   [lRequest setHTTPMethod:@"post"];
+    [lRequest setHTTPBody:[userInfo dataUsingEncoding:NSUTF8StringEncoding]];
+    NSData*data=  [NSURLConnection sendSynchronousRequest:lRequest returningResponse:nil error:nil];
+    NSDictionary *lDic=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+    NSLog(@"%@",lDic);
 }
 -(void)deleteaddress{
     NSURL *lURL=[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/shop/deleteaddress.php",GoodsIP]];
@@ -176,7 +184,7 @@
         goodsInfoView *lGoodsInfo=[[goodsInfoView alloc]initWithFrame:CGRectMake(0, 0, 80, 50)];
         lGoodsInfo.center=CGPointMake(60+x*100, 30+y*65);
         NSURL *lURL=[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/shop/goodsimage/%@",GoodsIP,[[shopcar objectAtIndex:i]objectForKey:@"headerimage"]]];
-        NSString *userInfo=[NSString stringWithFormat:@"customerid=%d",3];
+        NSString *userInfo=[NSString stringWithFormat:@"customerid=%d",50];
         NSMutableURLRequest *lRequest=[NSMutableURLRequest requestWithURL:lURL];
         [lRequest setHTTPMethod:@"post"];
         [lRequest setHTTPBody:[userInfo dataUsingEncoding:NSUTF8StringEncoding]];
@@ -200,8 +208,9 @@
 }
 #pragma mark - Button
 -(void)lButton:(UIButton *)sender{
-    [self addoder];
+    
     NSLog(@"提交订单");
+    [self addoder];
     submitViewController *lSub=[[submitViewController alloc]init];
     [self.navigationController pushViewController:lSub animated:YES];
     
@@ -240,16 +249,23 @@
     
     return 20;
 }
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    
-    NSString *key=@"所有地址";
-    return key;
-    
-}
+//-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+//    
+//    NSString *key=@"所有地址";
+//    return key;
+//    
+//}
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
 
+    return 2;
+}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
+    if (section==0) {
+        return 1;
+    }else{
     return dataarray.count;
+    }
     
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -258,30 +274,33 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-    }
-   if ([indexPath row]==0) {
+
+    if ([indexPath section]==0) {
         cell.textLabel.text=@"添加新地址";
     }else{
     NSDictionary *lDic=[dataarray objectAtIndex:[indexPath row]];
     cell.textLabel.text=[lDic objectForKey:@"address"];
-        //单例
+
 //    cell.accessoryType= UITableViewCellAccessoryCheckmark;
     
     }
-    
+    }
     return cell;
     
 }
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([indexPath row]==0) {
+    if ([indexPath section]==0) {
         return NO;
     }else{
         return YES;
     }
 }
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSDictionary *ldic= [dataarray objectAtIndex:[indexPath row]];
-    adressID=[[NSString alloc]initWithString:[ldic objectForKey:@"addressid"]];
+    if ([indexPath section]==1) {
+        NSDictionary *ldic= [dataarray objectAtIndex:[indexPath row]];
+        adressID=[[NSString alloc]initWithString:[ldic objectForKey:@"addressid"]];
+    }
+   
     return @"删除";
 }
 
@@ -292,8 +311,6 @@
         [self setdata];
 //       [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath ] withRowAnimation:UITableViewRowAnimationAutomatic];
         [_consigneeTabView reloadData];
-      
-        
     }
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         
@@ -302,7 +319,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     newaddress *lNewaddress=[[newaddress alloc]init];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if ([indexPath row]==0) {
+    if ([indexPath section]==0) {
         lNewaddress.title=@"添加新地址";
         [self.navigationController pushViewController:lNewaddress animated:YES];
     }else{

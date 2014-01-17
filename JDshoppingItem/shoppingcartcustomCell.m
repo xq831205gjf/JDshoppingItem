@@ -7,7 +7,7 @@
 //
 
 #import "shoppingcartcustomCell.h"
-
+#import "shoppingcart.h"
 @implementation shoppingcartcustomCell{
 
     BOOL lBool;
@@ -56,6 +56,10 @@
          _goodsSzie.font=[UIFont fontWithName:@"Arial" size:12];
         [self.contentView addSubview:_goodsSzie];
         
+        shoppingcart *aa=[[shoppingcart alloc]init];
+        aa.ldelegate=self;
+
+        
     }
     return self;
 }
@@ -63,9 +67,13 @@
     [_goodsChick setHidden:!lBool];
     lBool=!lBool;
 //    NSLog(@"a");
-
+//    [_ldelegate send:self];
+  
 }
+-(void)send:(NSMutableArray *)sender{
 
+    NSLog(@"%@",sender);
+}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {

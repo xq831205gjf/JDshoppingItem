@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "shoppingcart.h"
 
-@interface shoppingcartcustomCell : UITableViewCell
+@interface shoppingcartcustomCell : UITableViewCell<shopCartDelegate>
 @property(retain,nonatomic)UILabel *goodsName;
 @property(retain,nonatomic)UILabel *goodsPrice;
 @property(retain,nonatomic)UILabel *goodsColor;

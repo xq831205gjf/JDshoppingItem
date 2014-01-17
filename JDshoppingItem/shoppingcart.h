@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol shopCartDelegate;
 @interface shoppingcart : UIViewController<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *MyTabeleView;
 @property (weak, nonatomic) IBOutlet UIView *UserInfo;
 @property(nonatomic,retain) UILabel *lnumlabel;
 @property(nonatomic,retain) UILabel *lnumlabel1;
+@property(nonatomic,assign)id<shopCartDelegate> ldelegate;
+@end
+@protocol shopCartDelegate      <NSObject>
+-(void)send:(NSMutableArray *)sender;
 @end

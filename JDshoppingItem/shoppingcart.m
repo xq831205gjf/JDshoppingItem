@@ -67,7 +67,7 @@
 #pragma mark - data
 -(void)setdata{
     NSURL *lURL=[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/shop/getcart.php",GoodsIP]];
-    NSString *userInfo=[NSString stringWithFormat:@"customerid=%d",3];
+    NSString *userInfo=[NSString stringWithFormat:@"customerid=%d",50];
     NSMutableURLRequest *lRequest=[NSMutableURLRequest requestWithURL:lURL];
     [lRequest setHTTPMethod:@"post"];
     [lRequest setHTTPBody:[userInfo dataUsingEncoding:NSUTF8StringEncoding]];
@@ -81,7 +81,7 @@
 }
 -(void)deletedata{
     NSURL *lURL=[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/shop/deletecart.php",GoodsIP]];
-    NSString *userInfo=[NSString stringWithFormat:@"cartid=%@&customerid=%@",cartID,@"20"];
+    NSString *userInfo=[NSString stringWithFormat:@"cartid=%@&customerid=%@",cartID,@"50"];
     NSMutableURLRequest *lRequest=[NSMutableURLRequest requestWithURL:lURL];
     [lRequest setHTTPMethod:@"post"];
     [lRequest setHTTPBody:[userInfo dataUsingEncoding:NSUTF8StringEncoding]];
@@ -183,7 +183,7 @@
 //    NSLog(@"asdasd:%@",lDic);
     
     NSURL *lURL=[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/shop/goodsimage/%@",GoodsIP,[lDic objectForKey:@"headerimage"]]];
-    NSString *userInfo=[NSString stringWithFormat:@"customerid=%d",20];
+    NSString *userInfo=[NSString stringWithFormat:@"customerid=%d",50];
     NSMutableURLRequest *lRequest=[NSMutableURLRequest requestWithURL:lURL];
     [lRequest setHTTPMethod:@"post"];
     [lRequest setHTTPBody:[userInfo dataUsingEncoding:NSUTF8StringEncoding]];
@@ -200,6 +200,14 @@
     cell.goodsPrice.text=[lDic objectForKey:@"price"];
     cell.goodsSzie.text=[lDic objectForKey:@"size"];
     cell.goodsColor.text=[lDic objectForKey:@"color"];
+        
+        NSDictionary *ldic= [dataarray objectAtIndex:[indexPath row]];
+        cartID=[[NSString alloc]initWithString:[ldic objectForKey:@"cartid"]];
+//        NSLog(@"%@",cartID);
+        NSMutableArray *arr=[[NSMutableArray alloc]init];
+        [arr addObject:cartID];
+        [_ldelegate send:arr];
+
 }
     return cell;
 
@@ -239,5 +247,8 @@
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 //    [self.navigationController pushViewController:<#(UIViewController *)#> animated:<#(BOOL)#>]
+    
+
+    
 }
 @end
