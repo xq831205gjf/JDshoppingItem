@@ -11,6 +11,7 @@
 #import "CustomReview.h"
 #import "shoppingcart.h"
 #import "ShoppingInfoClass.h"
+#import "LogonViewController.h"
 @interface ParticularGoodsViewController ()
 
 @end
@@ -266,6 +267,12 @@
     [lNumberLabel setText:lStr];
 }
 -(void)ClickShoppingCarButton:(UIButton *)sender{
+    if ([ShoppingInfoClass SharCommonInfo].lDictionaryOfUserInfo.count == 0 ) {
+        NSLog(@"%@",[ShoppingInfoClass SharCommonInfo].lDictionaryOfUserInfo);
+        LogonViewController *login = [[LogonViewController alloc]init];
+        [self.navigationController pushViewController:login animated:YES];
+        return;
+    }
     [self upDataShopCar];
 }
 -(void)upDataShopCar{
