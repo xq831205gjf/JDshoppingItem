@@ -25,7 +25,7 @@ static singleShopcart *setSingleSopCart=nil;
        
         _shareadress=[[NSDictionary alloc]init];
         _shareshopcart=[[NSDictionary alloc]init];
-        
+        _goodsChick=[[UIImageView alloc]init];
         
     }
     return self;

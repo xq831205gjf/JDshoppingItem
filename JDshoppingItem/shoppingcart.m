@@ -49,7 +49,7 @@
 }
 -(void)viewDidAppear:(BOOL)animated{
     animated=YES;
-    [self setdata];
+     [self setdata];
     if ( [[[singleShopcart setSingleSopCart].shareshopcart objectForKey:@"count"] intValue] == 0) {
         NSLog(@"没有商品");
         [self customViewLoad];
@@ -62,6 +62,32 @@
         [self customViewLoad];
     [_MyTabeleView reloadData];
     }
+}
+
+
+-(void)send{
+//    UITapGestureRecognizer *lTap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(lTap:)];
+//    [sender addGestureRecognizer:lTap];
+    if ([singleShopcart setSingleSopCart].Chick==NO) {
+      
+        NSLog(@"a");
+        [self addcat];
+        [self setdata];
+        [_MyTabeleView reloadData];
+        _lnumlabel.text=[NSString stringWithFormat:@"数量:%d",dataarray.count];
+        _lnumlabel1.text=[NSString stringWithFormat:@"总价:%@",[[dataarray lastObject]objectForKey:@"amount"]];
+
+    }else{
+        NSLog(@"b");
+        NSLog(@"%@",cartID);
+        [self deletedata];
+        [self setdata];
+        [_MyTabeleView reloadData];
+        _lnumlabel.text=[NSString stringWithFormat:@"数量:%d",dataarray.count];
+        _lnumlabel1.text=[NSString stringWithFormat:@"总价:%@",[[dataarray lastObject]objectForKey:@"amount"]];
+
+    }
+    
 
 }
 #pragma mark - data
@@ -89,6 +115,18 @@
     NSDictionary *lDic=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
     NSLog(@"%@",lDic);
     
+}
+-(void)addcat{
+
+    NSURL *lURL=[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/shop/addcart.php",GoodsIP]];
+    NSString *userInfo=[NSString stringWithFormat:@"cartid=%@&customerid=%@&goodscount=%@",cartID,@"50",@"1"];
+    NSMutableURLRequest *lRequest=[NSMutableURLRequest requestWithURL:lURL];
+    [lRequest setHTTPMethod:@"post"];
+    [lRequest setHTTPBody:[userInfo dataUsingEncoding:NSUTF8StringEncoding]];
+    NSData*data=  [NSURLConnection sendSynchronousRequest:lRequest returningResponse:nil error:nil];
+    NSDictionary *lDic=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+    NSLog(@"%@",lDic);
+
 }
 
 -(void)data{
@@ -172,8 +210,10 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"Cell";
     shoppingcartcustomCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+
     if (cell == nil) {
         cell = [[shoppingcartcustomCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+
     }
     if (dataarray==nil) {
     cell.textLabel.text=@"购物车没有商品";
@@ -206,8 +246,9 @@
 //        NSLog(@"%@",cartID);
         NSMutableArray *arr=[[NSMutableArray alloc]init];
         [arr addObject:cartID];
-        [_ldelegate send:arr];
-
+//        int row=[indexPath row];
+//        [_ldelegate send:row ];
+        cell.ldelegate=self;
 }
     return cell;
 

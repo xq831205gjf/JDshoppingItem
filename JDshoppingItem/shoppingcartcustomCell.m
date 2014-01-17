@@ -8,6 +8,7 @@
 
 #import "shoppingcartcustomCell.h"
 #import "shoppingcart.h"
+#import "singleShopcart.h"
 @implementation shoppingcartcustomCell{
 
     BOOL lBool;
@@ -19,19 +20,21 @@
     if (self) {
         // Initialization code
         lBool=NO;
-        UIView *lView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 75, 50)];
+        [singleShopcart setSingleSopCart].Chick=lBool;
+        _lView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 75, 50)];
+//        [_lView setFrame:CGRectMake(0, 0, 75, 50)];
         _goodsChick=[[UIImageView alloc]initWithFrame:CGRectMake(5, 12, 20, 25)];
         _goodsChick.image=[UIImage imageNamed:@"check.png"];
-        [lView addSubview:_goodsChick];
+        [_lView addSubview:_goodsChick];
         _goodsHeadImage=[[UIImageView alloc]initWithFrame:CGRectMake(25, 0, 50, 50)];
         _goodsHeadImage.image=[UIImage imageNamed:@"iphone.png"];
-        [lView addSubview:_goodsHeadImage];
+        [_lView addSubview:_goodsHeadImage];
         _goodsHeadImage.userInteractionEnabled=YES;
-        lView.backgroundColor=[UIColor clearColor];
-        [self.contentView bringSubviewToFront:lView];
+        _lView.backgroundColor=[UIColor clearColor];
+        [self.contentView bringSubviewToFront:_lView];
         UITapGestureRecognizer *lTap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(lTap:)];
-        [lView addGestureRecognizer:lTap];
-        [self.contentView addSubview:lView];
+        [_lView addGestureRecognizer:lTap];
+        [self.contentView addSubview:_lView];
        
 //        [_goodsChick addGestureRecognizer:lTap];
 
@@ -56,23 +59,17 @@
          _goodsSzie.font=[UIFont fontWithName:@"Arial" size:12];
         [self.contentView addSubview:_goodsSzie];
         
-        shoppingcart *aa=[[shoppingcart alloc]init];
-        aa.ldelegate=self;
-
+//        [singleShopcart setSingleSopCart].goodsChick=_goodsChick;
+       
         
     }
     return self;
 }
 -(void)lTap:(UITapGestureRecognizer *)sender{
-    [_goodsChick setHidden:!lBool];
-    lBool=!lBool;
-//    NSLog(@"a");
-//    [_ldelegate send:self];
+    [_goodsChick setHidden:![singleShopcart setSingleSopCart].Chick];
+    [singleShopcart setSingleSopCart].Chick=![singleShopcart setSingleSopCart].Chick;
+    [_ldelegate send];
   
-}
--(void)send:(NSMutableArray *)sender{
-
-    NSLog(@"%@",sender);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -80,6 +77,8 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+//    NSLog(@"a");
+     
 }
 
 @end

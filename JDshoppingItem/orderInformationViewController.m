@@ -76,7 +76,7 @@
         [self TABviewLoad];
         [_consigneeTabView reloadData];
       [_ldelegate send:self];
-        NSLog(@"aaaaa");
+//        NSLog(@"aaaaa");
     }
 }
 - (void)didReceiveMemoryWarning
@@ -107,19 +107,24 @@
 -(void)addoder{
 //
     NSArray *arr=[[singleShopcart setSingleSopCart].shareshopcart objectForKey:@"info"];
-    NSMutableArray *array=[[NSMutableArray alloc]init];
-    for (NSDictionary *lDic in arr) {
+    NSString* lString1=[[NSString alloc]init];
+//    NSMutableArray *array=[[NSMutableArray alloc]init];
+    for (int i=0; i<arr.count; i++) {
+        NSDictionary *lDic=[arr objectAtIndex:i];
         NSString *lString=[lDic objectForKey:@"cartid"];
-        [array addObject:lString];
-        }
+       lString1=[NSString stringWithFormat:@"cartids[%d]=%@",i,lString];
+        NSLog(@"%@",lString1);
+
+    }
+ 
     NSURL *lURL=[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/shop/addorder.php",GoodsIP]];
-    NSString *userInfo=[NSString stringWithFormat:@"customerid=%@&addressid=%@&cartids[0]=%i",@"50",adressID,3];
+    NSString *userInfo=[NSString stringWithFormat:@"customerid=%@&addressid=%@&%@",@"asd",@"50",lString1];
    NSMutableURLRequest *lRequest=[NSMutableURLRequest requestWithURL:lURL];
    [lRequest setHTTPMethod:@"post"];
     [lRequest setHTTPBody:[userInfo dataUsingEncoding:NSUTF8StringEncoding]];
     NSData*data=  [NSURLConnection sendSynchronousRequest:lRequest returningResponse:nil error:nil];
     NSDictionary *lDic=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-    NSLog(@"%@",lDic);
+    NSLog(@"ord%@",lDic);
 }
 -(void)deleteaddress{
     NSURL *lURL=[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/shop/deleteaddress.php",GoodsIP]];
@@ -280,7 +285,7 @@
     }else{
     NSDictionary *lDic=[dataarray objectAtIndex:[indexPath row]];
     cell.textLabel.text=[lDic objectForKey:@"address"];
-
+    cell.accessoryType=UITableViewCellAccessoryDetailDisclosureButton;
 //    cell.accessoryType= UITableViewCellAccessoryCheckmark;
     
     }
@@ -296,11 +301,7 @@
     }
 }
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if ([indexPath section]==1) {
-        NSDictionary *ldic= [dataarray objectAtIndex:[indexPath row]];
-        adressID=[[NSString alloc]initWithString:[ldic objectForKey:@"addressid"]];
-    }
-   
+      
     return @"删除";
 }
 
@@ -340,5 +341,12 @@
       }
     
 }
+-(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
+    if ([indexPath section]==1) {
+        NSDictionary *ldic= [dataarray objectAtIndex:[indexPath row]];
+        adressID=[[NSString alloc]initWithString:[ldic objectForKey:@"addressid"]];
+    }
 
+
+}
 @end
