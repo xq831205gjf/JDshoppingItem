@@ -67,7 +67,7 @@
 //    NSLog(@"%@",[singleShopcart setSingleSopCart].shareadress);
     if ([[[singleShopcart setSingleSopCart].shareadress objectForKey:@"count"] intValue] == 0) {
         NSLog(@"没有地址");
-        [dataarray addObject:@[@"没有地址 请添加新地址"]];
+//        [dataarray addObject:@[@"没有地址请添加新地址"]];
         [self TABviewLoad];
     }else{
     [dataarray removeAllObjects];
@@ -112,17 +112,19 @@
     for (int i=0; i<arr.count; i++) {
         NSDictionary *lDic=[arr objectAtIndex:i];
         NSString *lString=[lDic objectForKey:@"cartid"];
-       lString1=[NSString stringWithFormat:@"cartids[%d]=%@",i,lString];
+       lString1=[lString1 stringByAppendingFormat:@"&cartids[%d]=%@",i,lString];
         NSLog(@"%@",lString1);
 
     }
  
     NSURL *lURL=[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/shop/addorder.php",GoodsIP]];
-    NSString *userInfo=[NSString stringWithFormat:@"customerid=%@&addressid=%@&%@",@"asd",@"50",lString1];
+    NSString *userInfo=[NSString stringWithFormat:@"customerid=%@&addressid=%@%@",@"50",adressID,lString1];
    NSMutableURLRequest *lRequest=[NSMutableURLRequest requestWithURL:lURL];
    [lRequest setHTTPMethod:@"post"];
     [lRequest setHTTPBody:[userInfo dataUsingEncoding:NSUTF8StringEncoding]];
     NSData*data=  [NSURLConnection sendSynchronousRequest:lRequest returningResponse:nil error:nil];
+    NSString *lString111=[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",lString111);
     NSDictionary *lDic=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
     NSLog(@"ord%@",lDic);
 }
@@ -203,7 +205,7 @@
          ];
         //        [lGoodsInfo setBackgroundColor:[UIColor redColor]];
         lGoodsInfo.goodsName.text=[[shopcar objectAtIndex:i]objectForKey:@"name"];
-        lGoodsInfo.goodsconut.text=[[shopcar objectAtIndex:i]objectForKey:@"goodscount"];
+        lGoodsInfo.goodsconut.text=[NSString stringWithFormat:@"X%@",[[shopcar objectAtIndex:i]objectForKey:@"goodscount"]];
         lGoodsInfo.goodsPrice.text=[[shopcar objectAtIndex:i]objectForKey:@"price"];
         [lScrollView addSubview:lGoodsInfo];
         
@@ -269,7 +271,11 @@
     if (section==0) {
         return 1;
     }else{
+        if (dataarray==nil) {
+            return 1;
+        }else{
     return dataarray.count;
+        }
     }
     
 }
@@ -283,11 +289,14 @@
     if ([indexPath section]==0) {
         cell.textLabel.text=@"添加新地址";
     }else{
+    if ([dataarray objectAtIndex:[indexPath row]]==nil) {
+            cell.textLabel.text=@"a";
+        }else{
     NSDictionary *lDic=[dataarray objectAtIndex:[indexPath row]];
     cell.textLabel.text=[lDic objectForKey:@"address"];
     cell.accessoryType=UITableViewCellAccessoryDetailDisclosureButton;
 //    cell.accessoryType= UITableViewCellAccessoryCheckmark;
-    
+        }
     }
     }
     return cell;
@@ -301,7 +310,9 @@
     }
 }
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
-      
+    NSDictionary *ldic= [dataarray objectAtIndex:[indexPath row]];
+    adressID=[[NSString alloc]initWithString:[ldic objectForKey:@"addressid"]];
+    
     return @"删除";
 }
 

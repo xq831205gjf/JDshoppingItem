@@ -13,7 +13,10 @@
 
 @end
 
-@implementation submitViewController
+@implementation submitViewController{
+
+    NSDictionary *lData;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,6 +31,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+
+    
+    
+    // Do any additional setup after loading the view from its nib.
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+    
+}
+-(void)viewDidAppear:(BOOL)animated{
+
+    lData=[[NSDictionary alloc]init];
     [self setdata];
     _MyView.layer.cornerRadius=10.0;
     UILabel *lLabel= [[UILabel alloc]initWithFrame:CGRectMake(20, 10, 280, 60)];
@@ -40,7 +59,10 @@
     lLabel1.textAlignment=NSTextAlignmentCenter;
     lLabel1.textColor=[UIColor redColor];
     lLabel1.backgroundColor=[UIColor clearColor];
-    lLabel1.text=@"订单号：  123456789";
+    NSDictionary *ldingdanhao1 =[lData objectForKey:@"msg"];
+    NSArray *ldingdanhao2=[ldingdanhao1 objectForKey:@"info"];
+    NSString *ldingdanhao=[[ldingdanhao2 lastObject]objectForKey:@"ordercode"];
+    lLabel1.text=[NSString stringWithFormat:@"订单号：  %@",ldingdanhao];
     [_MyView addSubview:lLabel1];
     
     UILabel *lLabel2= [[UILabel alloc]initWithFrame:CGRectMake(20, 100, 280, 40)];
@@ -54,16 +76,6 @@
     [_MyView addSubview:lLabel2];
 
 
-    
-    
-    // Do any additional setup after loading the view from its nib.
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-    
 }
 #pragma mark - Button
 - (IBAction)lButton:(UIButton *)sender {
@@ -82,12 +94,13 @@
 -(void)setdata{
     //同步
     NSURL *lURL=[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/shop/getorder.php",GoodsIP]];
-    NSString *userInfo=[NSString stringWithFormat:@"customerid=%d",20];
+    NSString *userInfo=[NSString stringWithFormat:@"customerid=%d",50];
     NSMutableURLRequest *lRequest=[NSMutableURLRequest requestWithURL:lURL];
     [lRequest setHTTPMethod:@"post"];
     [lRequest setHTTPBody:[userInfo dataUsingEncoding:NSUTF8StringEncoding]];
     NSData*data=  [NSURLConnection sendSynchronousRequest:lRequest returningResponse:nil error:nil];
     NSDictionary *lDic=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+    lData=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
     NSLog(@"%@",lDic);
 }
 @end

@@ -14,7 +14,7 @@
 @property(retain,nonatomic)UILabel *goodsPrice;
 @property(retain,nonatomic)UILabel *goodsColor;
 @property(retain,nonatomic)UILabel *goodsSzie;
-@property(retain,nonatomic)UIImageView *goodsChick;
+//@property(retain,nonatomic)UIImageView *goodsChick;
 @property(retain,nonatomic)UIImageView *goodsHeadImage;
 @property(retain,nonatomic)UIView *lView;
 @property(nonatomic,assign)id<shopCartDelegate> ldelegate;

@@ -23,9 +23,9 @@
         [singleShopcart setSingleSopCart].Chick=lBool;
         _lView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 75, 50)];
 //        [_lView setFrame:CGRectMake(0, 0, 75, 50)];
-        _goodsChick=[[UIImageView alloc]initWithFrame:CGRectMake(5, 12, 20, 25)];
-        _goodsChick.image=[UIImage imageNamed:@"check.png"];
-        [_lView addSubview:_goodsChick];
+//        _goodsChick=[[UIImageView alloc]initWithFrame:CGRectMake(5, 12, 20, 25)];
+//        _goodsChick.image=[UIImage imageNamed:@"check.png"];
+//        [_lView addSubview:_goodsChick];
         _goodsHeadImage=[[UIImageView alloc]initWithFrame:CGRectMake(25, 0, 50, 50)];
         _goodsHeadImage.image=[UIImage imageNamed:@"iphone.png"];
         [_lView addSubview:_goodsHeadImage];
@@ -66,9 +66,9 @@
     return self;
 }
 -(void)lTap:(UITapGestureRecognizer *)sender{
-    [_goodsChick setHidden:![singleShopcart setSingleSopCart].Chick];
-    [singleShopcart setSingleSopCart].Chick=![singleShopcart setSingleSopCart].Chick;
-    [_ldelegate send];
+//    [_goodsChick setHidden:![singleShopcart setSingleSopCart].Chick];
+//    [singleShopcart setSingleSopCart].Chick=![singleShopcart setSingleSopCart].Chick;
+//    [_ldelegate send];
   
 }
 
