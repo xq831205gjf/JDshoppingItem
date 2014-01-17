@@ -130,12 +130,18 @@
         lCell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:Cell];
     }
     if (lInfoArray.count == 0) {
-//        lCell.textLabel.font = [UIFont systemFontOfSize:25];
-//        lCell.detailTextLabel.text = nil;
-//        lCell.imageView.image = nil;
-//        lCell.textLabel.text = @"未进行搜索";
+        
+    }else if(lInfoArray.count ==1){
+        lCell.textLabel.text = [lInfoArray objectAtIndex:0];
+        lCell.textLabel.numberOfLines = 0;
+        lCell.imageView.image = nil;
+        lCell.detailTextLabel.text = nil;
+        lCell.detailTextLabel.textColor = [UIColor redColor];
     }else{
+        lCell.detailTextLabel.textColor = [UIColor redColor];
+        lCell.textLabel.numberOfLines = 0;
         NSInteger row = [indexPath row];
+        NSLog(@"%i",lInfoArray.count);
         NSDictionary *lDic = [lInfoArray objectAtIndex:row];
         lCell.imageView.image = [UIImage imageNamed:@"u=2966281458,1284875278&fm=21&gp=0.jpg"];
         [self ShowTabelViewCellImage:lCell and:lDic];
@@ -193,6 +199,8 @@
         if ([count intValue] == 0) {
             NSArray *lAr = [[NSArray alloc]initWithObjects:@"没有数据", nil];
             lInfoArray = [NSArray arrayWithArray:lAr];
+            UITableView *lTableView = (UITableView *)[self.view viewWithTag:112];
+            [lTableView reloadData];
             return ;
         }else{
         lInfoArray = [lDic objectForKey:@"infos"];
@@ -205,7 +213,7 @@
 
 -(void)RequestAllGoods{
     NSOperationQueue *lQueue = [[NSOperationQueue alloc]init];
-    NSString *lStr = [NSString stringWithFormat:@"type=0&order=0&owncount=0"];
+    NSString *lStr = [NSString stringWithFormat:@"type=%i&order=%i&owncount=0",j,k];
     NSString *lStr1 = [NSString stringWithFormat:@"http://%@/shop/getgoods.php",GoodsIP];
     NSURL *lUrl = [NSURL URLWithString:lStr1];
     NSMutableURLRequest *lRequest = [NSMutableURLRequest requestWithURL:lUrl];
@@ -309,15 +317,19 @@
         case 100:{
             UITextField *lText = (UITextField *)[[self.view viewWithTag:110] viewWithTag:111];
             lInfoArray = [[NSArray alloc]init];
-                j = 0;
-                k = 0;
+            j = 0;
+            k = 0;
                 [sender setBackgroundColor:[UIColor orangeColor]];
                 [label1 setBackgroundColor:[UIColor orangeColor]];
                 [label2 setBackgroundColor:[UIColor whiteColor]];
                 [lButton2 setBackgroundColor:[UIColor whiteColor]];
                 [lButton3 setBackgroundColor:[UIColor whiteColor]];
                 [lButton4 setBackgroundColor:[UIColor whiteColor]];
-            [self SearchGoods:lText];
+            if (lText.text == nil||[lText.text isEqualToString:@""]) {
+                [self RequestAllGoods];
+            }else{
+                [self SearchGoods:lText];
+            }
         }
             break;
         case 101:{
@@ -331,7 +343,11 @@
             [lButton1 setBackgroundColor:[UIColor whiteColor]];
             [lButton3 setBackgroundColor:[UIColor whiteColor]];
             [lButton4 setBackgroundColor:[UIColor whiteColor]];
-            [self SearchGoods:lText];
+            if (lText.text == nil||[lText.text isEqualToString:@""]) {
+                [self RequestAllGoods];
+            }else{
+                [self SearchGoods:lText];
+            }
         }
         break;
         case 130:{
@@ -345,7 +361,11 @@
             [lButton1 setBackgroundColor:[UIColor whiteColor]];
             [lButton2 setBackgroundColor:[UIColor whiteColor]];
             [lButton4 setBackgroundColor:[UIColor whiteColor]];
-            [self SearchGoods:lText];
+            if (lText.text == nil||[lText.text isEqualToString:@""]) {
+                [self RequestAllGoods];
+            }else{
+                [self SearchGoods:lText];
+            }
         }
             break;
         case 131:{
@@ -359,7 +379,11 @@
             [lButton1 setBackgroundColor:[UIColor whiteColor]];
             [lButton2 setBackgroundColor:[UIColor whiteColor]];
             [lButton3 setBackgroundColor:[UIColor whiteColor]];
-            [self SearchGoods:lText];
+            if (lText.text == nil||[lText.text isEqualToString:@""]) {
+                [self RequestAllGoods];
+            }else{
+                [self SearchGoods:lText];
+            }
         }
             break;
     }
