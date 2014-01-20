@@ -36,6 +36,7 @@
 
 - (void)viewDidLoad
 {
+    
     dataarray=[[NSMutableArray alloc]init];
     self.MyTabeleView.dataSource=self;
     self.MyTabeleView.delegate=self;
@@ -49,7 +50,22 @@
 }
 -(void)viewDidAppear:(BOOL)animated{
     animated=YES;
-     [self setdata];
+    NSLog(@"%@",[ShoppingInfoClass SharCommonInfo].lDictionaryOfUserInfo);
+    if ([ShoppingInfoClass SharCommonInfo].lDictionaryOfUserInfo) {
+        NSLog(@"a");
+        UIView *lv=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        lv.tag=111;
+        lv.backgroundColor=[UIColor whiteColor];
+        UILabel *la=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 320)];
+        la.text=@"没有登录";
+        [lv addSubview:la];
+        la.center=CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/2);
+        [self.view addSubview:lv];
+        [self.view bringSubviewToFront:lv];
+       
+    }else{
+        [[self.view viewWithTag:111]removeFromSuperview];
+    [self setdata];
     if ( [[[singleShopcart setSingleSopCart].shareshopcart objectForKey:@"count"] intValue] == 0) {
         NSLog(@"没有商品");
         [self customViewLoad];
@@ -62,6 +78,7 @@
         [self customViewLoad];
     [_MyTabeleView reloadData];
     }
+    }
 }
 
 
@@ -70,7 +87,7 @@
 //    [sender addGestureRecognizer:lTap];
     if ([singleShopcart setSingleSopCart].Chick==NO) {
       
-        NSLog(@"a");
+        NSLog(@"aaa");
         [self addcat];
         [self setdata];
         [_MyTabeleView reloadData];
@@ -78,13 +95,14 @@
         _lnumlabel1.text=[NSString stringWithFormat:@"总价:%@",[[dataarray lastObject]objectForKey:@"amount"]];
 
     }else{
-        NSLog(@"b");
+        NSLog(@"bbbb");
         NSLog(@"%@",cartID);
         [self deletedata];
         [self setdata];
         [_MyTabeleView reloadData];
         _lnumlabel.text=[NSString stringWithFormat:@"数量:%d",dataarray.count];
         _lnumlabel1.text=[NSString stringWithFormat:@"总价:%@",[[dataarray lastObject]objectForKey:@"amount"]];
+       
 
     }
     

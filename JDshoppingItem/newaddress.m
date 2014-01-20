@@ -241,8 +241,18 @@
        NSData*data=  [NSURLConnection sendSynchronousRequest:lRequest returningResponse:nil error:nil];
     NSDictionary *lDic=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
     NSLog(@"%@",lDic);
-    
+    if ([[lDic objectForKey:@"error"]intValue]==0) {
+        UIAlertView *lAlet=[[UIAlertView alloc]initWithTitle:@"保存成功!" message:nil delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        lAlet.delegate=self;
+        [lAlet show];
+        
+    }
 }
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex ==0) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 
+}
 
 @end

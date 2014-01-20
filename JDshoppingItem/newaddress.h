@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CustomImageView.h"
-@interface newaddress : UIViewController<UITextFieldDelegate,UIPickerViewDelegate>
+@interface newaddress : UIViewController<UITextFieldDelegate,UIPickerViewDelegate,UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *shouhuoren;
 @property (weak, nonatomic) IBOutlet UITextField *address;
 @property (weak, nonatomic) IBOutlet UITextField *email;
