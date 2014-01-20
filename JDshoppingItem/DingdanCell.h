@@ -10,4 +10,5 @@
 
 @interface DingdanCell : UITableViewCell
 -(id)initWithDictionary:(NSDictionary *) sender;
+
 @end

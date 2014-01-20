@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIView *redView3;
 @property (weak, nonatomic) IBOutlet UILabel *dingDanCount;
 @property (weak, nonatomic) IBOutlet UILabel *addressCount;
+
 - (IBAction)zhuXiao:(UIButton *)sender;
 - (IBAction)myDingDan:(UIButton *)sender;
 - (IBAction)myAddress:(UIButton *)sender;

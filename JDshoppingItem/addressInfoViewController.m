@@ -8,6 +8,7 @@
 
 #import "addressInfoViewController.h"
 #import "addressCell.h"
+#import "ListOperateSingle.h"
 
 @interface addressInfoViewController ()
 
@@ -20,11 +21,13 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title=@"地址管理";
-        dataarray=[[NSMutableArray alloc]init];
-        dic=[[NSDictionary alloc]initWithObjectsAndKeys:@"刘东",@"name",@"18523983105",@"telephone",@"519000",@"code",@"重庆 南岸 茶园——————————h;kllkhlkhl;kh;",@"address", nil];
-        NSDictionary *dd=[[NSDictionary alloc]initWithObjectsAndKeys:@"潇湘",@"name",@"18523983105",@"telephone",@"519000",@"code",@"重庆 南岸 茶园——————————信臻哥，考本科",@"address", nil];
-        [dataarray addObject:dd];
-        [dataarray addObject:dic];
+        NSArray *arrr=[ListOperateSingle defauleListOperte].address;
+        NSLog(@"%@",arrr);
+        dataarray=[[NSMutableArray alloc]initWithArray:[ListOperateSingle defauleListOperte].address];
+//        dic=[[NSDictionary alloc]initWithObjectsAndKeys:@"刘东",@"name",@"18523983105",@"telephone",@"519000",@"code",@"重庆 南岸 茶园——————————h;kllkhlkhl;kh;",@"address", nil];
+//        NSDictionary *dd=[[NSDictionary alloc]initWithObjectsAndKeys:@"潇湘",@"name",@"18523983105",@"telephone",@"519000",@"code",@"重庆 南岸 茶园——————————信臻哥，考本科",@"address", nil];
+        //[dataarray addObject:[ListOperateSingle defauleListOperte].address];
+        //[dataarray addObject:dic];
         // Custom initialization
     }
     return self;

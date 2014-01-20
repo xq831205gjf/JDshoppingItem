@@ -8,6 +8,8 @@
 
 #import "DingDanViewController.h"
 #import "DingdanCell.h"
+#import "ListOperateSingle.h"
+#import "OrderViewController.h"
 
 @interface DingDanViewController ()
 
@@ -20,11 +22,16 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title=@"我的订单";
-        dataarray=[[NSMutableArray alloc]init];
-        dic=[[NSDictionary alloc]initWithObjectsAndKeys:@"201312250954193",@"ordercode",@"2013-12-25 09:54:19",@"date",@"19160.00",@"amount",@"0",@"state", nil];
-        NSDictionary *dd=[[NSDictionary alloc]initWithObjectsAndKeys:@"201312250954194",@"ordercode",@"2013-12-25 09:54:19",@"date",@"19160.00",@"amount",@"1",@"state", nil];
-        [dataarray addObject:dd];
-        [dataarray addObject:dic];
+//        NSArray *arrr=[ListOperateSingle defauleListOperte].dingdan;
+        
+        dataarray=[[NSMutableArray alloc]initWithArray:[ListOperateSingle defauleListOperte].dingdan];
+        NSLog(@"%@",dataarray);
+//        dic=[[NSDictionary alloc]initWithObjectsAndKeys:@"201312250954193",@"ordercode",@"2013-12-25 09:54:19",@"date",@"19160.00",@"amount",@"0",@"state", nil];
+//        NSDictionary *dd=[[NSDictionary alloc]initWithObjectsAndKeys:@"201312250954194",@"ordercode",@"2013-12-25 09:54:19",@"date",@"19160.00",@"amount",@"1",@"state", nil];
+        
+        
+        //[dataarray addObject:[ListOperateSingle defauleListOperte].dingdan];
+        //[dataarray addObject:dic];
         // Custom initialization
     }
     return self;
@@ -86,13 +93,22 @@
     }
 }
 
+-(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
+  
+    NSDictionary *dic1=[dataarray objectAtIndex:[indexPath row]];
+    [ListOperateSingle defauleListOperte].goodsCart=[dic1 objectForKey:@"carts"];
+    NSArray *arrrrrr=[ListOperateSingle defauleListOperte].goodsCart;
+    NSLog(@"%@",arrrrrr);
+    [ListOperateSingle defauleListOperte].state=[dic1 objectForKey:@"state"];
+    [ListOperateSingle defauleListOperte].amount=[dic1 objectForKey:@"amount"];
+    [ListOperateSingle defauleListOperte].ordercode=[dic1 objectForKey:@"ordercode"];
+      OrderViewController *order=[[OrderViewController alloc]init];
+    [self.navigationController pushViewController:order animated:YES];
+    
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    //    UITableViewCell *oneCell = [tableView cellForRowAtIndexPath: indexPath];
-    //    if (oneCell.accessoryType == UITableViewCellAccessoryNone) {
-    //        oneCell.accessoryType = UITableViewCellAccessoryCheckmark;
-    //    } else
-    //        oneCell.accessoryType = UITableViewCellAccessoryNone;
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

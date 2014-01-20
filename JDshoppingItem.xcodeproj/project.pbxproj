@@ -22,6 +22,18 @@
 		10139719187BEEF600594D3A /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10139718187BEEF600594D3A /* TabBarViewController.m */; };
 		103FA59D1883872B00F02E78 /* submitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 103FA59B1883872B00F02E78 /* submitViewController.m */; };
 		103FA59E1883872B00F02E78 /* submitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 103FA59C1883872B00F02E78 /* submitViewController.xib */; };
+		10746842188CAEF300A8B24D /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1074682F188CAEF300A8B24D /* UserInfoViewController.m */; };
+		10746843188CAEF300A8B24D /* UserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10746830188CAEF300A8B24D /* UserInfoViewController.xib */; };
+		10746844188CAEF300A8B24D /* addressInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10746832188CAEF300A8B24D /* addressInfoViewController.m */; };
+		10746845188CAEF300A8B24D /* addressInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10746833188CAEF300A8B24D /* addressInfoViewController.xib */; };
+		10746846188CAEF300A8B24D /* DingDanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10746835188CAEF300A8B24D /* DingDanViewController.m */; };
+		10746847188CAEF300A8B24D /* DingDanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10746836188CAEF300A8B24D /* DingDanViewController.xib */; };
+		10746848188CAEF300A8B24D /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10746838188CAEF300A8B24D /* OrderViewController.m */; };
+		10746849188CAEF300A8B24D /* OrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10746839188CAEF300A8B24D /* OrderViewController.xib */; };
+		1074684A188CAEF300A8B24D /* addressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1074683B188CAEF300A8B24D /* addressCell.m */; };
+		1074684B188CAEF300A8B24D /* DingdanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1074683D188CAEF300A8B24D /* DingdanCell.m */; };
+		1074684C188CAEF300A8B24D /* orderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1074683F188CAEF300A8B24D /* orderCell.m */; };
+		1074684D188CAEF300A8B24D /* ListOperateSingle.m in Sources */ = {isa = PBXBuildFile; fileRef = 10746841188CAEF300A8B24D /* ListOperateSingle.m */; };
 		1076E39A187D37D600F296EB /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1076E398187D37D600F296EB /* RegisterViewController.m */; };
 		1076E39B187D37D600F296EB /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1076E399187D37D600F296EB /* RegisterViewController.xib */; };
 		1076E39F187D385200F296EB /* LogonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1076E39D187D385200F296EB /* LogonViewController.m */; };
@@ -43,14 +55,6 @@
 		10DCAA6B187F9698003E25B3 /* city.json in Resources */ = {isa = PBXBuildFile; fileRef = 10DCAA66187F9698003E25B3 /* city.json */; };
 		10DCAA6C187F9698003E25B3 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 10DCAA67187F9698003E25B3 /* check.png */; };
 		10DCAA6D187F9698003E25B3 /* check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10DCAA68187F9698003E25B3 /* check@2x.png */; };
-		10E3FF23187E485B00BCE8AD /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3FF1C187E485B00BCE8AD /* UserInfoViewController.m */; };
-		10E3FF24187E485B00BCE8AD /* UserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10E3FF1D187E485B00BCE8AD /* UserInfoViewController.xib */; };
-		10E3FF25187E485B00BCE8AD /* addressInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3FF1F187E485B00BCE8AD /* addressInfoViewController.m */; };
-		10E3FF26187E485B00BCE8AD /* addressInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10E3FF20187E485B00BCE8AD /* addressInfoViewController.xib */; };
-		10E3FF27187E485B00BCE8AD /* addressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3FF22187E485B00BCE8AD /* addressCell.m */; };
-		10E3FF2B187E520F00BCE8AD /* DingDanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3FF29187E520F00BCE8AD /* DingDanViewController.m */; };
-		10E3FF2C187E520F00BCE8AD /* DingDanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10E3FF2A187E520F00BCE8AD /* DingDanViewController.xib */; };
-		10E3FF2F187E54AF00BCE8AD /* DingdanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3FF2E187E54AF00BCE8AD /* DingdanCell.m */; };
 		10FEA3011888C26B009C5A88 /* ZCxieyiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10FEA3001888C26B009C5A88 /* ZCxieyiViewController.m */; };
 		991C5B9C188676B200E2A1E9 /* CustomReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 991C5B9B188676B200E2A1E9 /* CustomReviewCell.m */; };
 		99B576331886170200880C72 /* CustomImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B5762F1886170200880C72 /* CustomImageView.m */; };
@@ -93,6 +97,26 @@
 		103FA59A1883872B00F02E78 /* submitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = submitViewController.h; sourceTree = "<group>"; };
 		103FA59B1883872B00F02E78 /* submitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = submitViewController.m; sourceTree = "<group>"; };
 		103FA59C1883872B00F02E78 /* submitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = submitViewController.xib; sourceTree = "<group>"; };
+		1074682E188CAEF300A8B24D /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
+		1074682F188CAEF300A8B24D /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
+		10746830188CAEF300A8B24D /* UserInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoViewController.xib; sourceTree = "<group>"; };
+		10746831188CAEF300A8B24D /* addressInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addressInfoViewController.h; sourceTree = "<group>"; };
+		10746832188CAEF300A8B24D /* addressInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addressInfoViewController.m; sourceTree = "<group>"; };
+		10746833188CAEF300A8B24D /* addressInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = addressInfoViewController.xib; sourceTree = "<group>"; };
+		10746834188CAEF300A8B24D /* DingDanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DingDanViewController.h; sourceTree = "<group>"; };
+		10746835188CAEF300A8B24D /* DingDanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DingDanViewController.m; sourceTree = "<group>"; };
+		10746836188CAEF300A8B24D /* DingDanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DingDanViewController.xib; sourceTree = "<group>"; };
+		10746837188CAEF300A8B24D /* OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderViewController.h; sourceTree = "<group>"; };
+		10746838188CAEF300A8B24D /* OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderViewController.m; sourceTree = "<group>"; };
+		10746839188CAEF300A8B24D /* OrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderViewController.xib; sourceTree = "<group>"; };
+		1074683A188CAEF300A8B24D /* addressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addressCell.h; sourceTree = "<group>"; };
+		1074683B188CAEF300A8B24D /* addressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addressCell.m; sourceTree = "<group>"; };
+		1074683C188CAEF300A8B24D /* DingdanCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DingdanCell.h; sourceTree = "<group>"; };
+		1074683D188CAEF300A8B24D /* DingdanCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DingdanCell.m; sourceTree = "<group>"; };
+		1074683E188CAEF300A8B24D /* orderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = orderCell.h; sourceTree = "<group>"; };
+		1074683F188CAEF300A8B24D /* orderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = orderCell.m; sourceTree = "<group>"; };
+		10746840188CAEF300A8B24D /* ListOperateSingle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListOperateSingle.h; sourceTree = "<group>"; };
+		10746841188CAEF300A8B24D /* ListOperateSingle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListOperateSingle.m; sourceTree = "<group>"; };
 		1076E397187D37D600F296EB /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		1076E398187D37D600F296EB /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		1076E399187D37D600F296EB /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
@@ -124,19 +148,6 @@
 		10DCAA66187F9698003E25B3 /* city.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = city.json; sourceTree = "<group>"; };
 		10DCAA67187F9698003E25B3 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
 		10DCAA68187F9698003E25B3 /* check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check@2x.png"; sourceTree = "<group>"; };
-		10E3FF1B187E485B00BCE8AD /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
-		10E3FF1C187E485B00BCE8AD /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
-		10E3FF1D187E485B00BCE8AD /* UserInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoViewController.xib; sourceTree = "<group>"; };
-		10E3FF1E187E485B00BCE8AD /* addressInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addressInfoViewController.h; sourceTree = "<group>"; };
-		10E3FF1F187E485B00BCE8AD /* addressInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addressInfoViewController.m; sourceTree = "<group>"; };
-		10E3FF20187E485B00BCE8AD /* addressInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = addressInfoViewController.xib; sourceTree = "<group>"; };
-		10E3FF21187E485B00BCE8AD /* addressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addressCell.h; sourceTree = "<group>"; };
-		10E3FF22187E485B00BCE8AD /* addressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addressCell.m; sourceTree = "<group>"; };
-		10E3FF28187E520F00BCE8AD /* DingDanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DingDanViewController.h; sourceTree = "<group>"; };
-		10E3FF29187E520F00BCE8AD /* DingDanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DingDanViewController.m; sourceTree = "<group>"; };
-		10E3FF2A187E520F00BCE8AD /* DingDanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DingDanViewController.xib; sourceTree = "<group>"; };
-		10E3FF2D187E54AF00BCE8AD /* DingdanCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DingdanCell.h; sourceTree = "<group>"; };
-		10E3FF2E187E54AF00BCE8AD /* DingdanCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DingdanCell.m; sourceTree = "<group>"; };
 		10FEA2FF1888C26B009C5A88 /* ZCxieyiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCxieyiViewController.h; sourceTree = "<group>"; };
 		10FEA3001888C26B009C5A88 /* ZCxieyiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCxieyiViewController.m; sourceTree = "<group>"; };
 		991C5B9A188676B200E2A1E9 /* CustomReviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomReviewCell.h; sourceTree = "<group>"; };
@@ -302,19 +313,26 @@
 		10139715187BE93F00594D3A /* ListOperateSystem */ = {
 			isa = PBXGroup;
 			children = (
-				10E3FF1B187E485B00BCE8AD /* UserInfoViewController.h */,
-				10E3FF1C187E485B00BCE8AD /* UserInfoViewController.m */,
-				10E3FF1D187E485B00BCE8AD /* UserInfoViewController.xib */,
-				10E3FF1E187E485B00BCE8AD /* addressInfoViewController.h */,
-				10E3FF1F187E485B00BCE8AD /* addressInfoViewController.m */,
-				10E3FF20187E485B00BCE8AD /* addressInfoViewController.xib */,
-				10E3FF28187E520F00BCE8AD /* DingDanViewController.h */,
-				10E3FF29187E520F00BCE8AD /* DingDanViewController.m */,
-				10E3FF2A187E520F00BCE8AD /* DingDanViewController.xib */,
-				10E3FF21187E485B00BCE8AD /* addressCell.h */,
-				10E3FF22187E485B00BCE8AD /* addressCell.m */,
-				10E3FF2D187E54AF00BCE8AD /* DingdanCell.h */,
-				10E3FF2E187E54AF00BCE8AD /* DingdanCell.m */,
+				1074682E188CAEF300A8B24D /* UserInfoViewController.h */,
+				1074682F188CAEF300A8B24D /* UserInfoViewController.m */,
+				10746830188CAEF300A8B24D /* UserInfoViewController.xib */,
+				10746831188CAEF300A8B24D /* addressInfoViewController.h */,
+				10746832188CAEF300A8B24D /* addressInfoViewController.m */,
+				10746833188CAEF300A8B24D /* addressInfoViewController.xib */,
+				10746834188CAEF300A8B24D /* DingDanViewController.h */,
+				10746835188CAEF300A8B24D /* DingDanViewController.m */,
+				10746836188CAEF300A8B24D /* DingDanViewController.xib */,
+				10746837188CAEF300A8B24D /* OrderViewController.h */,
+				10746838188CAEF300A8B24D /* OrderViewController.m */,
+				10746839188CAEF300A8B24D /* OrderViewController.xib */,
+				1074683A188CAEF300A8B24D /* addressCell.h */,
+				1074683B188CAEF300A8B24D /* addressCell.m */,
+				1074683C188CAEF300A8B24D /* DingdanCell.h */,
+				1074683D188CAEF300A8B24D /* DingdanCell.m */,
+				1074683E188CAEF300A8B24D /* orderCell.h */,
+				1074683F188CAEF300A8B24D /* orderCell.m */,
+				10746840188CAEF300A8B24D /* ListOperateSingle.h */,
+				10746841188CAEF300A8B24D /* ListOperateSingle.m */,
 			);
 			name = ListOperateSystem;
 			sourceTree = "<group>";
@@ -432,9 +450,6 @@
 				1013970A187BE6E200594D3A /* ViewController.xib in Resources */,
 				1076E39B187D37D600F296EB /* RegisterViewController.xib in Resources */,
 				1076E3A0187D385200F296EB /* LogonViewController.xib in Resources */,
-				10E3FF24187E485B00BCE8AD /* UserInfoViewController.xib in Resources */,
-				10E3FF26187E485B00BCE8AD /* addressInfoViewController.xib in Resources */,
-				10E3FF2C187E520F00BCE8AD /* DingDanViewController.xib in Resources */,
 				10DCAA5D187F9676003E25B3 /* shoppingcart.xib in Resources */,
 				10DCAA5F187F9676003E25B3 /* orderInformationViewController.xib in Resources */,
 				10DCAA62187F9676003E25B3 /* newaddress.xib in Resources */,
@@ -453,6 +468,10 @@
 				99B576501886171A00880C72 /* star_dark@2x.png in Resources */,
 				99B576511886171A00880C72 /* star_light.png in Resources */,
 				99B576521886171A00880C72 /* star_light@2x.png in Resources */,
+				10746843188CAEF300A8B24D /* UserInfoViewController.xib in Resources */,
+				10746845188CAEF300A8B24D /* addressInfoViewController.xib in Resources */,
+				10746847188CAEF300A8B24D /* DingDanViewController.xib in Resources */,
+				10746849188CAEF300A8B24D /* OrderViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,11 +489,6 @@
 				1076E39A187D37D600F296EB /* RegisterViewController.m in Sources */,
 				1076E39F187D385200F296EB /* LogonViewController.m in Sources */,
 				1076E3A3187D3E5900F296EB /* ShoppingInfoClass.m in Sources */,
-				10E3FF23187E485B00BCE8AD /* UserInfoViewController.m in Sources */,
-				10E3FF25187E485B00BCE8AD /* addressInfoViewController.m in Sources */,
-				10E3FF27187E485B00BCE8AD /* addressCell.m in Sources */,
-				10E3FF2B187E520F00BCE8AD /* DingDanViewController.m in Sources */,
-				10E3FF2F187E54AF00BCE8AD /* DingdanCell.m in Sources */,
 				10DCAA5B187F9676003E25B3 /* shoppingcartcustomCell.m in Sources */,
 				10DCAA5C187F9676003E25B3 /* shoppingcart.m in Sources */,
 				10DCAA5E187F9676003E25B3 /* orderInformationViewController.m in Sources */,
@@ -492,6 +506,14 @@
 				99B576531886171A00880C72 /* StarView.m in Sources */,
 				991C5B9C188676B200E2A1E9 /* CustomReviewCell.m in Sources */,
 				10FEA3011888C26B009C5A88 /* ZCxieyiViewController.m in Sources */,
+				10746842188CAEF300A8B24D /* UserInfoViewController.m in Sources */,
+				10746844188CAEF300A8B24D /* addressInfoViewController.m in Sources */,
+				10746846188CAEF300A8B24D /* DingDanViewController.m in Sources */,
+				10746848188CAEF300A8B24D /* OrderViewController.m in Sources */,
+				1074684A188CAEF300A8B24D /* addressCell.m in Sources */,
+				1074684B188CAEF300A8B24D /* DingdanCell.m in Sources */,
+				1074684C188CAEF300A8B24D /* orderCell.m in Sources */,
+				1074684D188CAEF300A8B24D /* ListOperateSingle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
